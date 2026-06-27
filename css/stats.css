@@ -1,0 +1,7 @@
+/* ---------- 11. STATS ---------- */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 50px; padding-top: 44px; border-top: 1px solid var(--line) }
+.stat { text-align: center; display: flex; flex-direction: column; align-items: center }
+.stat b { display: block; font-family: var(--font); font-size: clamp(2.2rem, 3.8vw, 3.4rem); font-weight: var(--fw-black); letter-spacing: -.03em; color: var(--ink); line-height: 1.1; font-variant-numeric: tabular-nums }
+.stat b i { font-style: normal; color: inherit }
+.stat b i:first-child { color: var(--accent) }
+.stat span { display: block; margin-top: 6px; font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-regular) }

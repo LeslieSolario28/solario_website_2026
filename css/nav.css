@@ -1,0 +1,49 @@
+/* ---------- 6. NAV ---------- */
+nav.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 8vw; background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background var(--duration-fast), backdrop-filter var(--duration-fast), border-color var(--duration-fast), padding var(--duration-fast);
+}
+.brand { display: inline-flex; align-items: center }
+.brand-logo { height: 28px; width: auto }
+.brand-logo-white { display: block }
+.brand-logo-color { display: none }
+nav.topbar.nav-light .brand-logo-white { display: none }
+nav.topbar.nav-light .brand-logo-color { display: block }
+.navlinks { display: flex; align-items: center; gap: 32px }
+.navlinks a { font-family: var(--font); font-size: .8rem; font-weight: var(--fw-regular); color: rgba(255,255,255,.7); letter-spacing: .02em; transition: color var(--duration-fast) }
+.navlinks a:hover { color: var(--c-white) }
+.navlinks .portal { color: var(--c-white); background: var(--accent); border: none; border-radius: var(--r-pill); padding: 9px 22px; font-weight: var(--fw-bold); transition: transform var(--duration-fast), background var(--duration-fast) }
+.navlinks .portal:hover { transform: translateY(-2px); background: #06b8ff }
+.navlinks .portal-btn { color: var(--c-white); background: transparent; border: 1px solid rgba(255,255,255,.3); border-radius: var(--r-pill); padding: 9px 22px; font-weight: var(--fw-bold); transition: border-color var(--duration-fast), background var(--duration-fast), transform var(--duration-fast) }
+.navlinks .portal-btn:hover { border-color: var(--c-white); background: rgba(255,255,255,.1); transform: translateY(-2px) }
+
+
+/* nav on dark sections (hero, navy) */
+nav.topbar.scrolled { padding-top: 12px; padding-bottom: 12px }
+nav.topbar.nav-dark { background: rgba(0,41,107,.3); backdrop-filter: blur(20px) saturate(1.3); -webkit-backdrop-filter: blur(20px) saturate(1.3); border-bottom-color: rgba(255,255,255,.06) }
+
+nav.topbar.nav-dark .navlinks a { color: rgba(255,255,255,.65) }
+nav.topbar.nav-dark .navlinks a:hover { color: var(--c-white) }
+nav.topbar.nav-dark .portal-btn { border-color: rgba(255,255,255,.85); color: var(--c-white) }
+nav.topbar.nav-dark .nav-toggle span { background: var(--c-white) }
+nav.topbar.nav-dark .portal { color: var(--c-white) }
+
+/* nav on light sections */
+nav.topbar.nav-light { background: rgba(255,255,255,.92); backdrop-filter: blur(20px) saturate(1.3); -webkit-backdrop-filter: blur(20px) saturate(1.3); border-bottom-color: rgba(0,41,107,.06) }
+
+
+nav.topbar.nav-light .navlinks a { color: rgba(0,41,107,.5) }
+nav.topbar.nav-light .navlinks a:hover { color: var(--c-navy) }
+nav.topbar.nav-light .portal { color: var(--c-white) !important }
+nav.topbar.nav-light .portal-btn { border-color: rgba(0,41,107,.15); color: var(--c-navy) }
+nav.topbar.nav-light .portal-btn:hover { border-color: var(--c-navy); background: rgba(0,41,107,.05) }
+nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
+
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 60 }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--c-white); border-radius: 2px; transition: transform var(--duration-fast), opacity var(--duration-fast) }
+.nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg) }
+.nav-toggle.active span:nth-child(2) { opacity: 0 }
+.nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }

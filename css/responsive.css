@@ -1,0 +1,152 @@
+/* ---------- 21. RESPONSIVE ---------- */
+/* ---------- 21. RESPONSIVE ---------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  :root { --sp-gutter-content: calc(4vw + 10px) }
+  .hero-bottom { padding: 0 5vw 50px }
+  .hero-content { padding: 0 5vw }
+  .hero h1 { font-size: clamp(2.4rem, 5vw, 4rem) }
+  .hs-track { width: 600px }
+  .hs-counter { width: 600px }
+  .hs-card { width: 280px }
+  .eaas-layout { grid-template-columns: 1fr 1.4fr; gap: var(--sp-lg) }
+}
+
+/* Small tablet / large mobile */
+@media (max-width: 900px) {
+  .about-layout { grid-template-columns: 1fr; gap: var(--sp-lg) }
+  .about-left { padding-top: 0 }
+  .about-image video, .about-image img { height: 240px }
+#ultimate .container { padding-top: 40px }
+  .flip-cards { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto }
+  .values-grid { grid-template-columns: repeat(3, 1fr) }
+  .stats { grid-template-columns: repeat(2, 1fr) }
+  .svc-content { grid-template-columns: 1fr; gap: 32px }
+  .svc-stage { padding: 0 var(--sp-gutter-content) }
+  .svc-text { min-height: 220px }
+  .svc-img-wrap { aspect-ratio: 4/3; max-height: 40vh }
+  .eaas-layout { grid-template-columns: 1fr; gap: var(--sp-lg) }
+  .coverage-stats-row { gap: 40px }
+}
+
+/* Mobile nav + layout */
+@media (max-width: 800px) {
+  .nav-toggle { display: flex }
+  .navlinks { position: fixed; inset: 0; z-index: 55; flex-direction: column; justify-content: center; align-items: center; gap: 28px; background: rgba(0,41,107,.96); backdrop-filter: blur(20px); opacity: 0; pointer-events: none; transition: opacity var(--duration-fast) }
+  .navlinks.open { opacity: 1; pointer-events: auto }
+  .navlinks a { font-size: 1.2rem; color: var(--c-white) !important }
+  .foot-cols { grid-template-columns: 1fr 1fr; gap: 28px }
+  .hero-bottom { flex-direction: column; align-items: flex-start; gap: 0 }
+  .hero-slider { display: none }
+  .hero-slider { margin-right: 0 !important; align-self: stretch }
+  .hs-track { width: 100%; height: 160px }
+  .hs-counter { width: 100% }
+  .hs-card { width: calc(50% - 8px) }
+  .hs-img { width: 100px }
+  .hs-info { padding: 12px 14px }
+  .hs-info strong { font-size: .85rem }
+  .hs-info p { font-size: .72rem }
+  .hero .btn { font-size: 1.1rem; padding: 10px 22px }
+  .case-card { width: 260px; height: 350px }
+  .about-badges { gap: 20px; flex-wrap: wrap }
+  .svc-section-header { margin-bottom: 40px }
+  .hero-content { text-align: left; display: flex; flex-direction: column; align-items: flex-start }
+  .hero-ctas { justify-content: flex-start }
+  .hero .lede { text-align: left }
+  .eyebrow { text-align: left }
+  .tarifas-track { overflow-x: auto; padding: 12px 20px }
+  .tarifa-card { min-width: 240px; flex: none }
+  .eaas-layout { grid-template-columns: 1fr }
+  .about-layout { grid-template-columns: 1fr }
+  .about-left { padding-top: 0 }
+  .popup-card { padding: 32px 24px; width: 95% }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  :root { --sp-section: 70px; --sp-gutter-content: 20px }
+  .hero { min-height: 100svh }
+  .hero h1 { font-size: clamp(2.4rem, 10vw, 3.6rem) }
+  .hero .lede { font-size: .9rem }
+  .eyebrow { font-size: .78rem }
+  .hero-content { padding: 0 20px }
+  .hero-bottom { padding: 0 20px 40px }
+  .hero .btn { font-size: 1rem; padding: 10px 20px }
+  .hs-card { width: calc(100% - 60px) }
+  .hs-img { width: 80px }
+  .section h2, .cta-divider h2 { font-size: clamp(2.2rem, 9vw, 2.9rem) }
+  .sec-sub { font-size: 1rem; max-width: 100%; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
+  .values-grid { grid-template-columns: repeat(2, 1fr); gap: 12px }
+  .value-item { padding: 16px 10px }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 20px }
+  .stat b { font-size: clamp(1.6rem, 8vw, 2.4rem) }
+  .form-row { grid-template-columns: 1fr }
+#ultimate .container { padding-top: 40px }
+  .flip-cards { max-width: 100% }
+  .flip-card { height: 320px }
+  .coverage-stats-row { flex-direction: column; gap: 24px }
+  .svc-scroll { height: 400vh }
+  .svc-scroll-sticky { padding-top: 80px }
+  .svc-panel h3 { font-size: clamp(2rem, 8vw, 2.6rem) }
+  .svc-img-wrap { max-height: 35vh; border-radius: var(--r-md) }
+  .case-card { width: 240px; height: 320px }
+  .eaas-left h2 { font-size: clamp(1.8rem, 7vw, 2.8rem) !important }
+  .tarifa-card { min-width: 260px; flex: none }
+  .contact-form-wrap { max-width: 100% }
+  .whatsapp-float { width: 52px; height: 52px; bottom: 20px; right: 20px }
+  .whatsapp-float svg { width: 26px; height: 26px }
+  nav.topbar { padding: 14px 20px }
+  #about .container { padding-top: 80px; padding-bottom: 80px }
+  .about-title { font-size: clamp(1.4rem, 5vw, 2rem) !important }
+.about-logo { display: block; height: 32px; width: auto; margin-top: 20px; margin-bottom: 20px }
+  .about-desc { font-size: 1rem }
+  .tarifas-track { flex-direction: column; overflow-x: visible; padding: 0 }
+  .tarifa-card { min-width: 100%; flex: none }
+  .tarifa-icon { width: 36px; height: 36px }
+  .evidence-grid { grid-template-columns: 1fr }
+  .sec-label { font-size: .82rem; margin-bottom: 20px }
+  .about-image video, .about-image img { height: 200px }
+  .about-title { padding-right: 0 !important }
+  .popup-card { padding: 28px 20px }
+  .flip-cards { gap: 16px }
+  .vals-carousel::before, .vals-carousel::after { width: 40px }
+  .container { text-align: center }
+  .sec-sub { margin-left: auto; margin-right: auto }
+  .about-layout { text-align: center }
+  .about-left { display: flex; flex-direction: column; align-items: center }
+  .about-desc { text-align: center }
+  .about-title { text-align: center !important }
+  .svc-panel { align-items: center; text-align: center }
+  .svc-panel p { text-align: center }
+  .svc-dots { justify-content: center }
+  .svc-cta { display: none }
+  .coverage-stats-row { align-items: center }
+  .cov-stat { text-align: center }
+  .contact-form { text-align: center }
+  .form-field { text-align: left }
+  .btn-submit { margin-left: auto; margin-right: auto }
+  .foot-cols { text-align: center }
+  .foot-col { display: flex; flex-direction: column; align-items: center }
+  .foot-col nav { align-items: center }
+  .copyright { text-align: center }
+  .cases-controls { justify-content: center }
+  .evidence-card { text-align: center }
+  .value-item { text-align: center; justify-content: center }
+  .eaas-marquee::before, .eaas-marquee::after { width: 40px }
+}
+
+/* Small mobile */
+@media (max-width: 400px) {
+  .hero h1 { font-size: 1.8rem }
+  .hs-card { width: 100% }
+  .foot-cols { grid-template-columns: 1fr }
+  .values-grid { grid-template-columns: 1fr }
+  .stats { grid-template-columns: 1fr }
+  .coverage-stats-row { gap: 20px }
+  .cov-stat strong { font-size: 1.2rem }
+  .flip-card { height: 300px }
+  .case-card { width: 220px; height: 300px }
+  .hero-bottom { padding: 0 16px 30px }
+  .hero-content { padding: 0 16px }
+}

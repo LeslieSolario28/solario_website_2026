@@ -1,0 +1,29 @@
+/* ---------- 4. TYPOGRAPHY ---------- */
+.dot-accent { color: var(--accent); -webkit-text-fill-color: var(--accent) }
+.sec-label {
+  font-family: var(--font); font-size: var(--fs-xs); font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide); color: var(--accent);
+  text-transform: uppercase; margin-bottom: 34px;
+}
+.section h2, .cta-divider h2 {
+  font-family: var(--font); font-size: var(--fs-xl); font-weight: var(--fw-black);
+  letter-spacing: var(--ls-tight); line-height: var(--lh-tight);
+  text-wrap: balance; color: var(--ink);
+}
+.sec-sub {
+  margin-top: var(--sp-sm); color: var(--muted); max-width: 720px;
+  font-weight: var(--fw-regular); font-size: 1.2rem; line-height: 1.7;
+}
+.sec-sub.centered { margin-left: auto; margin-right: auto }
+
+/* scroll-paint title — letter-by-letter */
+.shimmer-title { font-family: var(--font) }
+.shimmer-title .paint-char { display: inline; color: rgba(0,41,107,.08); transition: color .15s ease }
+.shimmer-title .paint-char.lit { color: var(--ink) }
+.shimmer-title .paint-char.glow { color: var(--accent) }
+.section-navy .shimmer-title .paint-char { color: rgba(255,255,255,.08) }
+.section-navy .shimmer-title .paint-char.lit { color: var(--ink-inv) }
+.section-navy .shimmer-title .paint-char.glow { color: var(--accent) }
+.cta-divider .shimmer-title .paint-char { color: rgba(255,255,255,.1) }
+.cta-divider .shimmer-title .paint-char.lit { color: var(--ink-inv) }
+.cta-divider .shimmer-title .paint-char.glow { color: var(--accent) }

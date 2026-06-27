@@ -1,0 +1,13 @@
+/* ---------- 8b. COVERAGE MAP ---------- */
+.coverage-title { font-size: var(--fs-xl) !important; color: var(--c-white); line-height: var(--lh-tight) !important }
+.results-block { margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--line-inv) }
+.results-subtitle { font-size: clamp(1.6rem, 2.8vw, 2.4rem) !important; color: var(--c-white); margin-bottom: 40px }
+.section-navy .stats { border-top: none; padding-top: 0 }
+.section-navy .stat b { color: var(--c-white) }
+.section-navy .stat span { color: var(--muted-inv) }
+.coverage-stats-row { display: flex; gap: 60px; justify-content: center; margin-top: 56px }
+.cov-stat { text-align: center }
+.cov-stat strong { display: block; font-family: var(--font); font-size: clamp(2.2rem, 3.8vw, 3.4rem); font-weight: var(--fw-black); color: var(--c-white); letter-spacing: -.03em; line-height: 1.1; font-variant-numeric: tabular-nums }
+.cov-accent { font-style: normal; color: var(--accent) }
+.cov-stat-label { display: block; font-size: .72rem; color: rgba(255,255,255,.35); letter-spacing: .06em; margin-top: 6px }
+

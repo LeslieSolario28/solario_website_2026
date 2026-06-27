@@ -1,0 +1,4 @@
+/* ---------- 18. WHATSAPP ---------- */
+.whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 100; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #6BCB77; box-shadow: 0 6px 24px rgba(107,203,119,.4); transition: transform var(--duration-fast), box-shadow var(--duration-fast) }
+.whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,.45) }
+.whatsapp-float svg { width: 30px; height: 30px }

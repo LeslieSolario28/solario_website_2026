@@ -1,0 +1,17 @@
+/* ---------- 19. FOOTER ---------- */
+.footer-line-wrap { overflow: hidden; height: 2px; position: relative }
+.footer-line { position: absolute; top: 0; left: 0; width: 40%; height: 100%; background: linear-gradient(90deg, transparent, var(--accent), transparent); animation: footerLineMove 4s cubic-bezier(.4,0,.2,1) infinite }
+@keyframes footerLineMove { 0% { left: -40% } 100% { left: 100% } }
+footer { position: relative; z-index: 2; background: var(--c-navy); color: rgba(255,255,255,.65) }
+footer .container { padding-top: 100px; padding-bottom: 140px }
+.foot-inner { border-top: 1px solid var(--line-inv) }
+.foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px }
+.foot-col h4 { font-family: var(--font); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .18em; color: var(--accent); margin-bottom: 12px; font-weight: 600 }
+.foot-col p, .foot-col address { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.8; font-weight: 300 }
+.foot-col a { display: block; font-size: .85rem; color: rgba(255,255,255,.45); margin-bottom: 7px; transition: color var(--duration-fast); font-weight: 300 }
+.foot-col a:hover { color: var(--c-white) }
+.foot-col nav { display: flex; flex-direction: column }
+.foot-company { font-size: var(--fs-sm); color: rgba(255,255,255,.35); margin-top: var(--sp-xs); font-weight: 300 }
+footer .brand-logo { height: 24px }
+
+.copyright { margin-top: 50px; font-size: var(--fs-xs); color: rgba(255,255,255,.2); letter-spacing: .04em; font-weight: 300 }

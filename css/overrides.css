@@ -1,0 +1,2 @@
+/* sec-sub single line for specific sections */
+#eaas .sec-sub, #ultimate .sec-sub, #soluciones .sec-sub, .svc-section-header .sec-sub { white-space: nowrap; max-width: none }

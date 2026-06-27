@@ -1,0 +1,12 @@
+{
+  "name": "Solario — Suministro de energía",
+  "short_name": "Solario",
+  "description": "Soluciones energéticas integrales para empresas de alto consumo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#07072e",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

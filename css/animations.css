@@ -1,0 +1,3 @@
+/* ---------- 20. ANIMATIONS ---------- */
+.rv { opacity: 0; transform: translateY(40px); transition: opacity var(--duration-reveal) var(--ease-out), transform var(--duration-reveal) var(--ease-out) }
+.rv.in { opacity: 1; transform: none }

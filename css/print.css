@@ -1,0 +1,25 @@
+/* ---------- 22. PRINT ---------- */
+@media print {
+  nav.topbar, .hero-video, .hero-scrim, .hero-slider, .whatsapp-float, .footer-line-wrap, .svc-progress, .svc-dots, .cases-arrows, .carousel-dots { display: none !important }
+  .hero { height: auto; min-height: auto; page-break-after: always }
+  .hero-content { position: static; opacity: 1; transform: none; padding: 20px }
+  .hero h1 { clip-path: none; color: #000 }
+  .section, .svc-scroll { height: auto }
+  .svc-scroll-sticky { position: static; height: auto }
+  .rv { opacity: 1; transform: none }
+  .shimmer-title .paint-char { color: inherit !important }
+  body { font-size: 12pt; color: #000; background: #fff }
+  .flip-card { height: auto }
+  .flip-card-inner { transform: none !important }
+  .flip-back { display: none }
+}
+
+/* ---------- 23. ACCESSIBILITY ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1; transform: none; transition: none }
+  .shimmer-title .paint-char { transition: none }
+  .hero-content { opacity: 1; transform: none; transition: none }
+  .hero h1 { clip-path: none; animation: none }
+  .hs-card { transition: none }
+  html { scroll-behavior: auto }
+}

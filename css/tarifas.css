@@ -1,0 +1,13 @@
+/* ---------- 16. TARIFAS ---------- */
+.tarifas-carousel { margin-top: 50px }
+.tarifas-track { display: flex; gap: 18px; overflow-x: auto;  -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 12px 30px 12px 4px }
+.tarifas-track::-webkit-scrollbar { display: none }
+.tarifa-card { flex: 1;  border: 1px solid var(--line); border-radius: var(--r-md); padding: 30px 26px 34px; background: var(--c-white); transition: transform var(--duration-md) var(--ease-smooth), box-shadow var(--duration-md), border-color var(--duration-fast); text-align: left }
+.tarifa-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--accent) }
+.tarifa-icon { width: 44px; height: 44px; margin-bottom: 18px }
+.tarifa-card h3 { font-family: var(--font); font-size: 1.35rem; font-weight: var(--fw-bold); margin-top: 0; color: var(--ink); letter-spacing: -.01em }
+.tarifa-card p { margin-top: var(--sp-xs); color: var(--muted); font-size: .85rem; font-weight: var(--fw-regular); line-height: 1.6 }
+.carousel-dots { display: flex; justify-content: center; gap: var(--sp-xs); margin-top: 22px }
+.carousel-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); border: none; cursor: pointer; transition: background var(--duration-fast), transform var(--duration-fast) }
+.carousel-dot.active { background: var(--accent); transform: scale(1.3) }
+.carousel-dot:hover { background: var(--accent) }

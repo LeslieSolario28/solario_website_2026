@@ -1,0 +1,35 @@
+/* ---------- 2. RESET & BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth }
+body {
+  background: var(--c-white);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-regular);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+a { color: inherit; text-decoration: none }
+::selection { background: var(--accent); color: var(--c-white) }
+address { font-style: normal }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0 }
+
+/* ---------- 3. LAYOUT ---------- */
+main, footer { overflow-x: clip }
+.section { position: relative; z-index: 2 }
+.section-white { background: var(--c-white) }
+.section-offwhite { background: var(--c-offwhite) }
+.section-iceblue { background: var(--c-iceblue) }
+.section-navy {
+  background: var(--c-navy); color: var(--ink-inv);
+  --muted: var(--muted-inv); --line: var(--line-inv);
+}
+.section-navy .sec-label { color: var(--accent) }
+.section-navy h2 { color: var(--ink-inv) }
+.section-navy .sec-sub { color: var(--muted-inv) }
+
+.container { max-width: 1200px; margin: 0 auto; padding: var(--sp-section) var(--sp-gutter-content) }
+.text-center { text-align: center }
+.text-center h2 { margin-left: auto; margin-right: auto }

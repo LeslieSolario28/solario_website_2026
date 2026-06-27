@@ -1,0 +1,42 @@
+/* ---------- 8. ABOUT US ---------- */
+.about-layout { display: grid; grid-template-columns: 1fr 2.5fr; gap: 60px; align-items: center }
+#about .container { padding-top: 160px; padding-bottom: 140px }
+.about-image { grid-column: 1 / -1; margin-top: 80px; margin-bottom: 30px }
+.about-img-placeholder { width: 100%; height: 340px; background: rgba(255,255,255,.06); border-radius: var(--r-lg); display: flex; align-items: center; justify-content: center; border: 1px dashed rgba(255,255,255,.12) }
+.about-img-placeholder span { font-family: var(--font); font-size: var(--fs-sm); color: rgba(255,255,255,.2); font-weight: var(--fw-medium) }
+.about-image img { width: 100%; height: 340px; object-fit: cover; border-radius: var(--r-lg); display: block }
+.about-image video { width: 100%; height: 400px; object-fit: cover; border-radius: var(--r-sm); display: block; filter: brightness(.85) contrast(1.1) saturate(1.1) }
+.about-left { padding-top: 0 }
+.about-logo { display: block; height: 32px; width: auto; margin-top: 20px; margin-bottom: 20px }
+.about-desc { margin-top: 40px; color: rgba(255,255,255,.85); font-size: 1.32rem; font-weight: var(--fw-regular); line-height: 1.7; max-width: 480px }
+.about-title { font-size: clamp(2.2rem, 3.8vw, 3.4rem) !important; color: var(--c-white); line-height: 1.18 !important; font-style: normal; font-weight: var(--fw-regular) !important; letter-spacing: -.02em !important; padding-right: 0 }
+.about-badges { display: flex; gap: 80px; margin-top: 48px; align-items: center; justify-content: center; padding: 0 }
+.badge-logo { height: 28px; width: auto; opacity: .45; transition: opacity var(--duration-fast); filter: brightness(0) invert(1) }
+.badge-logo-wide { height: 24px }
+.badge-item:hover .badge-logo { opacity: .9 }
+.badge-pill { text-align: center; opacity: .45; transition: opacity var(--duration-fast) }
+.badge-item:hover .badge-pill { opacity: .7 }
+.badge-pill span { display: block; font-family: var(--font); font-size: .78rem; font-weight: var(--fw-medium); color: var(--c-white); letter-spacing: .04em; line-height: 1.2 }
+.badge-pill small { display: block; margin-top: 3px; font-family: var(--font); font-size: .5rem; color: rgba(255,255,255,.4); font-weight: var(--fw-regular); letter-spacing: .02em }
+
+
+/* flip card logos */
+.flip-logo { height: 48px; width: auto; filter: brightness(0) invert(1); opacity: .9 }
+
+/* about certifications */
+.about-certs { grid-column: 1 / -1; display: flex; gap: 40px; align-items: center; justify-content: center; margin-top: 8px; flex-wrap: wrap }
+.cert-logo { height: 85px; width: auto; filter: brightness(0) invert(1); opacity: .5; transition: opacity var(--duration-fast) }
+.cert-logo-wide { height: 36px }
+.cert-item:hover .cert-logo { opacity: .8 }
+.cert-pill { text-align: center; opacity: .5; transition: opacity var(--duration-fast) }
+.cert-item:hover .cert-pill { opacity: .8 }
+.cert-pill span { display: block; font-family: var(--font); font-size: .9rem; font-weight: var(--fw-bold); color: var(--c-white); letter-spacing: .03em; line-height: 1.2 }
+.cert-pill small { display: block; margin-top: 3px; font-family: var(--font); font-size: .55rem; color: rgba(255,255,255,.4); font-weight: var(--fw-regular) }
+@media (max-width: 600px) { .about-certs { gap: 24px } .cert-logo { height: 65px } }
+
+/* cert logos in color (no invert filter) */
+.cert-logo-color { filter: brightness(0) invert(1); opacity: .7 }
+.cert-item:hover .cert-logo-color { opacity: 1 }
+
+.cert-logo-natural { filter: none; opacity: .85 }
+.cert-item:hover .cert-logo-natural { opacity: 1 }

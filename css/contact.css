@@ -1,0 +1,27 @@
+/* ---------- 17. CONTACT FORM ---------- */
+.contact-header { margin-bottom: 50px }
+#contacto.section-navy .sec-sub { color: var(--muted-inv) }
+#contacto.section-navy .form-field input, #contacto.section-navy .form-field textarea { color: var(--c-white); border-bottom-color: var(--line-inv) }
+#contacto.section-navy .form-field input::placeholder, #contacto.section-navy .form-field textarea::placeholder { color: rgba(255,255,255,.3) }
+#contacto.section-navy .form-field input:focus, #contacto.section-navy .form-field textarea:focus { border-bottom-color: var(--accent) }
+#contacto.section-navy .file-upload { color: rgba(255,255,255,.4); border-bottom-color: var(--line-inv) }
+#contacto.section-navy .file-upload:hover { color: var(--accent) }
+.contact-form-wrap { max-width: 800px; margin: 0 auto }
+.contact-form { text-align: left }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-md) }
+.form-field { margin-bottom: var(--sp-md) }
+.form-field input, .form-field textarea { width: 100%; padding: var(--sp-sm) 0; background: transparent; border: none; border-bottom: 1px solid var(--line); color: var(--ink); font-family: var(--font); font-size: var(--fs-md); font-weight: var(--fw-regular); transition: border-color var(--duration-fast); outline: none; border-radius: 0 }
+.form-field input::placeholder, .form-field textarea::placeholder { color: rgba(0,41,107,.3) }
+.form-field input:focus, .form-field textarea:focus { border-bottom-color: var(--accent) }
+.form-field input:invalid:not(:placeholder-shown) { border-bottom-color: #e53e3e }
+.form-field input:valid:not(:placeholder-shown) { border-bottom-color: var(--accent) }
+.form-field textarea { resize: vertical; min-height: 80px; border: none; border-bottom: 1px solid var(--line) }
+.file-upload { display: flex; align-items: center; gap: 10px; padding: 12px 0; color: var(--muted); font-size: .85rem; font-weight: var(--fw-regular); cursor: pointer; border-bottom: 1px solid var(--line); transition: color var(--duration-fast) }
+.file-upload:hover { color: var(--accent) }
+.file-upload svg { flex-shrink: 0 }
+.btn-submit { margin-top: var(--sp-xs); width: auto; min-width: 200px; justify-content: center; font-size: var(--fs-md); padding: var(--sp-sm) 36px }
+
+/* hero card icons */
+
+/* form microcopy */
+.form-micro { margin-top: 14px; font-size: var(--fs-sm); color: var(--muted); text-align: center; font-weight: var(--fw-regular) }

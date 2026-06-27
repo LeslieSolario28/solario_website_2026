@@ -1,0 +1,16 @@
+/* ---------- 14. ENERGY AS A SERVICE ---------- */
+.text-celeste-inline { color: var(--accent); -webkit-text-fill-color: var(--accent) }
+.eaas-hero { max-width: 800px; margin: 0 auto }
+.eaas-headline { font-family: var(--font); font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: var(--fw-regular); color: rgba(255,255,255,.55); line-height: 1.4; letter-spacing: -.02em }
+.eaas-headline .text-celeste-inline { font-weight: var(--fw-bold); color: var(--accent) }
+.eaas-marquee { margin-top: 56px; overflow: hidden; position: relative }
+.eaas-marquee::before, .eaas-marquee::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none }
+.eaas-marquee::before { left: 0; background: linear-gradient(90deg, var(--c-white), transparent) }
+.eaas-marquee::after { right: 0; background: linear-gradient(270deg, var(--c-white), transparent) }
+.eaas-marquee-track { display: flex; gap: 16px; animation: eaasMarquee 30s linear infinite; width: max-content }
+@keyframes eaasMarquee { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
+.eaas-chip { display: flex; align-items: center; gap: 10px; padding: 12px 22px; background: var(--c-white); border: 1px solid var(--line); border-radius: var(--r-pill); flex-shrink: 0; transition: border-color var(--duration-fast), box-shadow var(--duration-fast) }
+.eaas-chip:hover { border-color: var(--accent); box-shadow: var(--shadow-sm) }
+.eaas-chip-icon { width: 26px; height: 26px; flex-shrink: 0; object-fit: contain }
+.eaas-chip span { font-family: var(--font); font-size: .85rem; font-weight: var(--fw-medium); color: var(--ink); white-space: nowrap }
+.eaas-chip svg path[stroke="#fff"], .eaas-chip svg rect[stroke="#fff"], .eaas-chip svg circle[stroke="#fff"] { stroke: var(--c-navy) }

@@ -1,0 +1,17 @@
+/* ---------- 5. BUTTONS ---------- */
+.cta-row { display: flex; gap: var(--sp-sm); margin-top: 32px; flex-wrap: wrap }
+.text-center .cta-row { justify-content: center }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font); font-size: .88rem; font-weight: var(--fw-medium);
+  border-radius: var(--r-pill); padding: 14px 32px; cursor: pointer;
+  border: 1px solid transparent; letter-spacing: .01em;
+  transition: transform var(--duration-fast), border-color var(--duration-fast), background var(--duration-fast), box-shadow var(--duration-fast);
+}
+.btn:active { transform: scale(.97) }
+.btn-primary { background: var(--accent); color: var(--c-white); font-weight: var(--fw-medium) }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-accent) }
+.btn-ghost { border-color: rgba(255,255,255,.3); color: var(--c-white); background: rgba(0,0,0,.15) }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent) }
+.btn-outline { border-color: var(--line); color: var(--c-blue); background: transparent }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent) }

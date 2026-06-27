@@ -1,0 +1,35 @@
+/* ---------- 8c. COLLAGE PLACEHOLDER ---------- */
+.collage-section .collage-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 12px; max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-gutter-content) }
+.collage-section { padding: 0 0 20px }
+.collage-lg { grid-row: 1 / 3 }
+.collage-placeholder { width: 100%; height: 100%; background: var(--c-offwhite); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center }
+.collage-placeholder span { font-family: var(--font); font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-medium); opacity: .4 }
+/* ---------- 9. FLIP CARDS (Soluciones) ---------- */
+#ultimate .container { padding-top: 40px }
+.flip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 56px; perspective: 1200px }
+.flip-card { height: 380px; cursor: pointer }
+.flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform var(--duration-slow) cubic-bezier(.4,0,.2,1); transform-style: preserve-3d }
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg) }
+.flip-front, .flip-back { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--r-md); overflow: hidden }
+.flip-glass { border: 1px solid var(--line) }
+.flip-front { display: flex; flex-direction: column; background: var(--c-navy); position: relative }
+.section-navy .flip-front-body .idx { color: var(--accent) }
+.section-navy .flip-front-body h3 { color: var(--ink) }
+.flip-img { display: block; width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; opacity: .4; transition: transform .5s var(--ease-smooth) }
+.flip-card:hover .flip-img { transform: scale(1.05) }
+.flip-front-body { padding: 28px 24px; width: 100%; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 2 }
+.flip-front-body .idx { font-family: var(--font); font-size: var(--fs-xs); color: rgba(255,255,255,.6); letter-spacing: .18em; margin-bottom: 6px }
+.flip-front-body h3 { font-family: var(--font); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--c-white); letter-spacing: -.01em }
+.flip-back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; padding: 30px 26px; border: none }
+.flip-card:nth-child(1) .flip-back { background: var(--accent); color: var(--c-white) }
+.flip-card:nth-child(2) .flip-back { background: #e8641c; color: var(--c-white) }
+.flip-card:nth-child(3) .flip-back { background: #179c53; color: var(--c-white) }
+.flip-back .idx { font-family: var(--font); font-size: 2.2rem; font-weight: var(--fw-black); color: rgba(255,255,255,.2); margin-bottom: 6px }
+.flip-back h3 { font-family: var(--font); font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: 10px; letter-spacing: -.01em; color: var(--c-white) }
+.flip-back p { font-size: .85rem; color: rgba(255,255,255,.7); font-weight: var(--fw-regular); line-height: var(--lh-body) }
+.flip-back .card-link { color: var(--c-white) }
+.card-link { display: inline-block; margin-top: 18px; font-size: .85rem; color: var(--accent); font-weight: var(--fw-medium); transition: transform var(--duration-fast) }
+.card-link:hover { transform: translateX(4px) }
+
+/* flip card logos */
+.flip-logo { height: 48px; width: auto; filter: brightness(0) invert(1); opacity: .9 }

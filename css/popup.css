@@ -1,0 +1,15 @@
+/* popup form */
+.popup-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,41,107,.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease-smooth) }
+.popup-overlay.active { opacity: 1; pointer-events: auto }
+.popup-card { background: var(--c-white); border-radius: var(--r-lg); padding: 48px 40px; max-width: 480px; width: 90%; position: relative; transform: translateY(20px); transition: transform .4s var(--ease-out) }
+.popup-overlay.active .popup-card { transform: none }
+.popup-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 2rem; color: var(--muted); cursor: pointer; line-height: 1; transition: color var(--duration-fast) }
+.popup-close:hover { color: var(--ink) }
+.popup-card h3 { font-family: var(--font); font-size: 1.6rem; font-weight: var(--fw-black); color: var(--ink); margin-bottom: 8px }
+.popup-sub { font-size: var(--fs-sm); color: var(--muted); margin-bottom: 28px }
+.popup-card .form-field { margin-bottom: 14px }
+.popup-card .btn-submit { width: 100%; margin-top: 8px }
+
+/* popup trigger styling */
+.popup-trigger { color: var(--accent) !important; font-weight: var(--fw-bold) !important; text-decoration: underline; text-underline-offset: 4px; cursor: pointer }
+.popup-trigger:hover { color: var(--c-white) !important }

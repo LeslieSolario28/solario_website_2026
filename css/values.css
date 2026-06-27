@@ -1,0 +1,23 @@
+/* ---------- 10. VALUES ---------- */
+.values-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; text-align: center }
+.value-item { padding: 20px 12px; border: none; background: transparent; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; transition: box-shadow var(--duration-fast), border-color var(--duration-fast) }
+.value-item:hover { opacity: .8 }
+.val-icon { width: 40px; height: 40px; margin: 0 auto }
+.value-item h3 { font-family: var(--font); font-size: 1.5rem; font-weight: var(--fw-bold); color: var(--ink); margin-bottom: 6px }
+.value-item p { font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-regular); line-height: 1.5; margin: 0 }
+
+/* vals carousel - animated cards */
+.vals-carousel { margin-top: 60px; overflow: hidden; position: relative }
+.vals-track { display: flex; gap: 20px; animation: valsSlide 40s linear infinite; width: max-content }
+@keyframes valsSlide { 0% { transform: translateX(0) } 100% { transform: translateX(-50%) } }
+.val-card { width: 340px; flex-shrink: 0; background: var(--c-offwhite); border-radius: var(--r-md); padding: 28px 28px 32px; display: flex; flex-direction: column }
+.val-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px }
+.val-card-num { font-family: var(--font); font-size: 1.8rem; font-weight: var(--fw-black); color: var(--ink) }
+.val-card-tag { font-family: var(--font); font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-regular) }
+.val-card h3 { font-family: var(--font); font-size: 1.4rem; font-weight: var(--fw-bold); color: var(--ink); margin-bottom: 10px; letter-spacing: -.01em }
+.val-card p { font-size: var(--fs-sm); color: var(--muted); line-height: 1.6; font-weight: var(--fw-regular) }
+.vals-carousel:hover .vals-track { animation-play-state: paused }
+@media (max-width: 600px) { .val-card { width: 280px } }
+.vals-carousel::before, .vals-carousel::after { content: ''; position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2; pointer-events: none }
+.vals-carousel::before { left: 0; background: linear-gradient(90deg, var(--c-white), transparent) }
+.vals-carousel::after { right: 0; background: linear-gradient(270deg, var(--c-white), transparent) }
