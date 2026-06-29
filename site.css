@@ -268,7 +268,7 @@ body.loaded .hero-content { opacity: 1; transform: none }
 
 /* ---------- 8b. COVERAGE MAP ---------- */
 #cobertura { position: relative; background: var(--c-navy); overflow: hidden }
-#cobertura::before { content: ""; position: absolute; inset: 0; background: url("assets/AdobeStock_184662954.jpeg") center/cover no-repeat; opacity: .06; pointer-events: none; z-index: 0 }
+#cobertura::before { content: ""; position: absolute; inset: 0; background: url("assets/card-suministro.jpg") center/cover no-repeat; opacity: .06; pointer-events: none; z-index: 0 }
 #cobertura > .container { position: relative; z-index: 2 }
 .coverage-title { font-size: var(--fs-xl) !important; color: var(--c-white); line-height: var(--lh-tight) !important }
 .results-block { margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--line-inv) }
