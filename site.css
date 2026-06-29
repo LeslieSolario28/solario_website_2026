@@ -673,6 +673,10 @@ footer .brand-logo { height: 24px }
 
 /* ---------- 4K / Ultra-wide ---------- */
 @media (min-width: 2560px) {
+  /* Scale everything proportionally — maintain 1440px look */
+  .container { max-width: 1400px }
+  .svc-stage { max-width: 1400px }
+}media (min-width: 2560px) {
   /* nav */
   .navlinks a { font-size: 18px }
   .navlinks .portal { font-size: 18px; padding: 14px 32px }
