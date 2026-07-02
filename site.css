@@ -216,14 +216,13 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 1;
   background: linear-gradient(90deg, rgba(0,41,107,.95), transparent 65%), linear-gradient(180deg, rgba(0,41,107,.55) 0%, rgba(0,41,107,.35) 30%, rgba(0,41,107,.35) 55%, rgba(0,41,107,.85) 82%, var(--c-navy) 100%);
 }
-.hero-content { position: relative; z-index: 2; margin-top: auto; margin-bottom: 0; padding: 0 8vw 65px; max-width: none; opacity: 0; transform: translateY(30px); transition: opacity .8s .3s, transform .8s .3s var(--ease-smooth) }
+.hero-content { position: relative; z-index: 2; margin-top: auto; margin-bottom: 350px; padding: 0 8vw 65px; max-width: none; opacity: 0; transform: translateY(30px); transition: opacity .8s .3s, transform .8s .3s var(--ease-smooth) }
 .hero .btn { font-size: clamp(12px, 1.4vw, 16px); padding: 8px 20px; font-family: var(--font) }
 .hero-ctas { display: flex; gap: var(--sp-sm); flex-wrap: wrap; margin-top: 20px }
 body.loaded .hero-content { opacity: 1; transform: none }
 .eyebrow { font-family: var(--font); font-size: clamp(10px, 1.2vw, 16px); font-weight: var(--fw-regular); letter-spacing: var(--ls-wide); color: var(--accent); text-transform: uppercase; margin-bottom: 18px }
 .hero h1 { font-family: var(--font); font-size: var(--fs-hero); line-height: var(--lh-tight); letter-spacing: -.04em; font-weight: var(--fw-medium); color: var(--c-white); clip-path: inset(0 100% 0 0); animation: revealTitle .9s .6s cubic-bezier(.77,0,.175,1) forwards }
 @keyframes revealTitle { to { clip-path: inset(0 0% 0 0) } }
-.hero .lede { margin-top: 20px; max-width: 520px; color: rgba(255,255,255,.65); font-size: clamp(12px, 1.4vw, 16px); font-weight: var(--fw-regular); line-height: 1.7 }
 
 /* ---------- 8. ABOUT US ---------- */
 .about-layout { display: grid; grid-template-columns: 1fr 2.5fr; gap: 60px; align-items: center }
@@ -271,9 +270,9 @@ body.loaded .hero-content { opacity: 1; transform: none }
 .collage-placeholder { width: 100%; height: 100%; background: var(--c-offwhite); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center }
 .collage-placeholder span { font-family: var(--font); font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-medium); opacity: .4 }
 /* ---------- 9. FLIP CARDS (Soluciones) ---------- */
-#ultimate .svc-scroll-sticky { padding-top: 120px }
-.flip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 56px; perspective: 1200px }
-.flip-card { height: 380px; cursor: pointer }
+.flip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; perspective: 1200px }
+.flip-card { aspect-ratio: 2 / 3; cursor: pointer }
+#soluciones .container { max-width: 1500px; padding-left: 5vw; padding-right: 5vw }
 .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform var(--duration-slow) cubic-bezier(.4,0,.2,1); transform-style: preserve-3d }
 .flip-card:hover .flip-card-inner { transform: rotateY(180deg) }
 .flip-front, .flip-back { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--r-md); overflow: hidden }
@@ -290,6 +289,7 @@ body.loaded .hero-content { opacity: 1; transform: none }
 .flip-card:nth-child(1) .flip-back { background: var(--accent); color: var(--c-white) }
 .flip-card:nth-child(2) .flip-back { background: #e8641c; color: var(--c-white) }
 .flip-card:nth-child(3) .flip-back { background: #179c53; color: var(--c-white) }
+.flip-icon { height: 56px; width: auto; filter: brightness(0) invert(1); opacity: .9; margin-bottom: 18px }
 .flip-back .idx { font-family: var(--font); font-size: 26.4px; font-weight: var(--fw-black); color: rgba(255,255,255,.2); margin-bottom: 6px }
 .flip-back h3 { font-family: var(--font); font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: 10px; letter-spacing: -.01em; color: var(--c-white) }
 .flip-back p { font-size: 10.2px; color: rgba(255,255,255,.7); font-weight: var(--fw-regular); line-height: var(--lh-body) }
@@ -314,32 +314,42 @@ body.loaded .hero-content { opacity: 1; transform: none }
 .stat span { display: block; margin-top: 6px; font-size: 13px; color: var(--muted); font-weight: var(--fw-regular) }
 
 /* ---------- 12. SCROLL-DRIVEN SERVICES ---------- */
-.svc-scroll { position: relative; height: 280vh; background: var(--c-white) }
-.svc-scroll-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: flex-start; padding-top: 160px }
+.svc-scroll { position: relative; height: 300vh; background: var(--c-white) }
+.svc-scroll-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding-top: 0 }
 .svc-progress { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--line); z-index: 10 }
 .svc-progress-bar { height: 100%; width: 0%; background: var(--accent); transition: width .05s linear }
-.svc-section-header { text-align: center; margin-bottom: 90px; padding-top: 0 }
+.svc-section-header { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; will-change: opacity }
 .svc-section-header .sec-label { margin-bottom: 39px; font-size: var(--fs-xs); letter-spacing: var(--ls-wide); color: var(--accent) }
 .svc-section-header h2 { font-size: var(--fs-xl); font-weight: var(--fw-black); letter-spacing: var(--ls-tight); line-height: var(--lh-tight) }
 .svc-dots { display: flex; gap: var(--sp-xs); margin-bottom: 0; position: relative; z-index: 3 }
 .svc-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,41,107,.12); transition: background var(--duration-fast), transform var(--duration-fast) }
 .svc-dot.active { background: var(--accent); transform: scale(1.3) }
-.svc-stage { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-gutter-content); position: relative }
-.svc-content { display: grid; grid-template-columns: 2fr 3fr; gap: 100px; align-items: start; position: relative; z-index: 2 }
-.svc-text { position: relative; min-height: 300px }
-.svc-panel { position: absolute; top: 40px; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 0; pointer-events: none; will-change: transform, opacity }
+.svc-stage { width: 100%; max-width: 1200px; height: 580px; margin: 0 auto; padding: 0 var(--sp-gutter-content); position: relative }
+.svc-content { position: absolute; inset: 0; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; z-index: 2; opacity: 0; will-change: opacity }
+.svc-text { position: relative; height: 480px }
+.svc-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; pointer-events: none; will-change: transform, opacity }
 .svc-panel.active { pointer-events: auto }
-.svc-panel-label { font-family: var(--font); font-size: var(--fs-xs); font-weight: var(--fw-medium); letter-spacing: .18em; color: var(--c-blue); text-transform: uppercase; margin-bottom: 34px; opacity: .5 }
-.svc-panel h3 { font-family: var(--font); font-size: clamp(24px, 3.4vw, 36px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.08; letter-spacing: var(--ls-tight) }
-.svc-panel p { margin-top: var(--sp-sm); color: var(--muted); font-size: var(--fs-md); font-weight: var(--fw-regular); max-width: 360px; line-height: 1.7 }
+.svc-panel-icon { display: block; height: 44px; width: auto; margin-bottom: 28px }
+.svc-panel-icon-wide { height: 32px }
+.svc-panel h3 { font-family: var(--font); font-size: clamp(28px, 3.6vw, 46px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.15; letter-spacing: var(--ls-tight) }
+.svc-highlight { color: var(--accent) }
+.svc-panel .svc-highlight .paint-char.lit, .svc-panel .svc-highlight .paint-char.glow { color: var(--accent) }
+.svc-panel p { margin-top: var(--sp-sm); color: var(--muted); font-size: var(--fs-md); font-weight: var(--fw-regular); max-width: 400px; line-height: 1.7 }
 .svc-cta { display: inline; margin-top: var(--sp-md); font-family: var(--font); font-size: 9.1px; font-weight: var(--fw-bold); color: var(--c-blue); text-transform: uppercase; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; text-decoration-color: var(--c-blue); transition: color var(--duration-fast), text-decoration-color var(--duration-fast) }
 .svc-cta:hover { color: var(--accent); text-decoration-color: var(--accent) }
 .svc-cta::after { content: '→'; font-size: 12px; transition: transform var(--duration-fast) }
 .svc-cta:hover::after { transform: translateX(4px) }
-.svc-visual { position: relative }
-.svc-img-wrap { position: relative; aspect-ratio: 4/3; border-radius: 5px; overflow: hidden; max-height: 65vh }
+.svc-visual { position: relative; width: 440px; max-width: 100%; justify-self: end }
+.svc-img-wrap { position: relative; aspect-ratio: 4/5; border-radius: var(--r-lg); overflow: hidden; max-height: 65vh }
 .svc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform, opacity; background: var(--c-navy) }
-.svc-float-icon { display: none }
+.svc-badges { position: absolute; inset: 0; opacity: 0; pointer-events: none; will-change: opacity }
+.svc-badge { position: absolute; background: rgba(240,240,243,.95); border: 1px solid rgba(0,0,0,.12); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); box-shadow: var(--shadow-md); border-radius: 14px; padding: 11px 20px; font-family: var(--font); font-size: 11.5px; font-weight: var(--fw-medium); color: var(--ink); white-space: nowrap; opacity: 0; transform: translateX(var(--tx)) translateY(20px) }
+.svc-badges.active .svc-badge { animation: svcBadgeRise .6s ease-out forwards }
+.svc-badge-tl { top: 8%; left: 0; --tx: -30%; animation-delay: 0s }
+.svc-badge-tr { top: 24%; right: 0; --tx: 30%; animation-delay: .08s }
+.svc-badge-bl { bottom: 30%; left: 0; --tx: -25%; animation-delay: .16s }
+.svc-badge-br { bottom: 12%; right: 0; --tx: 25%; animation-delay: .24s }
+@keyframes svcBadgeRise { from { opacity: 0; transform: translateX(var(--tx)) translateY(20px) } to { opacity: 1; transform: translateX(var(--tx)) translateY(0) } }
 
 /* ---------- 13. CTA DIVIDER ---------- */
 .cta-divider { position: relative; z-index: 2; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 280px; padding: 50px var(--sp-gutter); text-align: center }
@@ -485,7 +495,6 @@ footer .brand-logo { height: 24px }
   .navlinks a { font-size: 14.4px; color: var(--c-white) !important }
   .navlinks-center, .navlinks-right { justify-self: auto; flex-direction: column; gap: 28px }
   .hero h1 { font-size: clamp(34px, 6vw, 58px) }
-  .hero .lede { font-size: clamp(14px, 1.7vw, 19px) }
 }
 
 /* Small tablet / large mobile */
@@ -497,10 +506,16 @@ footer .brand-logo { height: 24px }
   .flip-cards { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto }
   .values-grid { grid-template-columns: repeat(3, 1fr) }
   .stats { grid-template-columns: repeat(2, 1fr) }
-  .svc-content { grid-template-columns: 1fr; gap: 32px }
-  .svc-stage { padding: 0 var(--sp-gutter-content) }
-  .svc-text { min-height: 340px }
-  .svc-img-wrap { aspect-ratio: 4/3; max-height: 40vh }
+  .svc-scroll { height: auto }
+  .svc-scroll-sticky { position: static; height: auto; overflow: visible; padding-top: 0 }
+  .svc-section-header { position: static; opacity: 1 !important; margin-bottom: 40px }
+  .svc-stage { height: auto; padding: 0 var(--sp-gutter-content) }
+  .svc-content { position: static; opacity: 1 !important; grid-template-columns: 1fr; gap: 32px }
+  .svc-text { height: auto; min-height: 340px }
+  .svc-panel { justify-content: flex-start; padding-top: 36px }
+  .svc-visual { width: 340px; max-width: 100%; justify-self: center }
+  .svc-img-wrap { max-height: 40vh }
+  .svc-badge { font-size: 10.2px; padding: 9px 16px }
   .eaas-layout { grid-template-columns: 1fr; gap: var(--sp-lg) }
   .coverage-stats-row { gap: 40px }
 }
@@ -519,7 +534,6 @@ footer .brand-logo { height: 24px }
   .svc-section-header { margin-bottom: 40px }
   .hero-content { text-align: left; display: flex; flex-direction: column; align-items: flex-start }
   .hero-ctas { justify-content: flex-start }
-  .hero .lede { text-align: left }
   .eyebrow { text-align: left }
   .tarifas-track { overflow-x: auto; padding: 12px 20px }
   .tarifa-card { min-width: 240px; flex: none }
@@ -534,7 +548,6 @@ footer .brand-logo { height: 24px }
   :root { --sp-section: 70px; --sp-gutter-content: 20px }
   .hero { min-height: 100svh }
   .hero h1 { font-size: clamp(28.8px, 10vw, 43.2px) }
-  .hero .lede { font-size: 10.8px }
   .eyebrow { font-size: 9.4px }
   .hero-content { padding: 0 20px 40px }
   .hero .btn { font-size: 12px; padding: 10px 20px }
@@ -547,13 +560,12 @@ footer .brand-logo { height: 24px }
   .form-row { grid-template-columns: 1fr }
 #ultimate .container { padding-top: 40px }
   .flip-cards { max-width: 100% }
-  .flip-card { height: 320px }
   .coverage-stats-row { flex-direction: column; gap: 24px }
-  .svc-scroll { height: 500vh }
-  .svc-scroll-sticky { padding-top: 80px }
   .svc-panel h3 { font-size: clamp(24px, 8vw, 31.2px) }
   .svc-panel p { max-width: 100%; font-size: 12px }
+  .svc-visual { width: 280px }
   .svc-img-wrap { max-height: 35vh; border-radius: var(--r-md) }
+  .svc-badge { font-size: 9px; padding: 7px 13px }
   .case-card { width: 240px; height: 320px }
   .eaas-left h2 { font-size: clamp(21.6px, 7vw, 33.6px) !important }
   .tarifa-card { min-width: 260px; flex: none }
@@ -608,7 +620,6 @@ footer .brand-logo { height: 24px }
   .stats { grid-template-columns: 1fr }
   .coverage-stats-row { gap: 20px }
   .cov-stat strong { font-size: 14.4px }
-  .flip-card { height: 300px }
   .case-card { width: 220px; height: 300px }
   .hero-content { padding: 0 16px 30px }
 }
@@ -642,6 +653,7 @@ footer .brand-logo { height: 24px }
   .shimmer-title .paint-char { transition: none }
   .hero-content { opacity: 1; transform: none; transition: none }
   .hero h1 { clip-path: none; animation: none }
+  .svc-badge { animation: none; opacity: 1; transform: translateX(var(--tx)) translateY(0) }
   html { scroll-behavior: auto }
 }
 
