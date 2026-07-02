@@ -8,10 +8,11 @@
   window.addEventListener('scroll',function(){
     var sy=window.scrollY;
     topbar.classList.toggle('scrolled',sy>8);
-    var onHero=document.querySelector('.hero').getBoundingClientRect().bottom>60;
+    var onHero=document.querySelector('.hero').getBoundingClientRect().bottom>60 && !document.body.classList.contains('hero-light');
     var onDark=false;
     if(!onHero){
       darkSections.forEach(function(s){
+        if(s.classList.contains('hero')&&document.body.classList.contains('hero-light'))return;
         var r=s.getBoundingClientRect();
         if(r.top<60&&r.bottom>60)onDark=true;
       });

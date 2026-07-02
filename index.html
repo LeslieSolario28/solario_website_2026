@@ -82,37 +82,45 @@
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
-<header class="hero" id="inicio">
-  <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-    <source src="assets/video-hero.mp4" type="video/mp4">
-  </video>
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="hero-content">
-    <span class="eyebrow">Suministrador Calificado de Energía</span>
-    <h1 class="reveal-title">Infraestructura Energética<br>para Industrias<br>que Crecen<span class="dot-accent">.</span></h1>
-    <div class="hero-ctas">
-      <a class="btn btn-primary" href="#contacto">Solicitar diagnóstico</a>
-      <a class="btn btn-ghost" href="#soluciones">Explorar soluciones</a>
+<!-- ===== HERO (scroll-driven → cards) ===== -->
+<div class="hero-scroll" id="inicio">
+  <div class="hero hero-sticky">
+    <div class="hero-media">
+      <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="assets/video-hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-scrim" aria-hidden="true"></div>
+    </div>
+    <div class="hero-cluster" aria-hidden="true">
+      <figure class="hero-cl-card" style="--dx:-72%;--dy:-38%;--rot:-4deg;--s:.72;--z:1"><img src="assets/card-suministro.jpg" alt="" loading="lazy"></figure>
+      <figure class="hero-cl-card" style="--dx:-18%;--dy:-55%;--rot:-2deg;--s:.85;--z:2"><img src="assets/card-solar.jpg" alt="" loading="lazy"></figure>
+      <figure class="hero-cl-card" style="--dx:42%;--dy:-48%;--rot:5deg;--s:.78;--z:2"><img src="assets/card-suministro.jpg" alt="" loading="lazy"></figure>
+      <figure class="hero-cl-card" style="--dx:62%;--dy:18%;--rot:4deg;--s:.85;--z:3"><img src="assets/card-solar.jpg" alt="" loading="lazy"></figure>
+      <figure class="hero-cl-card" style="--dx:-38%;--dy:42%;--rot:-3deg;--s:1.05;--z:4"><img src="assets/card-suministro.jpg" alt="" loading="lazy"></figure>
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow">Suministrador Calificado de Energía</span>
+      <h1 class="reveal-title">Infraestructura Energética<br>para Industrias<br>que Crecen<span class="dot-accent">.</span></h1>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contacto">Solicitar diagnóstico</a>
+        <a class="btn btn-ghost" href="#soluciones">Explorar soluciones</a>
+      </div>
     </div>
   </div>
-</header>
+</div>
 
 <main>
 
 <!-- ===== ABOUT US ===== -->
-<section class="section section-navy" id="about">
-  <div class="container about-layout">
-    <div class="about-left rv">
+<section class="section about-light" id="about">
+  <div class="container about-wrap">
+    <div class="about-head rv">
       <span class="sec-label">Nosotros</span>
-      <img src="assets/logo-solario-white.svg" alt="Solario" class="about-logo">
-      <p class="about-desc">Integramos Suministro Calificado, Generación Solar y Almacenamiento (BESS) en una solución.</p>
-    </div>
-    <div class="about-right rv">
       <h2 class="shimmer-title about-title">Diseñamos y operamos estrategias energéticas que reducen costos, mitigan riesgos y brindan certidumbre financiera a empresas de alto consumo.</h2>
     </div>
-    <div class="about-image rv">
-      <video autoplay muted loop playsinline><source src="assets/video-about.mp4" type="video/mp4"></video>
+    <div class="about-sub rv">
+      <img src="assets/logo-solario-color.svg" alt="Solario" class="about-logo">
+      <p class="about-desc">Integramos Suministro Calificado, Generación Solar y Almacenamiento (BESS) en una solución.</p>
     </div>
     <div class="about-certs rv">
       <div class="cert-item">
@@ -452,69 +460,6 @@
   </div>
 </section>
 
-<!-- ===== TARIFAS ===== -->
-<section class="section section-white" id="tarifas">
-  <div class="container text-center">
-    <span class="sec-label rv">Tarifas</span>
-    <h2 class="rv shimmer-title">Hechas a la medida de tu consumo<span class="dot-accent">.</span></h2>
-    <div class="tarifas-carousel rv">
-      <div class="tarifas-track" id="tarifas-track">
-        <article class="tarifa-card">
-          <svg class="tarifa-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="4" stroke="var(--azul-marino)" stroke-width="1.8"/><path d="M6 18h36" stroke="var(--azul-marino)" stroke-width="1.8"/><path d="M16 28h16M16 33h10" stroke="var(--celeste)" stroke-width="1.8" stroke-linecap="round"/></svg>
-          <h3>Cobertura Fija</h3>
-          <p>Contempla volumen, periodo y precios fijos.</p>
-        </article>
-        <article class="tarifa-card">
-          <svg class="tarifa-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="14" stroke="var(--azul-marino)" stroke-width="1.8"/><g stroke="var(--celeste)" stroke-width="1.8" stroke-linecap="round"><line x1="24" y1="4" x2="24" y2="9"/><line x1="24" y1="39" x2="24" y2="44"/><line x1="4" y1="24" x2="9" y2="24"/><line x1="39" y1="24" x2="44" y2="24"/></g><path d="M18 28c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="var(--celeste)" stroke-width="1.8" stroke-linecap="round"/></svg>
-          <h3>Cobertura Solar</h3>
-          <p>Para usuarios enfocados en obtener energía limpia.</p>
-        </article>
-        <article class="tarifa-card">
-          <svg class="tarifa-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M8 38V14l16-8 16 8v24" stroke="var(--azul-marino)" stroke-width="1.8" stroke-linejoin="round"/><rect x="18" y="24" width="12" height="14" rx="2" stroke="var(--celeste)" stroke-width="1.8"/><path d="M24 30v4" stroke="var(--celeste)" stroke-width="1.8" stroke-linecap="round"/></svg>
-          <h3>CFE Ref</h3>
-          <p>Con la tarifa de CFE como referencia, se determina un ahorro fijo.</p>
-        </article>
-        <article class="tarifa-card">
-          <svg class="tarifa-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M14 38V18l10-10 10 10v20" stroke="var(--azul-marino)" stroke-width="1.8" stroke-linejoin="round"/><rect x="8" y="22" width="32" height="16" rx="3" stroke="var(--azul-marino)" stroke-width="1.8"/><path d="M26 26l-4 6h4l-4 6" stroke="var(--celeste)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <h3>Ultimate</h3>
-          <p>Integración de suministro, solar y BESS en un mismo sistema.</p>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ENERGY AS A SERVICE ===== -->
-<section class="section section-white" id="eaas">
-  <div class="container">
-    <div class="text-center rv">
-      <span class="sec-label">EaaS</span>
-      <h2 class="shimmer-title">Energy as a Service<span class="dot-accent">.</span></h2>
-      <p class="sec-sub centered" >Nuestro modelo permite a empresas de alto consumo acceder a infraestructura energética sin inversión inicial.</p>
-    </div>
-    <div class="eaas-marquee rv">
-      <div class="eaas-marquee-track">
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/wallet.svg" alt="" aria-hidden="true"><span>Sin Inversión</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/magnifying.svg" alt="" aria-hidden="true"><span>Ahorro Mensual</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/lightbulb.svg" alt="" aria-hidden="true"><span>Cero Apagones</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/checklist.svg" alt="" aria-hidden="true"><span>Monitoreo 24/7</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/icon-maintenance.svg" alt="" aria-hidden="true"><span>Mantenimiento</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/docusign.svg" alt="" aria-hidden="true"><span>Contrato</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/certified.svg" alt="" aria-hidden="true"><span>Garantía</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/checklist.svg" alt="" aria-hidden="true"><span>Código de Red</span></div>
-        <!-- duplicados para loop -->
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/wallet.svg" alt="" aria-hidden="true"><span>Sin Inversión</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/magnifying.svg" alt="" aria-hidden="true"><span>Ahorro Mensual</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/lightbulb.svg" alt="" aria-hidden="true"><span>Cero Apagones</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/checklist.svg" alt="" aria-hidden="true"><span>Monitoreo 24/7</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/icon-maintenance.svg" alt="" aria-hidden="true"><span>Mantenimiento</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/docusign.svg" alt="" aria-hidden="true"><span>Contrato</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/certified.svg" alt="" aria-hidden="true"><span>Garantía</span></div>
-        <div class="eaas-chip"><img class="eaas-chip-icon" src="assets/checklist.svg" alt="" aria-hidden="true"><span>Código de Red</span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -584,7 +529,6 @@
           <a href="#soluciones">Suministro Calificado</a>
           <a href="#soluciones">Generación Solar</a>
           <a href="#soluciones">Almacenamiento BESS</a>
-          <a href="#tarifas">Tarifas</a>
         </nav>
       </div>
       <div class="foot-col">
@@ -599,6 +543,7 @@
 </footer>
 
 <div id="tweaks-root"></div>
+<script src="js/hero-scroll.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/scroll-paint.js"></script>
 <script src="js/counter.js"></script>
