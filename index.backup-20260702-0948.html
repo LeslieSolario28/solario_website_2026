@@ -67,18 +67,14 @@
   <a class="brand" href="#inicio" aria-label="Solario — Inicio"><img src="assets/logo-solario-white.svg" alt="Solario" class="brand-logo brand-logo-white"><img src="assets/logo-solario-color.svg" alt="Solario" class="brand-logo brand-logo-color"></a>
   <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
   <div class="navlinks" role="menubar">
-    <div class="navlinks-center">
-      <a href="#about" role="menuitem">Nosotros</a>
-      <a href="#soluciones" role="menuitem">Soluciones</a>
-      <a href="#ultimate" role="menuitem">Estrategia integral</a>
-      <a href="#resultados" role="menuitem">Resultados</a>
-      <a href="#casos" role="menuitem">Casos de éxito</a>
-      <a href="#valores" role="menuitem">¿Por qué Solario?</a>
-    </div>
-    <div class="navlinks-right">
-      <a class="portal" href="#contacto" role="menuitem">Contacto</a>
-      <a class="portal-btn" href="https://portal.solario.mx" target="_blank" rel="noopener" role="menuitem">Portal de clientes</a>
-    </div>
+    <a href="#about" role="menuitem">Nosotros</a>
+    <a href="#soluciones" role="menuitem">Soluciones</a>
+    <a href="#ultimate" role="menuitem">Estrategia integral</a>
+    <a href="#resultados" role="menuitem">Resultados</a>
+    <a href="#casos" role="menuitem">Casos de éxito</a>
+    <a href="#valores" role="menuitem">¿Por qué Solario?</a>
+    <a class="portal" href="#contacto" role="menuitem">Contacto</a>
+    <a class="portal-btn" href="https://portal.solario.mx" target="_blank" rel="noopener" role="menuitem">Portal de clientes</a>
   </div>
 </nav>
 
@@ -92,10 +88,41 @@
     <span class="eyebrow">Suministrador Calificado de Energía</span>
     <h1 class="reveal-title">Infraestructura Energética<br>para Industrias<br>que Crecen<span class="dot-accent">.</span></h1>
     <p class="lede">Tu empresa consume más energía de la que debería pagar. Nosotros diseñamos la estrategia que reduce costos, elimina riesgos y te da control total.</p>
+  </div>
+  <div class="hero-bottom">
     <div class="hero-ctas">
       <a class="btn btn-primary" href="#contacto">Solicitar diagnóstico</a>
       <a class="btn btn-ghost" href="#soluciones">Explorar soluciones</a>
     </div>
+    <div class="hero-slider" aria-label="Servicios destacados">
+    <div class="hs-counter" aria-hidden="true"><span id="hs-current">01</span><div class="hs-bar"><div class="hs-bar-fill" id="hs-bar-fill"></div></div><span>06</span></div>
+    <div class="hs-track" id="hs-track">
+      <div class="hs-card active" data-hs="0">
+        <div class="hs-img"><img src="assets/hero-card-suministro.jpg" alt="Suministro Calificado" loading="lazy" width="400" height="300"></div>
+        <div class="hs-info"><strong><strong>Suministro Calificado</strong><p>Contratos en el Mercado Eléctrico Mayorista con certidumbre presupuestal.</p></div>
+      </div>
+      <div class="hs-card" data-hs="1">
+        <div class="hs-img"><img src="assets/hero-card-solar.jpg" alt="Generación Solar" loading="lazy" width="400" height="300"></div>
+        <div class="hs-info"><strong><strong>Generación Solar</strong><p>Sistemas fotovoltaicos que reducen costos a largo plazo.</p></div>
+      </div>
+      <div class="hs-card" data-hs="2">
+        <div class="hs-img"><img src="assets/hero-card-bess.jpg" alt="Almacenamiento BESS" loading="lazy" width="400" height="300"></div>
+        <div class="hs-info"><strong><strong>Almacenamiento BESS</strong><p>Baterías con 2+ horas de respaldo instantáneo.</p></div>
+      </div>
+      <div class="hs-card" data-hs="3">
+        <div class="hs-img"><img src="assets/hero-card-ultimate.jpg" alt="Solario Ultimate" loading="lazy" width="400" height="300"></div>
+        <div class="hs-info"><strong><strong>Solario Ultimate</strong><p>Integración completa: suministro, solar y BESS.</p></div>
+      </div>
+      <div class="hs-card" data-hs="4">
+        <div class="hs-img"><img src="assets/hero-card-monitoreo.jpg" alt="Monitoreo 24/7" loading="lazy" width="400" height="300"></div>
+        <div class="hs-info"><strong><strong>Monitoreo 24/7</strong><p>Control operativo en tiempo real de toda tu infraestructura.</p></div>
+      </div>
+      <div class="hs-card" data-hs="5">
+        <div class="hs-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Consultoría Energética" loading="lazy" width="400" height="300"></div>
+        <div class="hs-info"><strong><strong>Consultoría Energética</strong><p>Estrategia y análisis para optimizar tu consumo.</p></div>
+      </div>
+    </div>
+  </div>
   </div>
 </header>
 
@@ -554,6 +581,7 @@
 
 <div id="tweaks-root"></div>
 <script src="js/nav.js"></script>
+<script src="js/hero-slider.js"></script>
 <script src="js/scroll-paint.js"></script>
 <script src="js/counter.js"></script>
 <script src="js/services.js"></script>
