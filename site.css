@@ -213,14 +213,14 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) }
 
 /* ---------- 7. HERO (scroll-driven → cards) ---------- */
-.hero-scroll { position: relative; height: 260svh; background: #F5F7FB; --vid: 0; --fade: 1; --cards: 0 }
+.hero-scroll { position: relative; height: 260svh; background: linear-gradient(180deg, #F5F7FB 0%, #F5F7FB 62%, #FBFCFE 82%, #fff 100%); --vid: 0; --fade: 1; --scrim: 1; --cards: 0 }
 .hero-sticky { position: sticky; top: 0; height: 100svh; min-height: 660px; overflow: hidden; max-width: 100vw }
 .hero { display: block }
 /* card target size at end of shrink */
-.hero-sticky { --cardW: clamp(230px, 19vw, 300px); --cardH: calc(var(--cardW) * 1.08) }
+.hero-sticky { --cardW: clamp(250px, 20.5vw, 320px); --cardH: calc(var(--cardW) * 1.08); --clW: clamp(200px, 15.5vw, 252px) }
 /* video shrinks from full-bleed to centered card driven by --vid */
 .hero-media {
-  position: absolute; top: calc(50% - 8vh * var(--cards, 0)); left: 50%; transform: translate(-50%, -50%); z-index: 3;
+  position: absolute; top: calc(50% - 8vh * var(--cards, 0) + 15px * var(--vid)); left: 50%; transform: translate(-50%, -50%); z-index: 3;
   width: calc(100vw + (var(--cardW) - 100vw) * var(--vid));
   height: calc(100svh + (var(--cardH) - 100svh) * var(--vid));
   border-radius: calc(var(--r-lg) * min(1, var(--vid) * 2.4));
@@ -228,28 +228,35 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
   box-shadow: 0 30px 70px -20px rgba(0,41,107,calc(.45 * var(--vid)));
 }
 .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0 }
-.hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: var(--fade);
-  background: linear-gradient(90deg, rgba(0,41,107,.95), transparent 65%), linear-gradient(180deg, rgba(0,41,107,.55) 0%, rgba(0,41,107,.35) 30%, rgba(0,41,107,.35) 55%, rgba(0,41,107,.85) 82%, var(--c-navy) 100%);
+.hero-scrim { position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: var(--scrim, 1);
+  background:
+    radial-gradient(125% 85% at 50% 58%, rgba(0,26,66,.5) 0%, rgba(0,26,66,.22) 46%, transparent 78%),
+    linear-gradient(180deg, rgba(0,26,66,.32) 0%, rgba(0,26,66,.06) 30%, rgba(0,26,66,.14) 58%, rgba(0,26,66,.62) 86%, var(--c-navy) 100%);
 }
 /* placeholder headline that rises in below the shrunk video card, before the cluster fans out */
 .hero-textrise {
-  position: absolute; left: 0; right: 0; bottom: 12%; z-index: 4; text-align: center;
+  position: absolute; left: 0; right: 0; bottom: calc(12% + 130px); z-index: 4; text-align: center;
   opacity: var(--textrise, 0); transform: translateY(calc((1 - var(--textrise, 0)) * 30px));
   pointer-events: none;
 }
 .hero-textrise h2 { font-family: var(--font); font-size: clamp(22px, 2.6vw, 34px); font-weight: var(--fw-black); color: var(--ink); letter-spacing: var(--ls-tight) }
+.hero-rise-logo { height: clamp(23px, 2.75vw, 42px); width: auto; display: inline-block }
 
 /* cluster of service cards that fan out behind the video card */
 .hero-cluster { position: absolute; inset: 0; z-index: 2; pointer-events: none; transform: translateY(calc(-8vh * var(--cards, 0))) }
 .hero-cl-card {
   position: absolute; top: 50%; left: 50%; margin: 0; z-index: var(--z, 1);
-  width: var(--cardW); height: var(--cardH); border-radius: var(--r-lg); overflow: hidden;
+  width: var(--clW); height: calc(var(--clW) * var(--ar, 1.28)); border-radius: var(--r-lg); overflow: hidden;
   opacity: var(--cards);
   transform: translate(-50%, -50%) translate(calc(var(--dx) * var(--cards)), calc(var(--dy) * var(--cards))) rotate(calc(var(--rot) * var(--cards))) scale(calc(var(--s, 1) * (.9 + .1 * var(--cards))));
   box-shadow: 0 24px 60px -22px rgba(0,41,107,.4);
 }
 .hero-cl-card img { width: 100%; height: 100%; object-fit: cover; display: block }
-.hero-content { position: absolute; z-index: 4; left: 0; right: 0; bottom: 350px; padding: 0 8vw; max-width: none; opacity: var(--fade); pointer-events: none; display: flex; flex-direction: column; align-items: center; text-align: center }
+/* zoom-out: show full image (contain) with a blurred fill of the same photo behind */
+.hero-cl-card.zoom-out img { object-fit: contain; position: relative; z-index: 1 }
+.hero-cl-card.zoom-out::before { content: ""; position: absolute; inset: 0; z-index: 0;
+  background: var(--bg) center / cover no-repeat; filter: blur(16px) brightness(.75); transform: scale(1.25); }
+.hero-content { position: absolute; z-index: 4; inset: 0; padding: 0 8vw; max-width: none; opacity: var(--fade); pointer-events: none; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center }
 .hero-content .btn { pointer-events: auto }
 .hero .btn { font-size: clamp(10px, 1.2vw, 13.6px); padding: 7px 17px; font-family: var(--font) }
 .hero-ctas { display: flex; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; margin-top: 20px }
@@ -543,7 +550,7 @@ footer .brand-logo { height: 24px }
 /* Tablet */
 @media (max-width: 1024px) {
   :root { --sp-gutter-content: calc(4vw + 10px) }
-  .hero-content { padding: 0 8vw 50px }
+  .hero-content { padding: 0 8vw }
   .hero h1 { font-size: clamp(28.8px, 5vw, 48px) }
   .eaas-layout { grid-template-columns: 1fr 1.4fr; gap: var(--sp-lg) }
   /* hamburger nav at 1024 */
@@ -561,7 +568,6 @@ footer .brand-logo { height: 24px }
   .hero-scroll { height: auto }
   .hero-sticky { position: static }
   .hero-cluster { display: none }
-  .hero-content { bottom: 40px }
   .about-left { padding-top: 0 }
 #ultimate .container { padding-top: 40px }
   .flip-cards { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto }
@@ -612,7 +618,7 @@ footer .brand-logo { height: 24px }
   .hero { min-height: 100svh }
   .hero h1 { font-size: clamp(28.8px, 10vw, 43.2px) }
   .eyebrow { font-size: 9.4px }
-  .hero-content { padding: 0 20px 40px }
+  .hero-content { padding: 0 20px }
   .hero .btn { font-size: 12px; padding: 10px 20px }
   .section h2, .cta-divider h2 { font-size: clamp(26.4px, 9vw, 34.8px) }
   .sec-sub { font-size: 12px; max-width: 100%; overflow: visible; -webkit-line-clamp: unset }
@@ -684,7 +690,7 @@ footer .brand-logo { height: 24px }
   .coverage-stats-row { gap: 20px }
   .cov-stat strong { font-size: 14.4px }
   .case-card { width: 220px; height: 300px }
-  .hero-content { padding: 0 16px 30px }
+  .hero-content { padding: 0 16px }
 }
 
 /* ---------- 22. PRINT ---------- */

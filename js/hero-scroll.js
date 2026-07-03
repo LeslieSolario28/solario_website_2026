@@ -15,10 +15,12 @@
     var navop=1-ease(cl(p/0.12));                    // nav slides up & out 0..12%
     var fade=1-ease(cl((p-0.12)/0.16));               // title fade 12..28%
     var vid=ease(cl((p-0.28)/0.40));                  // video shrink 28..68%
+    var scrim=1-ease(cl((p-0.30)/0.38));              // filter dissolves gradually w/ the shrink 30..68%
     var textrise=ease(cl((p-0.66)/0.22));             // placeholder text rises in 66..88%
     var cards=ease(cl((p-0.72)/0.28));                // cluster fans out 72..100%
     sticky.style.setProperty('--vid',vid);
     sticky.style.setProperty('--fade',fade);
+    sticky.style.setProperty('--scrim',scrim);
     sticky.style.setProperty('--cards',cards);
     sticky.style.setProperty('--textrise',textrise);
     document.body.classList.toggle('hero-light',p>0.60);
@@ -35,6 +37,7 @@
   function reset(){
     sticky.style.setProperty('--vid',0);
     sticky.style.setProperty('--fade',1);
+    sticky.style.setProperty('--scrim',1);
     sticky.style.setProperty('--cards',0);
     sticky.style.setProperty('--textrise',0);
     document.body.classList.remove('hero-light');
