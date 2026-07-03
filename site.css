@@ -50,7 +50,8 @@
   --sp-xl: 60px;
   --sp-section: 110px;
   --sp-gutter: 4vw;
-  --sp-gutter-content: 4vw;
+  /* centered content column of 1500px: gutters grow on wide screens, shrink on small */
+  --sp-gutter-content: max(24px, calc((100vw - 1500px) / 2));
 
   /* radius */
   --r-sm: 10px;
@@ -106,7 +107,7 @@ main, footer { overflow-x: clip }
 .section-navy h2 { color: var(--ink-inv) }
 .section-navy .sec-sub { color: var(--muted-inv) }
 
-.container { max-width: 1200px; margin: 0 auto; padding: var(--sp-section) var(--sp-gutter-content) }
+.container { max-width: none; margin: 0 auto; padding: var(--sp-section) var(--sp-gutter-content) }
 .text-center { text-align: center }
 .text-center h2 { margin-left: auto; margin-right: auto }
 
@@ -114,7 +115,7 @@ main, footer { overflow-x: clip }
 .dot-accent { color: var(--accent); -webkit-text-fill-color: var(--accent) }
 .sec-label {
   font-family: var(--font); font-size: var(--fs-xs); font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-wide); color: var(--accent);
+  letter-spacing: var(--ls-wide); color: var(--muted);
   text-transform: uppercase; margin-bottom: 34px;
 }
 .section h2, .cta-divider h2 {
@@ -235,12 +236,12 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 }
 /* placeholder headline that rises in below the shrunk video card, before the cluster fans out */
 .hero-textrise {
-  position: absolute; left: 0; right: 0; bottom: calc(12% + 130px); z-index: 4; text-align: center;
+  position: absolute; left: 0; right: 0; bottom: calc(12% + 150px); z-index: 4; text-align: center;
   opacity: var(--textrise, 0); transform: translateY(calc((1 - var(--textrise, 0)) * 30px));
   pointer-events: none;
 }
 .hero-textrise h2 { font-family: var(--font); font-size: clamp(22px, 2.6vw, 34px); font-weight: var(--fw-black); color: var(--ink); letter-spacing: var(--ls-tight) }
-.hero-rise-logo { height: clamp(23px, 2.75vw, 42px); width: auto; display: inline-block }
+.hero-rise-logo { height: clamp(26.5px, 3.16vw, 48.3px); width: auto; display: inline-block }
 
 /* cluster of service cards that fan out behind the video card */
 .hero-cluster { position: absolute; inset: 0; z-index: 2; pointer-events: none; transform: translateY(calc(-8vh * var(--cards, 0))) }
@@ -266,7 +267,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 
 /* ---------- 8. ABOUT US (light) ---------- */
 .about-light { background: var(--c-white) }
-#about .container { max-width: 1500px; padding-top: 130px; padding-bottom: 120px; padding-left: 5vw; padding-right: 5vw }
+#about .container { max-width: none; padding-top: 0; margin-top: -20px; padding-bottom: 120px; padding-left: var(--sp-gutter-content); padding-right: var(--sp-gutter-content) }
 #resultados .container { padding-top: 60px }
 .about-wrap { display: flex; flex-direction: column; align-items: center; text-align: center }
 .about-head { max-width: 940px }
@@ -275,6 +276,67 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .about-sub { display: flex; flex-direction: column; align-items: center; gap: 18px; margin-top: 40px }
 .about-logo { display: block; height: 34px; width: auto; margin: 0 }
 .about-desc { margin: 0; color: var(--muted); font-size: 15.8px; font-weight: var(--fw-regular); line-height: 1.7; max-width: 520px }
+
+/* ---------- 8a. ABOUT — layout de decisiones (stats / video / texto) ---------- */
+.abx-head { align-self: center; text-align: center; margin-left: 0; max-width: none }
+.abx-head .sec-label { display: block; margin-bottom: 18px; font-size: calc(var(--fs-xs) * 1.2) }
+.abx-title { font-size: var(--fs-xl) !important; color: var(--ink); line-height: 1.12 !important; font-weight: var(--fw-black) !important; letter-spacing: -.03em !important; max-width: none; white-space: nowrap }
+.abx-grid { width: 100%; display: grid; grid-template-columns: 0.72fr 1.3fr 1.0fr; gap: clamp(28px, 3.4vw, 60px); align-items: center; margin-top: calc(clamp(36px, 4vw, 64px) + 55px); text-align: left }
+/* 2-column variant: card (left, ~30% smaller) + text (right), cifras go in a row below */
+.abx-grid-2 { grid-template-columns: 421px minmax(0, 1fr); gap: calc(clamp(36px, 4vw, 72px) + 100px); width: calc(100% - 250px); margin-left: 250px }
+.stats.abx-stats-row { margin-top: calc(clamp(44px, 4.5vw, 72px) + 160px); gap: clamp(48px, 5vw, 96px) }
+.abx-stats-row .stat b { font-size: clamp(33px, 4.75vw, 51px) }
+
+/* left — cifras apiladas */
+.abx-stats { display: flex; flex-direction: column; gap: 0 }
+.abx-stats .stat { text-align: left; align-items: flex-start; padding: 22px 0 22px 30px; border-bottom: 1px solid var(--line) }
+.abx-stats .stat:first-child { padding-top: 0 }
+.abx-stats .stat:last-child { border-bottom: none }
+.abx-stats .stat b { position: relative; font-size: clamp(34px, 3.4vw, 50px); font-weight: var(--fw-bold) }
+/* only the digits are bold; the + prefix and the M/MW suffix stay regular */
+.abx-stats .stat b i { font-weight: var(--fw-regular) }
+/* the leading + sign hangs into the padding so digits (and the label) share one left edge */
+.abx-stats .stat b i:first-child { position: absolute; right: 100%; top: 0; margin-right: 4px; font-weight: var(--fw-bold) }
+.abx-stats .stat span { margin-top: 8px; font-size: 13.5px; max-width: 20ch }
+
+/* center — video */
+.abx-media { position: relative; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 3 / 4; box-shadow: 0 34px 70px -28px rgba(0,41,107,.45) }
+.abx-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block }
+.abx-media-chip { position: absolute; top: 16px; left: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px 9px 13px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); border-radius: 999px; font-family: var(--font); font-size: 12px; font-weight: var(--fw-medium); color: var(--c-navy); letter-spacing: -.01em }
+.abx-media-chip::before { content: ""; width: 0; height: 0; border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent var(--accent) }
+
+/* right — texto + viñetas + cta */
+.abx-text { display: flex; flex-direction: column; align-items: flex-start; max-width: 640px }
+.abx-lead { font-family: var(--font); font-size: clamp(19px, 1.9vw, 24px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.25; letter-spacing: -.02em; margin: 0 0 28px }
+.abx-p { margin: 0 0 16px; color: var(--muted); font-size: 15.4px; line-height: 1.7; max-width: none }
+.abx-p-strong { color: var(--ink); font-weight: var(--fw-medium); margin-top: 0 }
+.abx-list { list-style: none; margin: 8px 0 30px; padding: 0; display: flex; flex-direction: column; gap: 12px; width: 100% }
+.abx-list li { position: relative; padding-left: 0; color: var(--ink); font-size: 15.4px; line-height: 1.5; font-weight: var(--fw-bold) }
+.abx-cta { align-self: flex-start }
+.abx-logos-title { margin-top: 36px; margin-bottom: 0 }
+.abx-lt-1 { display: block; font-family: var(--font); font-size: clamp(19px, 1.9vw, 24px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.25; letter-spacing: -.02em }
+.abx-lt-2 { display: block; margin-top: 4px; font-family: var(--font); font-size: 15.4px; font-weight: var(--fw-medium); color: var(--ink); line-height: 1.5 }
+.abx-logos { display: flex; flex-wrap: wrap; align-items: center; gap: calc(clamp(20px, 2.2vw, 36px) + 10px); margin-top: 44px; max-width: 100% }
+.abx-logos img { height: 34px; width: auto; display: block }
+
+/* certificaciones integradas a la composición */
+.abx-certs { width: 100%; margin-top: calc(clamp(50px, 5.5vw, 88px) + 50px); padding-top: clamp(30px, 3.4vw, 52px); border-top: 1px solid var(--line) }
+.abx-certs-label { display: block; font-family: var(--font); font-size: var(--fs-xs); font-weight: var(--fw-medium); letter-spacing: var(--ls-wide); color: var(--muted); text-transform: uppercase; margin-bottom: clamp(22px, 2.4vw, 34px) }
+.abx-certs .about-certs { margin-top: 0; justify-content: center; gap: clamp(28px, 3vw, 48px) }
+@media (max-width: 700px) { .abx-certs .about-certs { justify-content: center } }
+
+@media (max-width: 1024px) {
+  .abx-head { margin-left: 0; max-width: none }
+  .abx-grid { grid-template-columns: 1fr 1fr; }
+  .abx-grid-2 { grid-template-columns: 1fr; width: 100%; margin-left: 0 }
+  .abx-media { grid-column: 1 / -1; order: -1; aspect-ratio: 16 / 9; max-height: 460px }
+}
+@media (max-width: 700px) {
+  .abx-grid { grid-template-columns: 1fr; gap: 32px }
+  .abx-head, .abx-title { text-align: left }
+  .abx-media { aspect-ratio: 4 / 3 }
+  .abx-stats .stat b { font-size: clamp(30px, 9vw, 40px) }
+}
 .about-badges { display: flex; gap: 80px; margin-top: 48px; align-items: center; justify-content: center; padding: 0 }
 .badge-logo { height: 28px; width: auto; opacity: .45; transition: opacity var(--duration-fast); filter: brightness(0) invert(1) }
 .badge-logo-wide { height: 24px }
@@ -301,15 +363,16 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .cov-stat-label { display: block; font-size: 13px; color: rgba(255,255,255,.35); letter-spacing: .06em; margin-top: 6px }
 
 /* ---------- 8c. COLLAGE PLACEHOLDER ---------- */
-.collage-section .collage-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 12px; max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-gutter-content) }
+.collage-section .collage-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 12px; max-width: none; margin: 0 auto; padding: 0 var(--sp-gutter-content) }
 .collage-section { padding: 0 0 20px }
 .collage-lg { grid-row: 1 / 3 }
 .collage-placeholder { width: 100%; height: 100%; background: var(--c-offwhite); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center }
 .collage-placeholder span { font-family: var(--font); font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-medium); opacity: .4 }
 /* ---------- 9. FLIP CARDS (Soluciones) ---------- */
-.flip-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 56px auto 0; max-width: 1100px; perspective: 1200px }
-.flip-card { aspect-ratio: 2 / 3; cursor: pointer }
-#soluciones .container { max-width: 1500px; padding-left: 5vw; padding-right: 5vw }
+/* fixed 400px cards: auto-fit wraps the row responsively without ever resizing or deforming a card */
+.flip-cards { display: grid; grid-template-columns: repeat(auto-fit, 421px); justify-content: center; gap: 32px; margin: 56px auto 0; max-width: 100%; perspective: 1200px }
+.flip-card { width: 421px; max-width: 100%; aspect-ratio: 3 / 4; cursor: pointer }
+#soluciones .container { max-width: none; padding-left: var(--sp-gutter-content); padding-right: var(--sp-gutter-content) }
 .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform var(--duration-slow) cubic-bezier(.4,0,.2,1); transform-style: preserve-3d }
 .flip-card:hover .flip-card-inner { transform: rotateY(180deg) }
 .flip-front, .flip-back { position: absolute; inset: 0; width: 100%; height: 100%; backface-visibility: hidden; border-radius: var(--r-md); overflow: hidden }
@@ -329,7 +392,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .flip-icon { height: 56px; width: auto; filter: brightness(0) invert(1); opacity: .9; margin-bottom: 18px }
 .flip-back .idx { font-family: var(--font); font-size: 26.4px; font-weight: var(--fw-black); color: rgba(255,255,255,.2); margin-bottom: 6px }
 .flip-back h3 { font-family: var(--font); font-size: var(--fs-lg); font-weight: var(--fw-bold); margin-bottom: 10px; letter-spacing: -.01em; color: var(--c-white) }
-.flip-back p { font-size: 10.2px; color: rgba(255,255,255,.7); font-weight: var(--fw-regular); line-height: var(--lh-body) }
+.flip-back p { font-size: 15.4px; color: rgba(255,255,255,.7); font-weight: var(--fw-regular); line-height: var(--lh-body) }
 .flip-back .card-link { color: var(--c-white) }
 .card-link { display: inline-block; margin-top: 18px; font-size: 10.2px; color: var(--accent); font-weight: var(--fw-medium); transition: transform var(--duration-fast) }
 .card-link:hover { transform: translateX(4px) }
@@ -352,7 +415,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 
 /* ---------- 11b. INTRO / TRANSICIÓN ---------- */
 .intro-transition { background: #E9EEF5; border-top: 1px solid rgba(0,41,107,.06) }
-.intro-transition .container { max-width: 1500px; padding-top: var(--sp-section); padding-bottom: var(--sp-section); padding-left: 5vw; padding-right: 5vw }
+.intro-transition .container { max-width: none; padding-top: var(--sp-section); padding-bottom: var(--sp-section); padding-left: var(--sp-gutter-content); padding-right: var(--sp-gutter-content) }
 .intro-transition-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: center }
 .intro-transition-text .sec-label { display: block }
 .intro-transition-text h2 { font-size: var(--fs-xl); font-weight: var(--fw-black); letter-spacing: var(--ls-tight); line-height: var(--lh-tight); color: var(--ink) }
@@ -381,15 +444,15 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 }
 
 /* ---------- 12. SCROLL-DRIVEN SERVICES ---------- */
-.svc-scroll { position: relative; height: 300vh; background: var(--c-offwhite) }
+.svc-scroll { position: relative; height: 300vh; background: var(--c-offwhite); margin-top: -300px }
 .svc-scroll-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding-top: 0 }
 .svc-progress { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--line); z-index: 10 }
 .svc-progress-bar { height: 100%; width: 0%; background: var(--accent); transition: width .05s linear }
 .svc-dots { display: flex; gap: var(--sp-xs); margin-bottom: 0; position: relative; z-index: 3 }
 .svc-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,41,107,.12); transition: background var(--duration-fast), transform var(--duration-fast) }
 .svc-dot.active { background: var(--accent); transform: scale(1.3) }
-.svc-stage { width: 100%; max-width: 1500px; height: 580px; margin: 0 auto; padding: 0 5vw; position: relative }
-.svc-content { position: absolute; inset: 0 5vw; display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; z-index: 2; opacity: 1 }
+.svc-stage { width: 100%; max-width: none; height: 580px; margin: 0 auto; padding: 0 var(--sp-gutter-content); position: relative }
+.svc-content { position: absolute; inset: 0 var(--sp-gutter-content); display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; z-index: 2; opacity: 1 }
 .svc-text { position: relative; height: 480px }
 .svc-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; pointer-events: none; will-change: transform, opacity }
 .svc-panel.active { opacity: 1; pointer-events: auto }
@@ -398,7 +461,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-panel h3 { font-family: var(--font); font-size: clamp(28px, 3.6vw, 46px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.15; letter-spacing: var(--ls-tight) }
 .svc-highlight { color: var(--accent) }
 .svc-panel .svc-highlight .paint-char.lit, .svc-panel .svc-highlight .paint-char.glow { color: var(--accent) }
-.svc-panel p { margin-top: var(--sp-sm); color: var(--muted); font-size: var(--fs-md); font-weight: var(--fw-regular); max-width: 400px; line-height: 1.7 }
+.svc-panel p { margin-top: var(--sp-sm); color: var(--muted); font-size: 15.4px; font-weight: var(--fw-regular); max-width: none; line-height: 1.7 }
 .svc-cta { display: inline; margin-top: var(--sp-md); font-family: var(--font); font-size: 9.1px; font-weight: var(--fw-bold); color: var(--c-blue); text-transform: uppercase; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; text-decoration-color: var(--c-blue); transition: color var(--duration-fast), text-decoration-color var(--duration-fast) }
 .svc-cta:hover { color: var(--accent); text-decoration-color: var(--accent) }
 .svc-cta::after { content: '→'; font-size: 12px; transition: transform var(--duration-fast) }
@@ -570,7 +633,6 @@ footer .brand-logo { height: 24px }
   .hero-cluster { display: none }
   .about-left { padding-top: 0 }
 #ultimate .container { padding-top: 40px }
-  .flip-cards { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto }
   .values-grid { grid-template-columns: repeat(3, 1fr) }
   .stats { grid-template-columns: repeat(2, 1fr) }
   .intro-transition-grid { grid-template-columns: 1fr; gap: 48px }
@@ -628,7 +690,6 @@ footer .brand-logo { height: 24px }
   .stat b { font-size: clamp(19.2px, 8vw, 28.8px) }
   .form-row { grid-template-columns: 1fr }
 #ultimate .container { padding-top: 40px }
-  .flip-cards { max-width: 100% }
   .coverage-stats-row { flex-direction: column; gap: 24px }
   .svc-panel h3 { font-size: clamp(24px, 8vw, 31.2px) }
   .svc-panel p { max-width: 100%; font-size: 12px }
@@ -654,7 +715,6 @@ footer .brand-logo { height: 24px }
   .about-image video, .about-image img { height: 200px }
   .about-title { padding-right: 0 !important }
   .popup-card { padding: 28px 20px }
-  .flip-cards { gap: 16px }
   .vals-carousel::before, .vals-carousel::after { width: 40px }
   .container { text-align: center }
   .sec-sub { margin-left: auto; margin-right: auto }
@@ -711,9 +771,7 @@ footer .brand-logo { height: 24px }
 
 /* ---------- 4K / Ultra-wide ---------- */
 @media (min-width: 2560px) {
-  /* Scale everything proportionally — maintain 1440px look */
-  .container { max-width: 1400px }
-  .svc-stage { max-width: 1500px }
+  /* content column already stays centered via --sp-gutter-content; nothing to cap here */
 }
 
 /* ---------- 23. ACCESSIBILITY ---------- */
@@ -778,19 +836,19 @@ footer .brand-logo { height: 24px }
 
 /* about certifications */
 .about-certs { display: flex; gap: 48px; align-items: center; justify-content: center; margin-top: 72px; flex-wrap: wrap }
-.cert-logo { height: 85px; width: auto; filter: brightness(0); opacity: .38; transition: opacity var(--duration-fast) }
+.cert-logo { height: 85px; width: auto; filter: brightness(0); opacity: 1; transition: opacity var(--duration-fast) }
 .cert-logo-wide { height: 36px }
-.cert-item:hover .cert-logo { opacity: .7 }
-.cert-pill { text-align: center; opacity: .5; transition: opacity var(--duration-fast) }
-.cert-item:hover .cert-pill { opacity: .8 }
+.cert-item:hover .cert-logo { opacity: 1 }
+.cert-pill { text-align: center; opacity: 1; transition: opacity var(--duration-fast) }
+.cert-item:hover .cert-pill { opacity: 1 }
 .cert-pill span { display: block; font-family: var(--font); font-size: 14px; font-weight: var(--fw-bold); color: var(--ink); letter-spacing: .03em; line-height: 1.2 }
 .cert-pill small { display: block; margin-top: 3px; font-family: var(--font); font-size: 11px; color: var(--muted); font-weight: var(--fw-regular) }
 @media (max-width: 600px) { .about-certs { gap: 24px; margin-top: 48px } .cert-logo { height: 65px } }
 
 /* cert logos in color (no invert filter) */
-.cert-logo-color { filter: none; opacity: .8 }
+.cert-logo-color { filter: none; opacity: 1 }
 .cert-item:hover .cert-logo-color { opacity: 1 }
 
-.cert-logo-natural { filter: none; opacity: .85 }
+.cert-logo-natural { filter: none; opacity: 1 }
 .cert-item:hover .cert-logo-natural { opacity: 1 }
 
