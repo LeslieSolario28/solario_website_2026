@@ -311,7 +311,13 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .abx-p { margin: 0 0 16px; color: var(--muted); font-size: 15.4px; line-height: 1.7; max-width: none }
 .abx-p-strong { color: var(--ink); font-weight: var(--fw-medium); margin-top: 0 }
 .abx-list { list-style: none; margin: 8px 0 30px; padding: 0; display: flex; flex-direction: column; gap: 12px; width: 100% }
-.abx-list li { position: relative; padding-left: 0; color: var(--ink); font-size: 15.4px; line-height: 1.5; font-weight: var(--fw-bold) }
+.abx-list li { position: relative; padding-left: 26px; color: var(--ink); font-size: 15.4px; line-height: 1.5; font-weight: var(--fw-bold) }
+.abx-list li::before {
+  content: ""; position: absolute; left: 0; top: .15em; width: 16px; height: 16px;
+  background-color: var(--accent);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 .abx-cta { align-self: flex-start }
 .abx-logos-title { margin-top: 36px; margin-bottom: 0 }
 .abx-lt-1 { display: block; font-family: var(--font); font-size: clamp(19px, 1.9vw, 24px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.25; letter-spacing: -.02em }
@@ -466,7 +472,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-cta:hover { color: var(--accent); text-decoration-color: var(--accent) }
 .svc-cta::after { content: '→'; font-size: 12px; transition: transform var(--duration-fast) }
 .svc-cta:hover::after { transform: translateX(4px) }
-.svc-visual { position: relative; width: 440px; max-width: 100%; justify-self: end }
+.svc-visual { position: relative; width: 506px; max-width: 100%; justify-self: end }
 .svc-img-wrap { position: relative; aspect-ratio: 4/5; border-radius: var(--r-lg); overflow: hidden; max-height: 65vh }
 .svc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: transform, opacity; background: var(--c-navy) }
 .svc-img.active { opacity: 1 }
