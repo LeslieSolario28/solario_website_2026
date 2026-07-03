@@ -62,7 +62,7 @@
       if(isNaN(op))op=isActive?1:0;
       if(isActive&&op>0.3){
         if(!d.startTime)d.startTime=performance.now();
-        var elapsed=(performance.now()-d.startTime)/70;
+        var elapsed=(performance.now()-d.startTime)/35;
         paintChars(d.chars,Math.min(d.chars.length,Math.floor(elapsed)));
       } else {
         d.startTime=null;

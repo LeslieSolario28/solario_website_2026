@@ -113,13 +113,15 @@ main, footer { overflow-x: clip }
 
 /* ---------- 4. TYPOGRAPHY ---------- */
 .dot-accent { color: var(--accent); -webkit-text-fill-color: var(--accent) }
+/* the accent dot must stay celeste even once the shimmer reveal "lights up" its character */
+.dot-accent .paint-char, .dot-accent .paint-char.lit, .dot-accent .paint-char.glow { color: var(--accent) !important }
 .sec-label {
   font-family: var(--font); font-size: var(--fs-xs); font-weight: var(--fw-medium);
   letter-spacing: var(--ls-wide); color: var(--muted);
-  text-transform: uppercase; margin-bottom: 34px;
+  text-transform: uppercase; margin-bottom: 28px;
 }
 .section h2, .cta-divider h2 {
-  font-family: var(--font); font-size: var(--fs-xl); font-weight: var(--fw-black);
+  font-family: var(--font); font-size: var(--fs-xl); font-weight: var(--fw-bold);
   letter-spacing: var(--ls-tight); line-height: var(--lh-tight);
   text-wrap: balance; color: var(--ink);
 }
@@ -188,7 +190,13 @@ nav.topbar.nav-light .brand-logo-color { display: block }
 
 /* nav on dark sections (hero, navy) */
 nav.topbar.scrolled { padding-top: 22px; padding-bottom: 12px }
-nav.topbar.nav-dark { background: rgba(0,41,107,.3); backdrop-filter: blur(20px) saturate(1.3); -webkit-backdrop-filter: blur(20px) saturate(1.3); border-bottom-color: rgba(255,255,255,.06) }
+nav.topbar.nav-dark {
+  background: rgba(0,41,107,.28);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border-bottom-color: rgba(255,255,255,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 8px 32px -12px rgba(0,10,30,.35);
+}
 
 nav.topbar.nav-dark .navlinks a { color: rgba(255,255,255,.65) }
 nav.topbar.nav-dark .navlinks a:hover { color: var(--c-white) }
@@ -197,11 +205,19 @@ nav.topbar.nav-dark .nav-toggle span { background: var(--c-white) }
 nav.topbar.nav-dark .portal { color: var(--c-white) }
 
 /* nav on light sections */
-nav.topbar.nav-light { background: rgba(255,255,255,.92); backdrop-filter: blur(20px) saturate(1.3); -webkit-backdrop-filter: blur(20px) saturate(1.3); border-bottom-color: rgba(0,41,107,.06) }
+nav.topbar.nav-light {
+  background: rgba(255,255,255,.68);
+  backdrop-filter: blur(28px) saturate(1.6);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  border-bottom-color: rgba(0,41,107,.07);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 8px 32px -14px rgba(0,41,107,.18);
+}
 
 
 nav.topbar.nav-light .navlinks a { color: var(--c-blue) }
 nav.topbar.nav-light .navlinks a:hover { color: var(--c-navy) }
+nav.topbar.nav-light .navlinks-center a { color: var(--muted) }
+nav.topbar.nav-light .navlinks-center a:hover { color: var(--ink) }
 nav.topbar.nav-light .portal { color: var(--c-white) !important }
 nav.topbar.nav-light .portal-btn { border-color: rgba(0,41,107,.15); color: var(--c-navy) }
 nav.topbar.nav-light .portal-btn:hover { border-color: var(--c-navy); background: rgba(0,41,107,.05) }
@@ -323,7 +339,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .abx-lt-1 { display: block; font-family: var(--font); font-size: clamp(19px, 1.9vw, 24px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.25; letter-spacing: -.02em }
 .abx-lt-2 { display: block; margin-top: 4px; font-family: var(--font); font-size: 15.4px; font-weight: var(--fw-medium); color: var(--ink); line-height: 1.5 }
 .abx-logos { display: flex; flex-wrap: wrap; align-items: center; gap: calc(clamp(20px, 2.2vw, 36px) + 10px); margin-top: 44px; max-width: 100% }
-.abx-logos img { height: 34px; width: auto; display: block }
+.abx-logos img { height: 41px; width: auto; display: block }
 
 /* certificaciones integradas a la composición */
 .abx-certs { width: 100%; margin-top: calc(clamp(50px, 5.5vw, 88px) + 50px); padding-top: clamp(30px, 3.4vw, 52px); border-top: 1px solid var(--line) }
@@ -462,11 +478,15 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-text { position: relative; height: 480px }
 .svc-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; pointer-events: none; will-change: transform, opacity }
 .svc-panel.active { opacity: 1; pointer-events: auto }
-.svc-panel-icon { display: block; align-self: flex-start; height: 44px; width: auto; margin-bottom: 28px }
-.svc-panel-icon-wide { height: 32px }
-.svc-panel h3 { font-family: var(--font); font-size: clamp(28px, 3.6vw, 46px); font-weight: var(--fw-black); color: var(--ink); line-height: 1.15; letter-spacing: var(--ls-tight) }
-.svc-highlight { color: var(--accent) }
+.svc-panel-icon { display: block; height: 34px; width: auto }
+.svc-panel-icon-wide { height: 24px }
+.svc-panel h3 { font-family: var(--font); font-size: clamp(28px, 3.6vw, 46px); font-weight: 200; color: var(--ink); line-height: 1.15; letter-spacing: var(--ls-tight) }
+.svc-highlight { color: var(--accent); font-weight: 900 }
 .svc-panel .svc-highlight .paint-char.lit, .svc-panel .svc-highlight .paint-char.glow { color: var(--accent) }
+.svc-highlight-bess { color: #179c53 }
+.svc-panel .svc-highlight-bess .paint-char.lit, .svc-panel .svc-highlight-bess .paint-char.glow { color: #179c53 }
+.svc-highlight-pv { color: #e8641c }
+.svc-panel .svc-highlight-pv .paint-char.lit, .svc-panel .svc-highlight-pv .paint-char.glow { color: #e8641c }
 .svc-panel p { margin-top: var(--sp-sm); color: var(--muted); font-size: 15.4px; font-weight: var(--fw-regular); max-width: none; line-height: 1.7 }
 .svc-cta { display: inline; margin-top: var(--sp-md); font-family: var(--font); font-size: 9.1px; font-weight: var(--fw-bold); color: var(--c-blue); text-transform: uppercase; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; text-decoration-color: var(--c-blue); transition: color var(--duration-fast), text-decoration-color var(--duration-fast) }
 .svc-cta:hover { color: var(--accent); text-decoration-color: var(--accent) }
@@ -477,7 +497,39 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: transform, opacity; background: var(--c-navy) }
 .svc-img.active { opacity: 1 }
 .svc-badges { position: absolute; inset: 0; opacity: 0; pointer-events: none; will-change: opacity }
-.svc-badge { position: absolute; background: rgba(240,240,243,.95); border: 1px solid rgba(0,0,0,.12); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); box-shadow: var(--shadow-md); border-radius: 14px; padding: 11px 20px; font-family: var(--font); font-size: 11.5px; font-weight: var(--fw-medium); color: var(--ink); white-space: nowrap; opacity: 0; transform: translateX(var(--tx)) translateY(20px) }
+
+/* accumulating icon row: top pinned to the active title's top, bottom pinned to the
+   media card's bottom, right-aligned against the text column's right edge (see services.js) */
+.svc-icon-row { position: absolute; display: flex; align-items: flex-end; justify-content: flex-end; gap: 20px; z-index: 3; pointer-events: none }
+
+/* pending (ghost) state: barely-there hint of what's coming next — pale gray tile, white icon, ~5% opacity */
+.svc-icon-chip {
+  position: relative;
+  width: 152px; height: 152px; display: flex; align-items: center; justify-content: center;
+  background: rgba(120,130,150,.14); border: 1px solid rgba(120,130,150,.18);
+  border-radius: var(--r-md);
+  opacity: .3;
+  transition: opacity .12s linear, background-color .12s linear, border-color .12s linear;
+}
+.svc-icon-chip img { display: block; height: 68px; width: auto; position: relative; z-index: 1; filter: brightness(0) invert(1); transition: filter .12s linear }
+.svc-icon-chip-ultimate img { height: 48px }
+
+/* visible: this service has already appeared — full opacity, white tile, natural icon color */
+.svc-icon-chip.visible { opacity: 1; background: rgba(255,255,255,.95); border-color: rgba(0,0,0,.08) }
+.svc-icon-chip.visible img { filter: none }
+
+/* current: the active service right now — brand-colored tile, white icon (overrides .visible) */
+.svc-icon-chip-mem.current { background: var(--accent); border-color: var(--accent) }
+.svc-icon-chip-mem.current img { filter: brightness(0) invert(1) }
+.svc-icon-chip-bess.current { background: #179c53; border-color: #179c53 }
+.svc-icon-chip-bess.current img { filter: brightness(0) invert(1) }
+.svc-icon-chip-pv.current { background: #e8641c; border-color: #e8641c }
+.svc-icon-chip-pv.current img { filter: brightness(0) invert(1) }
+.svc-badge { position: absolute; background: rgba(255,255,255,.97); border: 1px solid rgba(0,0,0,.1); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); box-shadow: var(--shadow-md); border-radius: 15px; padding: 12px 22px; font-family: var(--font); font-size: 12.7px; font-weight: var(--fw-medium); color: var(--muted); white-space: nowrap; opacity: 0; transform: translateX(var(--tx)) translateY(20px) }
+.svc-badges-mem .svc-badge { color: var(--accent) }
+.svc-badges-bess .svc-badge { color: #179c53 }
+.svc-badges-pv .svc-badge { color: #e8641c }
+.svc-badges-ultimate .svc-badge { color: #1d4997 }
 .svc-badges.active .svc-badge { animation: svcBadgeRise .6s ease-out forwards }
 .svc-badge-tl { top: 8%; left: 0; --tx: -30%; animation-delay: 0s }
 .svc-badge-tr { top: 24%; right: 0; --tx: 30%; animation-delay: .08s }

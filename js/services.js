@@ -7,11 +7,33 @@
   var panels=svcSection.querySelectorAll('.svc-panel');
   var imgs=svcSection.querySelectorAll('.svc-img');
   var badgeGroups=svcSection.querySelectorAll('.svc-badges');
+  var iconChips=svcSection.querySelectorAll('.svc-icon-chip');
   var navItems=svcSection.querySelectorAll('.svc-dot');
   var bar=document.getElementById('svc-bar');
+  var svcContent=document.getElementById('svc-content');
+  var svcText=svcSection.querySelector('.svc-text');
+  var iconRow=document.getElementById('svc-icon-row');
+  var imgWrap=svcSection.querySelector('.svc-img-wrap');
 
   var lastIdx=-1;
   function cl(v){return v<0?0:v>1?1:v;}
+
+  // pin the icon row's top to the active title's top and its bottom to the card's
+  // bottom, right-aligned to the text column's right edge — recalculated on slide
+  // change / resize since panel content height (and so title position) can shift.
+  function placeIconRow(){
+    if(!iconRow||!svcContent||!imgWrap)return;
+    var activePanel=svcSection.querySelector('.svc-panel.active') || panels[0];
+    var h3=activePanel&&activePanel.querySelector('h3');
+    if(!h3)return;
+    var contentRect=svcContent.getBoundingClientRect();
+    var titleRect=h3.getBoundingClientRect();
+    var cardRect=imgWrap.getBoundingClientRect();
+    var textRect=svcText.getBoundingClientRect();
+    iconRow.style.top=(titleRect.top-contentRect.top)+'px';
+    iconRow.style.right=(contentRect.right-textRect.right+115)+'px';
+    iconRow.style.height=(cardRect.bottom-titleRect.top)+'px';
+  }
 
   function updateSvc(){
     var rect=svcSection.getBoundingClientRect();
@@ -43,22 +65,34 @@
       im.style.transform='scale('+sc+')';
     });
 
-    badgeGroups.forEach(function(bg,j){
+    function fadeGroup(el,j){
       var op=0;
       if(j===idx){op=t<0.6?1:1-cl((t-0.6)/0.2);}
       if(j===idx+1&&t>0.8){op=cl((t-0.8)/0.2);}
       if(j<idx){op=0;}
-      bg.style.opacity=cl(op);
-      bg.classList.toggle('active',op>0.5);
+      el.style.opacity=cl(op);
+      el.classList.toggle('active',op>0.5);
+    }
+    badgeGroups.forEach(fadeGroup);
+
+    // MEM/BESS/PV/Ultimate stack up as each service appears and all stay visible —
+    // by the last slide all four sit together in the row.
+    iconChips.forEach(function(chip){
+      var k=parseInt(chip.dataset.appear,10);
+      chip.classList.toggle('visible',idx>=k);
+      chip.classList.toggle('current',idx===k);
     });
 
     if(idx!==lastIdx){
       lastIdx=idx;
       navItems.forEach(function(n,j){n.classList.toggle('active',j===idx);});
+      placeIconRow();
     }
   }
   updateSvc();
+  placeIconRow();
   window.addEventListener('scroll',updateSvc,{passive:true});
+  window.addEventListener('resize',placeIconRow);
   navItems.forEach(function(btn){btn.addEventListener('click',function(){
     var i=parseInt(btn.dataset.slide);
     var sH=svcSection.offsetHeight;var vH=window.innerHeight;
