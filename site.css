@@ -542,6 +542,35 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-badge-br { bottom: 12%; right: 0; --tx: 8%; animation-delay: .24s }
 @keyframes svcBadgeRise { from { opacity: 0; transform: translateX(var(--tx)) translateY(20px) } to { opacity: 1; transform: translateX(var(--tx)) translateY(0) } }
 
+/* ---------- 12b. RESULTADOS (promo card + 2x2 stat cards) ---------- */
+.results-grid { display: grid; grid-template-columns: minmax(260px, .82fr) 1.18fr; gap: 24px; align-items: start; max-width: 70%; margin: 56px auto 0 }
+/* keep the SVG card's native proportion (158.58 × 192.3) — no stretch, no distortion */
+.results-promo { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--c-white); aspect-ratio: 158.58 / 192.3; display: flex }
+.results-promo-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center }
+.results-promo-text { position: relative; z-index: 2; padding: clamp(28px, 3vw, 46px); display: flex; flex-direction: column; align-items: flex-start; gap: 16px }
+.results-promo-eyebrow { font-family: var(--font); font-size: calc(var(--fs-xs) / 2); font-weight: var(--fw-medium); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--muted) }
+#resultados .results-promo-title { font-family: var(--font); font-size: clamp(24px, 2.4vw, 34px); font-weight: var(--fw-bold); color: var(--c-navy); line-height: 1.16; letter-spacing: var(--ls-tight); max-width: 15ch }
+
+.results-cards { align-self: stretch; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: 1fr; gap: 24px }
+.result-card { border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--c-white); padding: clamp(28px, 2.6vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 212px; transition: border-color var(--duration-fast) }
+.result-card:hover { border-color: rgba(8,158,223,.4) }
+/* icon centered on top of the card, number/label at the bottom-left (as in the reference) */
+.result-icon-chip { display: flex; align-self: center; flex: none; background: none }
+.result-icon-chip img { width: clamp(43px, 4.16vw, 58px); height: clamp(43px, 4.16vw, 58px); object-fit: contain }
+.result-card .stat { align-items: flex-start; text-align: left }
+.result-card .stat b { font-size: clamp(30px, 3vw, 46px); color: var(--ink); font-weight: var(--fw-black) }
+.result-card .stat span { margin-top: 8px; font-size: 14px; color: var(--muted); font-weight: var(--fw-regular) }
+
+@media (max-width: 900px) {
+  .results-grid { grid-template-columns: 1fr; max-width: 520px }
+  /* cap the portrait card's height when it goes full-width so it isn't huge */
+  .results-promo { aspect-ratio: auto; height: clamp(280px, 46vw, 420px) }
+  .results-promo-bg { object-fit: cover; object-position: 62% 82% }
+}
+@media (max-width: 560px) {
+  .results-cards { grid-template-columns: 1fr }
+}
+
 /* ---------- 13. CTA DIVIDER ---------- */
 .cta-divider { position: relative; z-index: 2; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 280px; padding: 50px var(--sp-gutter); text-align: center }
 .cta-divider-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(0.3) }
