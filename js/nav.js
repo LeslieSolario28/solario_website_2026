@@ -5,7 +5,7 @@
   var navlinks=document.querySelector('.navlinks');
 
   var darkSections=document.querySelectorAll('.section-navy,.hero');
-  window.addEventListener('scroll',function(){
+  function updateNavShade(){
     var sy=window.scrollY;
     topbar.classList.toggle('scrolled',sy>8);
     var onHero=document.querySelector('.hero').getBoundingClientRect().bottom>60 && !document.body.classList.contains('hero-light');
@@ -19,7 +19,9 @@
     }
     topbar.classList.toggle('nav-dark',!onHero&&onDark);
     topbar.classList.toggle('nav-light',!onHero&&!onDark&&sy>8);
-  },{passive:true});
+  }
+  updateNavShade();
+  window.addEventListener('scroll',updateNavShade,{passive:true});
   toggle.addEventListener('click',function(){
     var open=navlinks.classList.toggle('open');
     toggle.classList.toggle('active');

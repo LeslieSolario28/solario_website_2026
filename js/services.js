@@ -16,26 +16,28 @@
   var imgWrap=svcSection.querySelector('.svc-img-wrap');
 
   var lastIdx=-1;
+  var enabled=false;
   function cl(v){return v<0?0:v>1?1:v;}
 
-  // pin the icon row's top to the active title's top and its bottom to the card's
-  // bottom, right-aligned to the text column's right edge — recalculated on slide
-  // change / resize since panel content height (and so title position) can shift.
+  // Anchor the icon row to STABLE references only (the media card and the content/text
+  // rects, which don't move while the section is pinned) — never to the title, which
+  // slides during the panel crossfades and would make the row jump on scroll.
+  // Bottom edge sits on the card's base; right edge aligns to the text column; clamped
+  // so the left edge never crosses the gutter.
   function placeIconRow(){
     if(!iconRow||!svcContent||!imgWrap)return;
-    var activePanel=svcSection.querySelector('.svc-panel.active') || panels[0];
-    var h3=activePanel&&activePanel.querySelector('h3');
-    if(!h3)return;
     var contentRect=svcContent.getBoundingClientRect();
-    var titleRect=h3.getBoundingClientRect();
     var cardRect=imgWrap.getBoundingClientRect();
-    var textRect=svcText.getBoundingClientRect();
-    iconRow.style.top=(titleRect.top-contentRect.top)+'px';
-    iconRow.style.right=(contentRect.right-textRect.right+115)+'px';
-    iconRow.style.height=(cardRect.bottom-titleRect.top)+'px';
+    iconRow.style.height='';
+    iconRow.style.right='auto';
+    var box=iconRow.getBoundingClientRect();
+    // left edge stays aligned to the text column (left:0 in CSS); only the vertical
+    // position is computed — its base sits on the card's bottom edge (a stable reference)
+    iconRow.style.top=(cardRect.bottom-contentRect.top-box.height)+'px';
   }
 
   function updateSvc(){
+    if(!enabled)return;
     var rect=svcSection.getBoundingClientRect();
     var sH=svcSection.offsetHeight;
     var vH=window.innerHeight;
@@ -89,12 +91,25 @@
       placeIconRow();
     }
   }
-  updateSvc();
-  placeIconRow();
+  function checkMode(){
+    var on=window.matchMedia('(min-width: 901px)').matches;
+    if(on&&!enabled){enabled=true;updateSvc();placeIconRow();}
+    else if(!on&&enabled){enabled=false;}
+  }
+  checkMode();
+  requestAnimationFrame(function(){ if(enabled) placeIconRow(); });
+  window.addEventListener('load',function(){ if(enabled) placeIconRow(); });
   window.addEventListener('scroll',updateSvc,{passive:true});
-  window.addEventListener('resize',placeIconRow);
+  window.addEventListener('resize',function(){checkMode();if(enabled)placeIconRow();});
   navItems.forEach(function(btn){btn.addEventListener('click',function(){
     var i=parseInt(btn.dataset.slide);
+    if(!enabled){
+      // mobile/tablet: no scroll-jacking — dots just swap which panel/image is shown
+      panels.forEach(function(p,j){p.classList.toggle('active',j===i);});
+      imgs.forEach(function(im,j){im.classList.toggle('active',j===i);});
+      navItems.forEach(function(n,j){n.classList.toggle('active',j===i);});
+      return;
+    }
     var sH=svcSection.offsetHeight;var vH=window.innerHeight;
     window.scrollTo({top:svcSection.offsetTop+(sH-vH)*(i/(N-1+0.6))+1,behavior:'smooth'});
   });});

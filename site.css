@@ -127,7 +127,7 @@ main, footer { overflow-x: clip }
 }
 .sec-sub {
   margin-top: var(--sp-sm); color: var(--muted); max-width: 720px;
-  font-weight: var(--fw-regular); font-size: 14.4px; line-height: 1.7;
+  font-weight: var(--fw-regular); font-size: 15.4px; line-height: 1.7;
 }
 .sec-sub.centered { margin-left: auto; margin-right: auto }
 
@@ -167,7 +167,7 @@ main, footer { overflow-x: clip }
 nav.topbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 28px 8vw 18px; background: transparent;
+  padding: 28px 6vw 18px; background: transparent;
   border-bottom: 1px solid transparent;
   transition: background var(--duration-fast), backdrop-filter var(--duration-fast), border-color var(--duration-fast), padding var(--duration-fast), opacity .25s ease;
 }
@@ -252,7 +252,12 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 }
 /* placeholder headline that rises in below the shrunk video card, before the cluster fans out */
 .hero-textrise {
-  position: absolute; left: 0; right: 0; bottom: calc(12% + 150px); z-index: 4; text-align: center;
+  /* sit below the LOWEST cluster card (which hangs lower than the video card): the cluster
+     is centered at 50% − 8vh and its lowest card reaches ~1.03 × --clW below that center.
+     Adding a proportional gap keeps the logo clear of every card at any breakpoint. */
+  position: absolute; left: 0; right: 0; bottom: auto;
+  top: calc(50% - 8vh + var(--clW) * 1.03 + clamp(92px, 10vh, 126px));
+  z-index: 4; text-align: center;
   opacity: var(--textrise, 0); transform: translateY(calc((1 - var(--textrise, 0)) * 30px));
   pointer-events: none;
 }
@@ -299,7 +304,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .abx-title { font-size: var(--fs-xl) !important; color: var(--ink); line-height: 1.12 !important; font-weight: var(--fw-black) !important; letter-spacing: -.03em !important; max-width: none; white-space: nowrap }
 .abx-grid { width: 100%; display: grid; grid-template-columns: 0.72fr 1.3fr 1.0fr; gap: clamp(28px, 3.4vw, 60px); align-items: center; margin-top: calc(clamp(36px, 4vw, 64px) + 55px); text-align: left }
 /* 2-column variant: card (left, ~30% smaller) + text (right), cifras go in a row below */
-.abx-grid-2 { grid-template-columns: 421px minmax(0, 1fr); gap: calc(clamp(36px, 4vw, 72px) + 100px); width: calc(100% - 250px); margin-left: 250px }
+.abx-grid-2 { grid-template-columns: 421px minmax(0, 640px); justify-content: center; gap: clamp(48px, 5vw, 96px); width: 100%; margin-left: 0 }
 .stats.abx-stats-row { margin-top: calc(clamp(44px, 4.5vw, 72px) + 160px); gap: clamp(48px, 5vw, 96px) }
 .abx-stats-row .stat b { font-size: clamp(33px, 4.75vw, 51px) }
 
@@ -500,19 +505,19 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 
 /* accumulating icon row: top pinned to the active title's top, bottom pinned to the
    media card's bottom, right-aligned against the text column's right edge (see services.js) */
-.svc-icon-row { position: absolute; display: flex; align-items: flex-end; justify-content: flex-end; gap: 20px; z-index: 3; pointer-events: none }
+.svc-icon-row { position: absolute; left: 0; display: flex; align-items: flex-end; justify-content: flex-start; gap: clamp(12px, 1.4vw, 20px); z-index: 3; pointer-events: none }
 
 /* pending (ghost) state: barely-there hint of what's coming next — pale gray tile, white icon, ~5% opacity */
 .svc-icon-chip {
   position: relative;
-  width: 152px; height: 152px; display: flex; align-items: center; justify-content: center;
+  width: clamp(92px, 9vw, 152px); height: clamp(92px, 9vw, 152px); flex: none; display: flex; align-items: center; justify-content: center;
   background: rgba(120,130,150,.14); border: 1px solid rgba(120,130,150,.18);
   border-radius: var(--r-md);
   opacity: .3;
   transition: opacity .12s linear, background-color .12s linear, border-color .12s linear;
 }
-.svc-icon-chip img { display: block; height: 68px; width: auto; position: relative; z-index: 1; filter: brightness(0) invert(1); transition: filter .12s linear }
-.svc-icon-chip-ultimate img { height: 48px }
+.svc-icon-chip img { display: block; height: clamp(42px, 4.1vw, 68px); width: auto; position: relative; z-index: 1; filter: brightness(0) invert(1); transition: filter .12s linear }
+.svc-icon-chip-ultimate img { height: clamp(30px, 2.9vw, 48px) }
 
 /* visible: this service has already appeared — full opacity, white tile, natural icon color */
 .svc-icon-chip.visible { opacity: 1; background: rgba(255,255,255,.95); border-color: rgba(0,0,0,.08) }
@@ -531,10 +536,10 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-badges-pv .svc-badge { color: #e8641c }
 .svc-badges-ultimate .svc-badge { color: #1d4997 }
 .svc-badges.active .svc-badge { animation: svcBadgeRise .6s ease-out forwards }
-.svc-badge-tl { top: 8%; left: 0; --tx: -30%; animation-delay: 0s }
-.svc-badge-tr { top: 24%; right: 0; --tx: 30%; animation-delay: .08s }
-.svc-badge-bl { bottom: 30%; left: 0; --tx: -25%; animation-delay: .16s }
-.svc-badge-br { bottom: 12%; right: 0; --tx: 25%; animation-delay: .24s }
+.svc-badge-tl { top: 8%; left: 0; --tx: -22%; animation-delay: 0s }
+.svc-badge-tr { top: 24%; right: 0; --tx: 8%; animation-delay: .08s }
+.svc-badge-bl { bottom: 30%; left: 0; --tx: -18%; animation-delay: .16s }
+.svc-badge-br { bottom: 12%; right: 0; --tx: 8%; animation-delay: .24s }
 @keyframes svcBadgeRise { from { opacity: 0; transform: translateX(var(--tx)) translateY(20px) } to { opacity: 1; transform: translateX(var(--tx)) translateY(0) } }
 
 /* ---------- 13. CTA DIVIDER ---------- */
@@ -666,7 +671,21 @@ footer .brand-logo { height: 24px }
 .rv.in { opacity: 1; transform: none }
 
 /* ---------- 21. RESPONSIVE ---------- */
-/* ---------- 21. RESPONSIVE ---------- */
+
+/* Collapse the desktop nav into the hamburger menu early enough that the
+   absolutely-centered links never overlap the right-hand buttons. */
+@media (max-width: 1300px) {
+  .nav-toggle { display: flex }
+  .navlinks { position: fixed; inset: 0; z-index: 55; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 28px; background: rgba(0,41,107,.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); opacity: 0; pointer-events: none; transition: opacity var(--duration-fast) }
+  .navlinks.open { opacity: 1; pointer-events: auto }
+  .navlinks a { font-size: 15px; color: var(--c-white) !important }
+  .navlinks-center a { color: var(--c-white) !important }
+  .navlinks-center, .navlinks-right { position: static; transform: none; flex-direction: column; gap: 28px }
+  /* the accumulating icon row is a wide-desktop flourish; below this it crowds the text */
+  .svc-icon-row { display: none }
+  /* About: drop the wide-screen 250px right-shift + oversized gap so the text column doesn't collapse */
+  .abx-grid-2 { margin-left: 0; width: 100%; gap: clamp(32px, 3.5vw, 64px) }
+}
 
 /* Tablet */
 @media (max-width: 1024px) {
@@ -696,15 +715,18 @@ footer .brand-logo { height: 24px }
   .intro-transition-grid { grid-template-columns: 1fr; gap: 48px }
   .intro-transition .container { padding-top: 80px; padding-bottom: 80px }
   .intro-svc-list { max-width: 360px; height: 420px; margin: 0 auto; justify-self: center }
-  .svc-scroll { height: auto }
+  .svc-scroll { height: auto; margin-top: 0 }
   .svc-scroll-sticky { position: static; height: auto; overflow: visible; padding-top: 0 }
   .svc-stage { height: auto; padding: 0 var(--sp-gutter-content) }
   .svc-content { position: static; opacity: 1 !important; grid-template-columns: 1fr; gap: 32px }
   .svc-text { height: auto; min-height: 340px }
-  .svc-panel { justify-content: flex-start; padding-top: 36px }
+  .svc-panel { position: static; opacity: 1 !important; pointer-events: auto; transform: none !important; justify-content: flex-start; padding-top: 36px }
+  .svc-panel:not(.active) { display: none }
   .svc-visual { width: 340px; max-width: 100%; justify-self: center }
   .svc-img-wrap { max-height: 40vh }
   .svc-badge { font-size: 10.2px; padding: 9px 16px }
+  /* scroll-jacked icon row/badges rely on JS position math meant for desktop; keep it simple on mobile */
+  .svc-icon-row, .svc-badges { display: none }
   .eaas-layout { grid-template-columns: 1fr; gap: var(--sp-lg) }
   .coverage-stats-row { gap: 40px }
 }
