@@ -4,14 +4,24 @@
   /* popup form */
   var popup=document.getElementById("popup-form");
   if(popup){
+    function openPopup(){
+      popup.classList.add("active");
+      document.body.style.overflow="hidden";
+      var first=popup.querySelector("input:not([type=hidden]), select");
+      if(first)setTimeout(function(){first.focus();},60);
+    }
+    function closePopup(){
+      popup.classList.remove("active");
+      document.body.style.overflow="";
+    }
     document.addEventListener("click",function(e){
       var trigger=e.target.closest(".popup-trigger");
-      if(trigger){e.preventDefault();e.stopPropagation();popup.classList.add("active");}
-      if(e.target===popup)popup.classList.remove("active");
+      if(trigger){e.preventDefault();e.stopPropagation();openPopup();}
+      if(e.target===popup)closePopup();
     });
-    document.addEventListener("keydown",function(e){if(e.key==="Escape")popup.classList.remove("active");});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape"&&popup.classList.contains("active"))closePopup();});
     var closeBtn=popup.querySelector(".popup-close");
-    if(closeBtn)closeBtn.addEventListener("click",function(){popup.classList.remove("active");});
+    if(closeBtn){closeBtn.setAttribute("type","button");closeBtn.addEventListener("click",closePopup);}
   }
 
   /* file upload label */
@@ -23,13 +33,37 @@
     });
   }
 
-  /* form submit */
-  var form=document.getElementById('contact-form');
-  if(form){
-    form.querySelector('input[name="_next"]').value=window.location.href;
+  /* popup file upload label */
+  var pFileInput=document.getElementById('pf-file');
+  var pFileLabel=document.getElementById('pf-file-label');
+  if(pFileInput&&pFileLabel){
+    pFileInput.addEventListener('change',function(){
+      pFileLabel.textContent=pFileInput.files.length?pFileInput.files[0].name:'Adjuntar recibo de luz (opcional)';
+    });
+  }
+
+  /* form submit feedback — applies to the section form and the popup form */
+  var forms=document.querySelectorAll('#contact-form, .popup-formfields');
+  forms.forEach(function(form){
+    var next=form.querySelector('input[name="_next"]');
+    if(next)next.value=window.location.href;
     form.addEventListener('submit',function(){
       var btn=form.querySelector('.btn-submit');
-      btn.textContent='Enviando...';btn.disabled=true;btn.style.opacity='.6';
+      if(btn){btn.textContent='Enviando...';btn.disabled=true;btn.style.opacity='.6';}
     });
+  });
+
+  /* popup submit stays gray/disabled until every required field is valid */
+  var pForm=document.querySelector('.popup-formfields');
+  if(pForm){
+    var pBtn=pForm.querySelector('.btn-submit');
+    function refreshPopupBtn(){
+      var ok=pForm.checkValidity();
+      pForm.classList.toggle('is-valid',ok);
+      if(pBtn)pBtn.disabled=!ok;
+    }
+    pForm.addEventListener('input',refreshPopupBtn);
+    pForm.addEventListener('change',refreshPopupBtn);
+    refreshPopupBtn();
   }
 })();
