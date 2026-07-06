@@ -471,7 +471,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 }
 
 /* ---------- 12. SCROLL-DRIVEN SERVICES ---------- */
-.svc-scroll { position: relative; height: 300vh; background: var(--c-offwhite); margin-top: -300px }
+.svc-scroll { position: relative; height: 300vh; background: var(--c-offwhite); margin-top: -90px }
 .svc-scroll-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding-top: 0 }
 .svc-progress { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--line); z-index: 10 }
 .svc-progress-bar { height: 100%; width: 0%; background: var(--accent); transition: width .05s linear }
@@ -543,7 +543,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 @keyframes svcBadgeRise { from { opacity: 0; transform: translateX(var(--tx)) translateY(20px) } to { opacity: 1; transform: translateX(var(--tx)) translateY(0) } }
 
 /* ---------- 12b. RESULTADOS (promo card + 2x2 stat cards) ---------- */
-.results-grid { display: grid; grid-template-columns: minmax(260px, .82fr) 1.18fr; gap: 24px; align-items: start; max-width: 70%; margin: 56px auto 0 }
+.results-grid { display: grid; grid-template-columns: minmax(240px, .82fr) 1.18fr; gap: 24px; align-items: start; max-width: 1050px; margin: 56px auto 0 }
 /* keep the SVG card's native proportion (158.58 × 192.3) — no stretch, no distortion */
 .results-promo { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--c-white); aspect-ratio: 158.58 / 192.3; display: flex }
 .results-promo-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center }
@@ -558,16 +558,18 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .result-icon-chip { display: flex; align-self: center; flex: none; background: none }
 .result-icon-chip img { width: clamp(43px, 4.16vw, 58px); height: clamp(43px, 4.16vw, 58px); object-fit: contain }
 .result-card .stat { align-items: flex-start; text-align: left }
-.result-card .stat b { font-size: clamp(30px, 3vw, 46px); color: var(--ink); font-weight: var(--fw-black) }
+.result-card .stat b { font-size: clamp(30px, 3vw, 46px); color: var(--ink); font-weight: var(--fw-black); white-space: nowrap }
 .result-card .stat span { margin-top: 8px; font-size: 14px; color: var(--muted); font-weight: var(--fw-regular) }
 
-@media (max-width: 900px) {
-  .results-grid { grid-template-columns: 1fr; max-width: 520px }
-  /* cap the portrait card's height when it goes full-width so it isn't huge */
-  .results-promo { aspect-ratio: auto; height: clamp(280px, 46vw, 420px) }
-  .results-promo-bg { object-fit: cover; object-position: 62% 82% }
+/* stack the promo on top and keep the figures 2×2 below */
+@media (max-width: 980px) {
+  .results-grid { grid-template-columns: 1fr; max-width: 640px; gap: 20px }
+  /* portrait card becomes a horizontal banner — cap its height */
+  .results-promo { aspect-ratio: auto; height: clamp(240px, 40vw, 340px) }
+  .results-promo-bg { object-fit: cover; object-position: center 78% }
 }
 @media (max-width: 560px) {
+  .results-grid { max-width: 420px }
   .results-cards { grid-template-columns: 1fr }
 }
 
@@ -933,9 +935,40 @@ footer .brand-logo { height: 24px }
 .popup-card .form-field { margin-bottom: 14px }
 .popup-card .btn-submit { width: 100%; margin-top: 8px }
 
-/* popup trigger styling */
-.popup-trigger { color: var(--accent) !important; font-weight: var(--fw-bold) !important; text-decoration: underline; text-underline-offset: 4px; cursor: pointer }
-.popup-trigger:hover { color: var(--c-white) !important }
+/* popup trigger styling — inline text links only (buttons/nav keep their own styles) */
+.popup-trigger:not(.btn):not(.portal) { color: var(--accent) !important; font-weight: var(--fw-bold) !important; text-decoration: underline; text-underline-offset: 4px; cursor: pointer }
+.popup-trigger:not(.btn):not(.portal):hover { color: var(--c-white) !important }
+.popup-trigger { cursor: pointer }
+
+/* wide diagnostic popup */
+.popup-card-wide { max-width: 760px; width: 92%; text-align: left; padding: 44px 44px }
+.popup-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 40px; align-items: start }
+.popup-eyebrow { display: block; font-size: var(--fs-xs); font-weight: var(--fw-medium); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--accent); margin-bottom: 14px }
+.popup-intro h3 { font-size: 24px; line-height: 1.08; letter-spacing: var(--ls-tight); margin-bottom: 12px }
+.popup-intro .popup-sub { margin-bottom: 0 }
+.popup-formfields .pf-label { display: block; font-size: 11px; font-weight: var(--fw-bold); color: var(--ink); margin-bottom: 6px; letter-spacing: .01em }
+.popup-card-wide .form-field { margin-bottom: 16px }
+.pf-select {
+  width: 100%; padding: var(--sp-sm) 0; background: transparent;
+  border: none; border-bottom: 1px solid var(--line); color: var(--ink);
+  font-family: var(--font); font-size: var(--fs-md); font-weight: var(--fw-regular);
+  outline: none; cursor: pointer; border-radius: 0;
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300296b' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 2px center; background-size: 15px;
+}
+.pf-select:focus { border-bottom-color: var(--accent) }
+.pf-select:required:invalid { color: rgba(0,41,107,.3) }
+.pf-select option { color: var(--ink) }
+.pf-radio-field { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 22px }
+.pf-radio-field .pf-label { width: 100%; margin-bottom: 4px }
+.pf-radio { display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-md); color: var(--ink); cursor: pointer }
+.pf-radio input { accent-color: var(--accent); width: 15px; height: 15px }
+.popup-card-wide .btn-submit { width: 100%; margin-top: 4px }
+@media (max-width: 640px) {
+  .popup-card-wide { padding: 36px 24px }
+  .popup-grid { grid-template-columns: 1fr; gap: 24px }
+}
 
 /* sec-sub single line for specific sections */
 #eaas .sec-sub, #soluciones .sec-sub { white-space: nowrap; max-width: none }

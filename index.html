@@ -75,7 +75,7 @@
       <a href="#casos" role="menuitem">Casos de éxito</a>
     </div>
     <div class="navlinks-right">
-      <a class="portal" href="#contacto" role="menuitem">Contacto</a>
+      <a class="portal popup-trigger" href="#contacto" role="menuitem">Contacto</a>
       <a class="portal-btn" href="https://portal.solario.mx" target="_blank" rel="noopener" role="menuitem">Portal de clientes</a>
     </div>
   </div>
@@ -101,7 +101,7 @@
       <span class="eyebrow">Suministrador Calificado de Energía</span>
       <h1 class="reveal-title">Soluciones energéticas<br>para empresas de alto consumo<span class="dot-accent">.</span></h1>
       <div class="hero-ctas">
-        <a class="btn btn-primary" href="#contacto">Solicitar diagnóstico</a>
+        <a class="btn btn-primary popup-trigger" href="#contacto">Hablar con un asesor</a>
         <a class="btn btn-ghost" href="#soluciones">Explorar soluciones</a>
       </div>
     </div>
@@ -316,7 +316,7 @@
   <div class="container">
     <div class="results-grid rv">
       <div class="results-promo">
-        <img src="assets/card%20solario%20cifras.svg" alt="" class="results-promo-bg" aria-hidden="true">
+        <img src="assets/solar%20card%20resultados.svg" alt="" class="results-promo-bg" aria-hidden="true">
         <div class="results-promo-text">
           <span class="results-promo-eyebrow">Resultados</span>
           <h2 class="results-promo-title">Certidumbre que se mide en números<span class="dot-accent">.</span></h2>
@@ -508,22 +508,105 @@
 <script src="js/forms.js"></script>
 <!-- ===== POPUP FORM ===== -->
 <div class="popup-overlay" id="popup-form">
-  <div class="popup-card">
+  <div class="popup-card popup-card-wide">
     <button class="popup-close" onclick="document.getElementById('popup-form').classList.remove('active')" aria-label="Cerrar">×</button>
-    <h3>Solicita información<span class="dot-accent">.</span></h3>
-    <p class="popup-sub">Déjanos tus datos y te contactamos para diseñar tu solución.</p>
-    <form class="contact-form" action="https://formsubmit.co/vitaminad@solario.mx" method="POST">
-      <input type="hidden" name="_subject" value="Solicitud desde Ultimate - solario.mx">
-      <input type="hidden" name="_captcha" value="true">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://www.solario.mx/#ultimate">
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <div class="form-field"><input type="text" name="nombre" required placeholder="*Nombre completo"></div>
-      <div class="form-field"><input type="email" name="correo" required placeholder="*Correo electrónico"></div>
-      <div class="form-field"><input type="tel" name="telefono" required placeholder="*Teléfono"></div>
-      <div class="form-field"><input type="text" name="empresa" placeholder="Empresa"></div>
-      <div class="form-field"><button type="submit" class="btn btn-primary btn-submit">Enviar solicitud</button></div>
-    </form>
+    <div class="popup-grid">
+      <div class="popup-intro">
+        <span class="popup-eyebrow">Formulario</span>
+        <h3>Diagnóstico energético personalizado<span class="dot-accent">.</span></h3>
+        <p class="popup-sub">Deja tu registro y un asesor de Solario se pondrá en contacto contigo para conocer más acerca de tu energía.</p>
+      </div>
+      <form class="contact-form popup-formfields" action="https://formsubmit.co/vitaminad@solario.mx" method="POST">
+        <input type="hidden" name="_subject" value="Diagnóstico energético - solario.mx">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://www.solario.mx/">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form-field">
+          <label class="pf-label" for="pf-name">Nombre completo</label>
+          <input type="text" id="pf-name" name="nombre" required placeholder="Nombre completo">
+        </div>
+        <div class="form-field">
+          <label class="pf-label" for="pf-position">Posición</label>
+          <select id="pf-position" name="posicion" class="pf-select" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option>CEO</option>
+            <option>CFO</option>
+            <option>COO</option>
+            <option>Gerente de Proyectos</option>
+            <option>Supervisor de Operaciones</option>
+            <option>Analista técnico</option>
+            <option>Asistente Ejecutivo</option>
+            <option>Especialista en Compras</option>
+            <option>Gerente de Compras</option>
+            <option>Gerente de Finanzas</option>
+            <option>Analista de presupuestos</option>
+            <option>Contralor</option>
+            <option>Abogado general</option>
+            <option>Gerente de riesgos</option>
+            <option>Gerente de Mantenimiento</option>
+            <option>Gerente de Sustentabilidad</option>
+            <option>Gerente de planta</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="pf-label" for="pf-company">Empresa</label>
+          <input type="text" id="pf-company" name="empresa" placeholder="Empresa">
+        </div>
+        <div class="form-field">
+          <label class="pf-label" for="pf-industry">Industria</label>
+          <select id="pf-industry" name="industria" class="pf-select" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option>Aeronáutica</option>
+            <option>Alimentos y Bebidas</option>
+            <option>Automotriz</option>
+            <option>Cementera</option>
+            <option>Comunicaciones</option>
+            <option>Construcción</option>
+            <option>Química y Farmacéutica</option>
+            <option>Deportivo o Club</option>
+            <option>Educación</option>
+            <option>Energía</option>
+            <option>Entretenimiento</option>
+            <option>Farmacéutica</option>
+            <option>Financiero</option>
+            <option>Gobierno</option>
+            <option>Informática</option>
+            <option>Inmobiliaria</option>
+            <option>Mecánica o robótica</option>
+            <option>Metalúrgia</option>
+            <option>Papel y cartón</option>
+            <option>Petroquímica (refinamiento, gasolina)</option>
+            <option>Plásticos, envases y vidrios</option>
+            <option>Química</option>
+            <option>Retail</option>
+            <option>Salud</option>
+            <option>Servicios</option>
+            <option>Siderúrgia</option>
+            <option>Textil y calzado</option>
+            <option>Tiendas Departamentales</option>
+            <option>Transporte</option>
+            <option>Turismo</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="pf-label" for="pf-phone">Teléfono</label>
+            <input type="tel" id="pf-phone" name="telefono" required placeholder="Teléfono">
+          </div>
+          <div class="form-field">
+            <label class="pf-label" for="pf-email">Correo corporativo</label>
+            <input type="email" id="pf-email" name="correo" required placeholder="Email">
+          </div>
+        </div>
+        <div class="form-field pf-radio-field">
+          <span class="pf-label">¿Deseas agendar una llamada de 20 min con un asesor?</span>
+          <label class="pf-radio"><input type="radio" name="agendar_llamada" value="Sí" required> Sí</label>
+          <label class="pf-radio"><input type="radio" name="agendar_llamada" value="No"> No</label>
+        </div>
+        <div class="form-field"><button type="submit" class="btn btn-primary btn-submit">Enviar</button></div>
+      </form>
+    </div>
   </div>
 </div>
 
