@@ -299,12 +299,14 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
   background: var(--c-offwhite);
 }
 .energia-inner { width: 100%; max-width: 1400px; margin: 0 auto }
+/* baja 60px el contenido de Soluciones sin mover "Quiénes somos" (el cue compensa abajo) */
+#soluciones { padding-top: 90px }
 .energia-inner .abx-head { text-align: center }
 .energia-inner > .sec-sub { text-align: center }
 .energia-inner .abx-grid-2 { margin-top: clamp(28px, 3vw, 48px) }
 
 /* scroll cue below Soluciones → invites scrolling down to About Us */
-.scroll-cue { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: calc(clamp(44px, 6vh, 80px) + 200px); text-decoration: none; color: var(--muted) }
+.scroll-cue { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: calc(clamp(44px, 6vh, 80px) + 110px); text-decoration: none; color: var(--muted) }
 .scroll-cue-line { width: 1.4px; height: 50px; background: var(--muted); opacity: .6 }
 .scroll-cue-label { font-family: var(--font); font-size: var(--fs-sm); font-weight: var(--fw-medium); letter-spacing: var(--ls-wide); color: var(--muted); text-transform: uppercase }
 .scroll-cue-arrow { color: var(--muted); animation: cueBob 1.8s ease-in-out infinite }
@@ -535,17 +537,17 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
   background: url("assets/break-torre.jpg") center / cover no-repeat;
   filter: grayscale(1) contrast(1.04);
 }
-/* scrim neutro para legibilidad */
+/* filtro azul de marca sobre la imagen */
 .break-band::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(12,15,22,.42) 0%, rgba(12,15,22,.55) 100%);
+  background: linear-gradient(180deg, rgba(0,41,107,.86) 0%, rgba(0,26,66,.92) 100%);
 }
 .break-band-inner {
   position: relative; z-index: 2; width: 100%; text-align: center;
   padding: clamp(40px, 8vh, 90px) var(--sp-gutter-content);
 }
 .break-phrase {
-  margin: 0; font-family: var(--font); font-size: clamp(14px, 3.2vw, 44px);
+  margin: 0; font-family: var(--font); font-size: clamp(10px, 2.9vw, 44px);
   font-weight: var(--fw-semibold); color: var(--c-white);
   line-height: 1.2; letter-spacing: var(--ls-tight); white-space: nowrap;
 }
@@ -655,8 +657,11 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
   border-bottom: 1px solid rgba(255,255,255,.22);
   -webkit-backdrop-filter: blur(16px) saturate(1.15); backdrop-filter: blur(16px) saturate(1.15);
 }
-.results-glass-inner { max-width: 1500px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap }
+.results-glass-inner { max-width: 1500px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap }
 .results-cta { flex: none; white-space: nowrap }
+/* mismo estilo que el botón blanco del hero */
+.results-cta.btn-primary { background: var(--c-white); color: var(--c-navy) }
+.results-cta.btn-primary:hover { transform: translateY(-3px); color: var(--c-navy); box-shadow: 0 14px 32px -12px rgba(0,0,0,.4) }
 .results-eyebrow {
   display: block; font-family: var(--font); font-size: var(--fs-sm); font-weight: var(--fw-medium);
   letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--c-white); opacity: .85; margin-bottom: 14px;
@@ -692,6 +697,10 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 @media (max-width: 900px) {
   .results-hero-spacer { min-height: 34vh }
   .results-figures { grid-template-columns: repeat(2, 1fr); gap: 28px }
+}
+@media (max-width: 700px) {
+  /* title + CTA stack cleanly instead of relying on flex-wrap */
+  .results-glass-inner { flex-direction: column; align-items: flex-start; gap: 22px }
 }
 @media (max-width: 560px) {
   .results-figures { grid-template-columns: 1fr; gap: 22px }
@@ -1161,8 +1170,15 @@ footer .brand-logo { height: 24px }
   .popup-card-modal { padding: 28px 18px 22px }
 }
 
-/* sec-sub single line for specific sections */
+/* sec-sub single line for specific sections (desktop only — wrap below tablet so it never clips) */
 #eaas .sec-sub, #soluciones .sec-sub { white-space: nowrap; max-width: none }
+@media (max-width: 1024px) {
+  #eaas .sec-sub, #soluciones .sec-sub { white-space: normal }
+}
+/* long titles must wrap (not clip) on small phones; the intended <br> breaks stay */
+@media (max-width: 600px) {
+  .abx-title { white-space: normal }
+}
 
 /* flip card logos */
 .flip-logo { height: 48px; width: auto; filter: brightness(0) invert(1); opacity: .9 }
