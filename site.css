@@ -36,6 +36,7 @@
   --fs-hero: clamp(32px, 5vw, 78px);
   --fw-regular: 400;
   --fw-medium: 500;
+  --fw-semibold: 600;
   --fw-bold: 700;
   --fw-black: 800;
   --lh-tight: 1.06;
@@ -122,7 +123,7 @@ main, footer { overflow-x: clip }
   text-transform: uppercase; margin-bottom: 28px;
 }
 .section h2, .cta-divider h2 {
-  font-family: var(--font); font-size: calc(var(--fs-xl) * 1.2); font-weight: var(--fw-regular);
+  font-family: var(--font); font-size: calc(var(--fs-xl) * 1.2); font-weight: var(--fw-semibold);
   letter-spacing: var(--ls-tight); line-height: var(--lh-tight);
   text-wrap: balance; color: var(--c-blue);
 }
@@ -325,8 +326,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 /* ---------- 8. ABOUT US — reconocimientos (continues the off-white composition) ---------- */
 .about-light { background: linear-gradient(180deg, var(--c-offwhite) 0%, var(--c-white) 18%, var(--c-white) 50%, var(--c-offwhite) 100%) }
 #about .container { max-width: none; padding-top: 0; margin-top: 0; padding-bottom: 120px; padding-left: var(--sp-gutter-content); padding-right: var(--sp-gutter-content) }
-#resultados { margin-top: -100px }
-#resultados .container { padding-top: 60px }
+#resultados { margin-top: 0 }
 .about-wrap { display: flex; flex-direction: column; align-items: center; text-align: center }
 .about-head { max-width: 940px }
 .about-head .sec-label { display: block; margin-bottom: 22px }
@@ -342,7 +342,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 #about .abx-title { white-space: normal }
 #about .abx-grid-2 { align-items: start; margin-top: 0 }
 .abx-head .sec-label { display: block; margin-bottom: 18px; font-size: var(--fs-sm) }
-.abx-title { font-size: calc(var(--fs-xl) * 1.2) !important; color: var(--ink); line-height: 1.12 !important; font-weight: var(--fw-regular) !important; letter-spacing: -.03em !important; max-width: none; white-space: nowrap }
+.abx-title { font-size: calc(var(--fs-xl) * 1.2) !important; color: var(--ink); line-height: 1.12 !important; font-weight: var(--fw-semibold) !important; letter-spacing: -.03em !important; max-width: none; white-space: nowrap }
 .abx-grid { width: 100%; display: grid; grid-template-columns: 0.72fr 1.3fr 1.0fr; gap: clamp(28px, 3.4vw, 60px); align-items: center; margin-top: calc(clamp(36px, 4vw, 64px) + 55px); text-align: left }
 /* 2-column layout: card (left) + text (right), vertically centered against each other.
    Tighter margin-top than the base .abx-grid so it feels integrated with the heading
@@ -385,6 +385,8 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .abx-cta { align-self: flex-start }
 .abx-logos-title { margin-top: 36px; margin-bottom: 0 }
 .abx-lt-1 { display: block; font-family: var(--font); font-size: var(--fs-lg); font-weight: var(--fw-black); color: var(--ink); line-height: 1.25; letter-spacing: -.02em }
+/* About Us: todo el texto del bloque en el mismo color que el eyebrow (--muted) */
+#about .abx-p-strong, #about .abx-list li { color: var(--muted) }
 .abx-lt-2 { display: block; margin-top: 4px; font-family: var(--font); font-size: var(--fs-base); font-weight: var(--fw-medium); color: var(--ink); line-height: 1.5 }
 .abx-logos { display: flex; flex-wrap: wrap; align-items: center; gap: calc(clamp(20px, 2.2vw, 36px) + 10px); margin-top: 44px; max-width: 100% }
 .abx-logos img { height: 41px; width: auto; display: block }
@@ -426,7 +428,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 #cobertura { position: relative; background: var(--c-navy); overflow: hidden }
 #cobertura::before { content: ""; position: absolute; inset: 0; background: url("assets/card-suministro.jpg") center/cover no-repeat; opacity: .06; pointer-events: none; z-index: 0 }
 #cobertura > .container { position: relative; z-index: 2 }
-.coverage-title { font-size: calc(var(--fs-xl) * 1.2) !important; color: var(--c-white); line-height: var(--lh-tight) !important; font-weight: var(--fw-regular) !important }
+.coverage-title { font-size: calc(var(--fs-xl) * 1.2) !important; color: var(--c-white); line-height: var(--lh-tight) !important; font-weight: var(--fw-semibold) !important }
 .results-block { margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--line-inv) }
 .results-subtitle { font-size: var(--fs-lg) !important; color: var(--c-white); margin-bottom: 40px }
 .section-navy .stats { border-top: none; padding-top: 0 }
@@ -520,7 +522,36 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 }
 
 /* ---------- 12. SCROLL-DRIVEN SERVICES ---------- */
-.svc-scroll { position: relative; height: calc(300vh - 200px); background: linear-gradient(180deg, var(--c-offwhite) 0%, var(--c-offwhite) 55%, var(--c-white) 100%); margin-top: -199px }
+/* ---------- BREAK / FRASE (torre en blanco y negro) ---------- */
+.break-band {
+  position: relative; width: 100%; overflow: hidden;
+  min-height: clamp(320px, 52vh, 560px);
+  display: flex; align-items: center; justify-content: center;
+  background: #16181c;
+}
+/* imagen de la torre en blanco y negro (capa propia para no afectar el texto) */
+.break-band::before {
+  content: ""; position: absolute; inset: 0; z-index: 0;
+  background: url("assets/break-torre.jpg") center / cover no-repeat;
+  filter: grayscale(1) contrast(1.04);
+}
+/* scrim neutro para legibilidad */
+.break-band::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(12,15,22,.42) 0%, rgba(12,15,22,.55) 100%);
+}
+.break-band-inner {
+  position: relative; z-index: 2; width: 100%; text-align: center;
+  padding: clamp(40px, 8vh, 90px) var(--sp-gutter-content);
+}
+.break-phrase {
+  margin: 0; font-family: var(--font); font-size: clamp(14px, 3.2vw, 44px);
+  font-weight: var(--fw-semibold); color: var(--c-white);
+  line-height: 1.2; letter-spacing: var(--ls-tight); white-space: nowrap;
+}
+.break-phrase .dot-accent { color: var(--accent) }
+
+.svc-scroll { position: relative; height: calc(300vh - 200px); background: linear-gradient(180deg, var(--c-offwhite) 0%, var(--c-offwhite) 55%, var(--c-white) 100%); margin-top: 0 }
 .svc-scroll-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; padding-top: 0 }
 .svc-progress { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--line); z-index: 10 }
 .svc-progress-bar { height: 100%; width: 0%; background: var(--accent); transition: width .05s linear }
@@ -532,7 +563,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-header .sec-label { display: block; margin-bottom: 18px }
 .svc-content { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 0px; align-items: center; z-index: 2; opacity: 1 }
 .svc-text { position: relative; transform: translateX(80px) }
-.svc-heading { font-family: var(--font); font-size: calc(var(--fs-xl) * 1.2); font-weight: var(--fw-regular); color: var(--c-blue); line-height: 1.1; letter-spacing: var(--ls-tight); margin: 0 }
+.svc-heading { font-family: var(--font); font-size: calc(var(--fs-xl) * 1.2); font-weight: var(--fw-semibold); color: var(--c-blue); line-height: 1.1; letter-spacing: var(--ls-tight); margin: 0 }
 .svc-panels { position: relative; height: 300px; margin-top: 24px }
 .svc-name { margin-bottom: 18px }
 .svc-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-start; opacity: 0; pointer-events: none; will-change: transform, opacity }
@@ -604,44 +635,67 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .svc-badge-br { bottom: 12%; right: 0; --tx: 50%; animation-delay: .24s }
 @keyframes svcBadgeRise { from { opacity: 0; transform: translateX(var(--tx)) translateY(20px) } to { opacity: 1; transform: translateX(var(--tx)) translateY(0) } }
 
-/* ---------- 12b. RESULTADOS (promo card + 2x2 stat cards) ---------- */
-.results-grid { display: grid; grid-template-columns: minmax(320px, 1fr) 1.05fr; gap: 24px; align-items: start; max-width: 1180px; margin: 56px auto 0 }
-/* keep the SVG card's native proportion (158.58 × 192.3) — no stretch, no distortion */
-.results-promo { position: relative; border-radius: var(--r-lg); overflow: hidden; background: var(--c-white); align-self: stretch; display: flex }
-.results-promo-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center }
-.results-promo-text { position: relative; z-index: 2; padding: clamp(52px, 5vw, 76px); display: flex; flex-direction: column; align-items: flex-start; gap: 16px }
-.results-promo-eyebrow { font-family: var(--font); font-size: var(--fs-sm); font-weight: var(--fw-medium); letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--muted) }
-#resultados .results-promo-title { font-family: var(--font); font-size: calc(var(--fs-xl) * 1.2); font-weight: var(--fw-regular); color: var(--c-blue); line-height: 1.16; letter-spacing: var(--ls-tight); max-width: 15ch }
+/* ---------- 12b. RESULTADOS (image + full-width glass + navy figures) ---------- */
+.results-hero {
+  position: relative; width: 100%; min-height: calc(100vh - 500px); overflow: hidden;
+  display: flex; flex-direction: column;
+  background:
+    linear-gradient(rgba(4,18,46,.58), rgba(4,18,46,.58)),
+    url("assets/card-subestacion.jpg") center / cover no-repeat,
+    var(--c-navy);
+}
+/* top image area — slim strip above the glass + navy bands */
+.results-hero-spacer { flex: 1 1 auto; min-height: clamp(140px, 20vh, 240px) }
 
-.results-cards { align-self: start; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 24px }
-/* square figures, aligned top & bottom with the sun card */
-.result-card { border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--c-white); padding: clamp(28px, 2.6vw, 40px); display: flex; flex-direction: column; justify-content: space-between; gap: 24px; aspect-ratio: 1 / 1; transition: border-color var(--duration-fast) }
-.result-card:hover { border-color: rgba(8,158,223,.4) }
-.result-icon-chip { display: none }
-.result-card .stat { align-items: flex-start; text-align: left }
-/* left column (+$240M, +70 MW): content to the right, number pinned to the bottom */
-.result-card:nth-child(odd) { align-items: flex-end; text-align: right; justify-content: flex-end }
-.result-card:nth-child(odd) .stat { align-items: flex-end; text-align: right }
-/* right column (+140, +10 MW): content to the left, number at the bottom (same height as the left column) */
-.result-card:nth-child(even) { align-items: flex-start; text-align: left; justify-content: flex-end }
-.result-card:nth-child(even) .stat { align-items: flex-start; text-align: left }
-/* bottom row (+70 MW, +10 MW): raise the figures a bit */
-.result-card:nth-child(n+3) .stat { transform: translateY(-56px) }
-.result-card .stat b { font-size: var(--fs-2xl); color: var(--ink); font-weight: var(--fw-black); white-space: nowrap; line-height: 1 }
-.result-card .stat span { margin-top: 3px; font-size: var(--fs-sm); color: var(--muted); font-weight: var(--fw-regular) }
+/* full-width glass band (middle) */
+.results-glass-band {
+  padding: clamp(40px, 6vh, 84px) var(--sp-gutter-content);
+  background: rgba(255,255,255,.10);
+  border-top: 1px solid rgba(255,255,255,.22);
+  border-bottom: 1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter: blur(16px) saturate(1.15); backdrop-filter: blur(16px) saturate(1.15);
+}
+.results-glass-inner { max-width: 1500px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: clamp(24px, 4vw, 64px); flex-wrap: wrap }
+.results-cta { flex: none; white-space: nowrap }
+.results-eyebrow {
+  display: block; font-family: var(--font); font-size: var(--fs-sm); font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wide); text-transform: uppercase; color: var(--c-white); opacity: .85; margin-bottom: 14px;
+}
+.results-title {
+  font-family: var(--font); font-size: calc(var(--fs-xl) * 1.2); font-weight: var(--fw-semibold);
+  color: var(--c-white); line-height: 1.14; letter-spacing: var(--ls-tight); max-width: 24ch;
+}
+.results-title .dot-accent { color: var(--accent) }
 
-/* stack the promo on top and keep the figures 2×2 below */
-@media (max-width: 980px) {
-  .results-grid { grid-template-columns: 1fr; max-width: 640px; gap: 20px }
-  /* portrait card becomes a horizontal banner — cap its height */
-  .results-promo { aspect-ratio: auto; height: clamp(240px, 40vw, 340px) }
-  .results-promo-bg { object-fit: cover; object-position: center 78% }
+/* full-width navy band (bottom) — flat azul marino, white numbers */
+.results-figures-band {
+  background: var(--c-navy);
+  padding: clamp(36px, 5vh, 66px) var(--sp-gutter-content);
+}
+.results-figures {
+  max-width: 1500px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(20px, 3vw, 56px);
+}
+.results-figure { display: flex; flex-direction: column; align-items: flex-start }
+#resultados .results-figure .stat { align-items: flex-start; text-align: left }
+#resultados .results-figure .stat b {
+  font-size: var(--fs-2xl); color: var(--c-white); font-weight: var(--fw-black);
+  line-height: 1; letter-spacing: -.03em; white-space: nowrap;
+}
+#resultados .results-figure .stat b i { font-style: normal; color: inherit }
+#resultados .results-figure .stat b i:first-child { color: var(--accent) }
+.results-figure-label {
+  width: 100%; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.20);
+  font-family: var(--font); font-size: var(--fs-sm); color: var(--muted-inv); font-weight: var(--fw-regular);
+}
+
+@media (max-width: 900px) {
+  .results-hero-spacer { min-height: 34vh }
+  .results-figures { grid-template-columns: repeat(2, 1fr); gap: 28px }
 }
 @media (max-width: 560px) {
-  .results-grid { max-width: 420px }
-  .results-cards { grid-template-columns: 1fr }
-  .result-card:nth-child(odd), .result-card:nth-child(even) { align-items: flex-start; text-align: left; justify-content: space-between }
-  .result-card:nth-child(odd) .stat, .result-card:nth-child(even) .stat { align-items: flex-start; text-align: left }
+  .results-figures { grid-template-columns: 1fr; gap: 22px }
+  .results-figure-label { margin-top: 12px; padding-top: 12px }
 }
 
 /* ---------- 13. CTA DIVIDER ---------- */
@@ -803,6 +857,11 @@ footer .brand-logo { height: 24px }
   .navlinks-center, .navlinks-right { position: static; transform: none; flex-direction: column; gap: 28px }
   /* the accumulating icon row is a wide-desktop flourish; below this it crowds the text */
   .svc-icon-row { display: none }
+  /* drop the wide-screen ±80px nudges so the text column and the card don't overlap;
+     add a real gap and let the card scale down as the viewport narrows */
+  .svc-content { gap: clamp(24px, 3.5vw, 56px) }
+  .svc-text { transform: none }
+  .svc-visual { transform: none; width: clamp(340px, 36vw, 443px) }
   /* About: drop the wide-screen 250px right-shift + oversized gap so the text column doesn't collapse */
   .abx-grid-2 { margin-left: 0; width: 100%; gap: clamp(32px, 3.5vw, 64px) }
 }
