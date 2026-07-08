@@ -19,21 +19,23 @@
   var enabled=false;
   function cl(v){return v<0?0:v>1?1:v;}
 
-  // Anchor the icon row to STABLE references only (the media card and the content/text
-  // rects, which don't move while the section is pinned) — never to the title, which
-  // slides during the panel crossfades and would make the row jump on scroll.
-  // Bottom edge sits on the card's base; right edge aligns to the text column; clamped
-  // so the left edge never crosses the gutter.
+  // Anchor the icon row's TOP edge below whichever sits lower: the media card's base,
+  // or the currently active paragraph's bottom edge (+ a clearance gap) — extending
+  // downward from there so it can never overlap the text, no matter how many lines a
+  // given panel's copy wraps to.
   function placeIconRow(){
     if(!iconRow||!svcContent||!imgWrap)return;
     var contentRect=svcContent.getBoundingClientRect();
     var cardRect=imgWrap.getBoundingClientRect();
+    var activePanel=svcSection.querySelector('.svc-panel.active');
+    var textBottom=activePanel?activePanel.getBoundingClientRect().bottom:0;
     iconRow.style.height='';
     iconRow.style.right='auto';
-    var box=iconRow.getBoundingClientRect();
+    var gap=28;
+    var anchor=Math.max(cardRect.bottom,textBottom+gap);
     // left edge stays aligned to the text column (left:0 in CSS); only the vertical
-    // position is computed — its base sits on the card's bottom edge (a stable reference)
-    iconRow.style.top=(cardRect.bottom-contentRect.top-box.height)+'px';
+    // position is computed — the row starts (top edge) at the anchor and grows downward
+    iconRow.style.top=(anchor-contentRect.top)+'px';
   }
 
   function updateSvc(){

@@ -33,7 +33,7 @@
 <title>Solario — Suministro de energía</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 
 <!-- Structured Data -->
@@ -126,7 +126,7 @@
           <input type="text" id="pf-name" name="nombre" required placeholder="Nombre completo">
         </div>
         <div class="form-field">
-          <input type="email" id="pf-email" name="correo" required placeholder="Correo corporativo" pattern="[a-zA-Z0-9._%+\-]+@(?!(gmail|hotmail|outlook|yahoo|live|icloud|aol|proton|protonmail|gmx|mail|yandex|zoho|msn|me|ymail)\.)[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" title="Usa tu correo corporativo (no se permiten dominios gratuitos como Gmail, Hotmail o Yahoo).">
+          <input type="email" id="pf-email" name="correo" required placeholder="Correo corporativo">
         </div>
       </div>
       <div class="form-row">
@@ -139,7 +139,7 @@
       </div>
       <div class="form-row">
         <div class="form-field">
-          <select id="pf-position" name="posicion" class="pf-select" required>
+          <select id="pf-position" name="posicion" class="pf-select">
             <option value="" disabled selected>Posición</option>
             <option>CEO</option>
             <option>CFO</option>
@@ -161,7 +161,7 @@
           </select>
         </div>
         <div class="form-field">
-          <select id="pf-industry" name="industria" class="pf-select" required>
+          <select id="pf-industry" name="industria" class="pf-select">
             <option value="" disabled selected>Industria</option>
             <option>Aeronáutica</option>
             <option>Alimentos y Bebidas</option>
@@ -222,40 +222,109 @@
 
 <main>
 
+<!-- ===== TRANSICIÓN: el semicírculo revela Soluciones ===== -->
+<section class="energia-scroll" id="energia-transicion" aria-label="Soluciones">
+  <div class="energia-sticky">
+    <div class="energia-fill">
+      <div class="energia-inner" id="soluciones">
+        <div class="abx-head">
+          <span class="sec-label">Soluciones</span>
+          <h2 class="shimmer-title abx-title">Soluciones que impulsan<br>tu operación<span class="dot-accent">.</span></h2>
+        </div>
+        <p class="sec-sub centered">Diseñamos estrategias modulares que combinan tecnología, datos y visión financiera para cada perfil de consumo.</p>
+        <div class="flip-cards">
+      <article class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front flip-glass">
+            <img src="assets/card-subestacion.jpg" alt="Suministro Calificado" class="flip-img" loading="lazy">
+            <div class="flip-front-body">
+              <img src="assets/logo-solario-mem.svg" alt="MEM" class="flip-logo">
+            </div>
+          </div>
+          <div class="flip-back flip-glass">
+            <img src="assets/MEM.svg" alt="" class="flip-icon" aria-hidden="true">
+            <span class="idx">MEM</span>
+            <h3>Suministro Calificado en el MEM</h3>
+            <p>Te ayudamos a entender, evaluar y operar tu suministro eléctrico dentro del Mercado Eléctrico Mayorista.<br><br>Traducimos la complejidad técnica y regulatoria en una ruta clara para que tomes mejores decisiones.</p>
+          </div>
+        </div>
+      </article>
+      <article class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front flip-glass">
+            <img src="assets/hero-card-solar.jpg" alt="Generación Solar" class="flip-img" loading="lazy">
+            <div class="flip-front-body">
+              <img src="assets/logo-solario-pv.svg" alt="PV" class="flip-logo">
+            </div>
+          </div>
+          <div class="flip-back flip-glass">
+            <img src="assets/PV.svg" alt="" class="flip-icon" aria-hidden="true">
+            <span class="idx">PV</span>
+            <h3>Generación fotovoltaica en sitio</h3>
+            <p>Te ayudamos a evaluar e integrar generación solar en sitio dentro de tu estrategia energética.<br><br>Más que instalar paneles, definimos si la generación propia tiene sentido para tu consumo y operación.</p>
+          </div>
+        </div>
+      </article>
+      <article class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front flip-glass">
+            <img src="assets/card-bess.jpg" alt="Almacenamiento BESS" class="flip-img" loading="lazy">
+            <div class="flip-front-body">
+              <img src="assets/logo-solario-bess.svg" alt="BESS" class="flip-logo">
+            </div>
+          </div>
+          <div class="flip-back flip-glass">
+            <img src="assets/BESS.svg" alt="" class="flip-icon" aria-hidden="true">
+            <span class="idx">BESS</span>
+            <h3>BESS y continuidad operativa</h3>
+            <p>Te ayudamos a evaluar e integrar almacenamiento en baterías para dar más continuidad, control y resiliencia a tu operación.<br><br>Ideal cuando necesitas responder a picos de demanda, respaldo o estabilidad.</p>
+          </div>
+        </div>
+      </article>
+        </div>
+        <a class="scroll-cue" href="#about" aria-label="Bajar para conocer quiénes somos">
+          <span class="scroll-cue-label">Quiénes somos</span>
+          <span class="scroll-cue-line" aria-hidden="true"></span>
+          <svg class="scroll-cue-arrow" width="16" height="9" viewBox="0 0 16 9" fill="none" aria-hidden="true"><path d="M1 1l7 7 7-7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== ABOUT US ===== -->
 <section class="section about-light" id="about">
   <div class="container about-wrap">
-    <div class="abx-head rv">
-      <span class="sec-label">Somos la energía que trabaja para tu empresa.</span>
-      <h2 class="shimmer-title abx-title">Decisiones energéticas claras<br>para empresas de alto consumo<span class="dot-accent">.</span></h2>
-    </div>
-    <div class="abx-grid abx-grid-2">
-      <div class="abx-media rv">
-        <video autoplay muted loop playsinline aria-hidden="true">
-          <source src="assets/svc-suministro.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="abx-text rv">
-        <h3 class="abx-lead">Energía que se entiende, se estructura y se acompaña</h3>
-        <p class="abx-p">Solario ayuda a empresas de alto consumo a entender sus alternativas energéticas, evaluar si pueden participar en el Mercado Eléctrico Mayorista, integrar soluciones de almacenamiento o generación en sitio, y operar con más visibilidad sobre su consumo.</p>
-        <p class="abx-p abx-p-strong">No partimos de una tecnología. Partimos de tu operación.</p>
-        <ul class="abx-list">
-          <li>Analizamos el perfil energético de tu empresa</li>
-          <li>Identificamos rutas viables según consumo, operación y objetivos</li>
-          <li>Estructuramos soluciones a la medida</li>
-          <li>Acompañamos la implementación y el seguimiento</li>
-          <li>Hacemos más visible la información energética para decidir mejor</li>
-        </ul>
-        <div class="abx-logos-title">
-          <span class="abx-lt-1">Tres soluciones. Una sola lógica:</span>
+        <div class="abx-head">
+          <span class="sec-label">Somos la energía que trabaja para tu empresa.</span>
+          <h2 class="shimmer-title abx-title">Decisiones energéticas claras<br>para empresas de alto consumo<span class="dot-accent">.</span></h2>
         </div>
-        <div class="abx-logos">
-          <img src="assets/logo-solario-pv.svg" alt="Solario PV">
-          <img src="assets/logo-solario-bess.svg" alt="Solario BESS">
-          <img src="assets/logo-solario-mem.svg" alt="Solario MEM">
+        <div class="abx-grid abx-grid-2">
+          <div class="abx-media">
+            <video autoplay muted loop playsinline aria-hidden="true">
+              <source src="assets/svc-suministro.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="abx-text">
+            <p class="abx-p">Solario ayuda a empresas de alto consumo a entender sus alternativas energéticas, evaluar si pueden participar en el Mercado Eléctrico Mayorista, integrar soluciones de almacenamiento o generación en sitio, y operar con más visibilidad sobre su consumo.</p>
+            <p class="abx-p abx-p-strong">No partimos de una tecnología. Partimos de tu operación.</p>
+            <ul class="abx-list">
+              <li>Analizamos el perfil energético de tu empresa</li>
+              <li>Identificamos rutas viables según consumo, operación y objetivos</li>
+              <li>Estructuramos soluciones a la medida</li>
+              <li>Acompañamos la implementación y el seguimiento</li>
+              <li>Hacemos más visible la información energética para decidir mejor</li>
+            </ul>
+            <div class="abx-logos-title">
+              <span class="abx-lt-1">Tres soluciones. Una sola lógica:</span>
+            </div>
+            <div class="abx-logos">
+              <img src="assets/logo-solario-pv.svg" alt="Solario PV">
+              <img src="assets/logo-solario-bess.svg" alt="Solario BESS">
+              <img src="assets/logo-solario-mem.svg" alt="Solario MEM">
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
     <div class="abx-certs rv">
       <span class="abx-certs-label">Reconocimientos y alianzas</span>
       <div class="about-certs">
@@ -283,70 +352,15 @@
 </section>
 
 
-<!-- ===== SOLUCIONES ===== -->
-<section class="section section-white" id="soluciones">
-  <div class="container text-center">
-    <span class="sec-label rv">Soluciones</span>
-    <h2 class="rv shimmer-title">Soluciones que impulsan<br>tu operación<span class="dot-accent">.</span></h2>
-    <p class="sec-sub centered rv">Diseñamos estrategias modulares que combinan tecnología, datos y visión financiera para cada perfil de consumo.</p>
-    <div class="flip-cards rv">
-      <article class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-front flip-glass">
-            <img src="assets/card-subestacion.jpg" alt="Suministro Calificado" class="flip-img" loading="lazy">
-            <div class="flip-front-body">
-              <img src="assets/logo-solario-mem.svg" alt="MEM" class="flip-logo">
-            </div>
-          </div>
-          <div class="flip-back flip-glass">
-            <img src="assets/MEM.svg" alt="" class="flip-icon" aria-hidden="true">
-            <span class="idx">MEM</span>
-            <h3>Suministro Calificado en el MEM</h3>
-            <p>Solario ayuda a empresas de alto consumo a entender, evaluar y operar una estructura de suministro eléctrico dentro del Mercado Eléctrico Mayorista.<br><br>Traducimos la complejidad técnica, regulatoria y operativa del MEM en una ruta clara para tomar mejores decisiones energéticas.</p>
-          </div>
-        </div>
-      </article>
-      <article class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-front flip-glass">
-            <img src="assets/hero-card-solar.jpg" alt="Generación Solar" class="flip-img" loading="lazy">
-            <div class="flip-front-body">
-              <img src="assets/logo-solario-pv.svg" alt="PV" class="flip-logo">
-            </div>
-          </div>
-          <div class="flip-back flip-glass">
-            <img src="assets/PV.svg" alt="" class="flip-icon" aria-hidden="true">
-            <span class="idx">PV</span>
-            <h3>Generación fotovoltaica en sitio</h3>
-            <p>Solario ayuda a empresas a evaluar e integrar generación fotovoltaica como parte de una estrategia energética más amplia.<br><br>No se trata solo de instalar paneles. Se trata de entender si la generación en sitio tiene sentido para tu operación, cómo se relaciona con tu consumo y qué papel puede cumplir junto con suministro calificado, BESS y visibilidad operativa.</p>
-          </div>
-        </div>
-      </article>
-      <article class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-front flip-glass">
-            <img src="assets/card-bess.jpg" alt="Almacenamiento BESS" class="flip-img" loading="lazy">
-            <div class="flip-front-body">
-              <img src="assets/logo-solario-bess.svg" alt="BESS" class="flip-logo">
-            </div>
-          </div>
-          <div class="flip-back flip-glass">
-            <img src="assets/BESS.svg" alt="" class="flip-icon" aria-hidden="true">
-            <span class="idx">BESS</span>
-            <h3>BESS y continuidad operativa</h3>
-            <p>Solario ayuda a empresas a evaluar, estructurar e integrar sistemas de almacenamiento de energía para fortalecer continuidad, control y resiliencia operativa.<br><br>BESS puede formar parte de una estrategia energética más amplia cuando la operación necesita responder mejor a picos de demanda, variaciones, respaldo, generación en sitio o necesidades específicas de estabilidad.</p>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ===== ULTIMATE ===== -->
 <section class="svc-scroll" id="ultimate" aria-label="Modelo 360">
   <div class="svc-scroll-sticky">
     <div class="svc-progress" aria-hidden="true"><div class="svc-progress-bar" id="svc-bar"></div></div>
     <div class="svc-stage">
+      <div class="svc-header">
+        <span class="sec-label">Integración de soluciones</span>
+        <h2 class="svc-heading shimmer-title">Soluciones de energía<span class="dot-accent">.</span></h2>
+      </div>
       <div class="svc-content" id="svc-content">
         <div class="svc-text">
           <div class="svc-dots" id="svc-dots" aria-label="Navegación de servicios">
@@ -355,25 +369,23 @@
             <span class="svc-dot" data-slide="2"></span>
             <span class="svc-dot" data-slide="3"></span>
           </div>
-          <div class="svc-panel active" data-slide="0">
-            <span class="sec-label">Integración de soluciones</span>
-            <h3 class="shimmer-title">Soluciones de energía para<br><span class="svc-highlight">Suministro Calificado</span><span class="dot-accent">.</span></h3>
-            <p>El suministro calificado es una alternativa para empresas con alto consumo eléctrico que pueden participar en el Mercado Eléctrico Mayorista bajo un esquema distinto al suministro básico tradicional.<br><br>Esta ruta permite evaluar una estructura de suministro más alineada al perfil de consumo, operación y necesidades de cada empresa.</p>
-          </div>
-          <div class="svc-panel" data-slide="1">
-            <span class="sec-label">Integración de soluciones</span>
-            <h3 class="shimmer-title">Soluciones de energía para<br><span class="svc-highlight svc-highlight-bess">BESS</span><span class="dot-accent">.</span></h3>
-            <p>BESS significa Battery Energy Storage System: un sistema de almacenamiento de energía en baterías diseñado para cargar, almacenar y entregar energía según las necesidades de una operación.<br><br>En una empresa, su valor no está únicamente en almacenar electricidad, sino en cómo se integra con la demanda, infraestructura, continuidad, generación en sitio y estrategia energética general.</p>
-          </div>
-          <div class="svc-panel" data-slide="2">
-            <span class="sec-label">Integración de soluciones</span>
-            <h3 class="shimmer-title">Soluciones de energía para<br><span class="svc-highlight svc-highlight-pv">Generación Solar</span><span class="dot-accent">.</span></h3>
-            <p>La generación fotovoltaica en sitio permite producir energía solar dentro de las instalaciones de una empresa. Pero su valor no depende solo de instalar paneles; depende de cómo esa generación se relaciona con consumo, horarios, infraestructura, objetivos financieros y otras soluciones energéticas.<br><br>Solario evalúa la fotovoltaica como una pieza dentro de una estructura mayor.</p>
-          </div>
-          <div class="svc-panel" data-slide="3">
-            <span class="sec-label">Integración de soluciones</span>
-            <h3 class="shimmer-title">Soluciones de energía para<br><span class="svc-highlight">Estrategia Integral</span><span class="dot-accent">.</span></h3>
-            <p>Solario ayuda a estructurar una ruta energética completa, combinando suministro calificado en el Mercado Eléctrico Mayorista, BESS, generación fotovoltaica en sitio y visibilidad operativa.<br><br>Cuando una sola solución no es suficiente, el valor está en entender cómo se conectan las distintas alternativas con tu consumo, operación y objetivos de negocio.</p>
+          <div class="svc-panels">
+            <div class="svc-panel active" data-slide="0">
+              <span class="svc-name svc-name-mem">Suministro Calificado</span>
+              <p>El suministro calificado es una alternativa para empresas con alto consumo<br>eléctrico que pueden participar en el Mercado Eléctrico Mayorista<br>bajo un esquema distinto al suministro básico tradicional.<br><br>Esta ruta permite evaluar una estructura de suministro más alineada al perfil de<br>consumo, operación y necesidades de cada empresa.</p>
+            </div>
+            <div class="svc-panel" data-slide="1">
+              <span class="svc-name svc-name-bess">BESS</span>
+              <p>BESS significa Battery Energy Storage System: un sistema de almacenamiento<br>de energía en baterías diseñado para cargar, almacenar y entregar energía<br>según las necesidades de una operación.<br><br>En una empresa, su valor no está únicamente en almacenar electricidad,<br>sino en cómo se integra con la demanda, infraestructura, continuidad,<br>generación en sitio y estrategia energética general.</p>
+            </div>
+            <div class="svc-panel" data-slide="2">
+              <span class="svc-name svc-name-pv">Generación Solar</span>
+              <p>La generación fotovoltaica en sitio permite producir energía solar<br>dentro de las instalaciones de una empresa. Pero su valor no depende solo<br>de instalar paneles; depende de cómo esa generación se relaciona con consumo,<br>horarios, infraestructura, objetivos financieros y otras soluciones energéticas.<br><br>Solario evalúa la fotovoltaica como una pieza dentro de una estructura mayor.</p>
+            </div>
+            <div class="svc-panel" data-slide="3">
+              <span class="svc-name svc-name-int">Estrategia Integral</span>
+              <p>Solario ayuda a estructurar una ruta energética completa, combinando<br>suministro calificado en el Mercado Eléctrico Mayorista, BESS,<br>generación fotovoltaica en sitio y visibilidad operativa.<br><br>Cuando una sola solución no es suficiente, el valor está en entender<br>cómo se conectan las distintas alternativas con tu consumo, operación y objetivos de negocio.</p>
+            </div>
           </div>
         </div>
         <div class="svc-visual">
@@ -412,7 +424,7 @@
           <div class="svc-icon-chip svc-icon-chip-mem" data-appear="0"><img src="assets/MEM%201.svg" alt=""></div>
           <div class="svc-icon-chip svc-icon-chip-bess" data-appear="1"><img src="assets/BESS%201.svg" alt=""></div>
           <div class="svc-icon-chip svc-icon-chip-pv" data-appear="2"><img src="assets/P%201.svg" alt=""></div>
-          <div class="svc-icon-chip svc-icon-chip-ultimate" data-appear="3"><img src="assets/ULTIMATE.svg" alt=""></div>
+          <div class="svc-icon-chip svc-icon-chip-ultimate" data-appear="3"><svg class="svc-integration-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="4.5" cy="6" r="1.8"/><circle cx="19.5" cy="6" r="1.8"/><circle cx="12" cy="20.5" r="1.8"/><path d="M9.6 10.4 6 7.4M14.4 10.4 18 7.4M12 15v3.7"/></svg></div>
         </div>
       </div>
     </div>
@@ -531,12 +543,17 @@
 <!-- ===== CONTACTO ===== -->
 <section class="section section-offwhite" id="contacto">
   <div class="container">
-    <div class="text-center rv contact-header">
-      <span class="sec-label">Contacto</span>
-      <h2 class="shimmer-title">Hablemos de tu proyecto<span class="dot-accent">.</span></h2>
-      <p class="sec-sub centered">Déjanos tus datos y un profesional de Solario se pondrá en contacto contigo.</p>
-    </div>
-    <div class="contact-form-wrap rv">
+    <div class="contact-split rv">
+      <div class="contact-media">
+        <img src="assets/card-subestacion.jpg" alt="Infraestructura eléctrica de Solario" loading="lazy">
+      </div>
+      <div class="contact-panel">
+        <div class="contact-header">
+          <span class="sec-label">Contacto</span>
+          <h2 class="shimmer-title">Hablemos de tu proyecto<span class="dot-accent">.</span></h2>
+          <p class="sec-sub">Déjanos tus datos y un profesional de Solario se pondrá en contacto contigo.</p>
+        </div>
+        <div class="contact-form-wrap">
       <form class="contact-form" id="contact-form" action="https://formsubmit.co/vitaminad@solario.mx" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="_subject" value="Nueva solicitud desde solario.mx">
         <input type="hidden" name="_captcha" value="true">
@@ -563,6 +580,8 @@
           <button type="submit" class="btn btn-primary btn-submit">Solicitar cotización gratuita</button>
         </div>
       </form>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -608,8 +627,8 @@
 </footer>
 
 <div id="tweaks-root"></div>
-<script src="js/hero-scroll.js"></script>
-<script src="js/nav.js"></script>
+<script src="js/hero-scroll.js?v=2"></script>
+<script src="js/nav.js?v=2"></script>
 <script src="js/scroll-paint.js"></script>
 <script src="js/counter.js"></script>
 <script src="js/services.js"></script>

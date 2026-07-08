@@ -53,6 +53,19 @@
     });
   });
 
+  /* flag fields in red once the user leaves an invalid/empty required field */
+  document.querySelectorAll('.contact-form input:not([type=hidden]), .contact-form textarea, .contact-form select').forEach(function(el){
+    el.addEventListener('blur',function(){
+      el.classList.toggle('field-invalid', !el.checkValidity());
+    });
+    el.addEventListener('input',function(){
+      if(el.classList.contains('field-invalid') && el.checkValidity()) el.classList.remove('field-invalid');
+    });
+    el.addEventListener('change',function(){
+      if(el.classList.contains('field-invalid') && el.checkValidity()) el.classList.remove('field-invalid');
+    });
+  });
+
   /* popup submit stays gray/disabled until every required field is valid */
   var pForm=document.querySelector('.popup-formfields');
   if(pForm){
