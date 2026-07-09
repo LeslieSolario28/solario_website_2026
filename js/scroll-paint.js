@@ -71,6 +71,19 @@
     });
   }
   window.addEventListener('scroll',updatePaint,{passive:true});
-  setInterval(updatePaint,30);
+  // The regular titles paint on scroll; the Ultimate (svc) titles paint over time, so they
+  // need a ticker even when you stop scrolling — but only while that section is on screen.
+  var svcSection=document.getElementById('ultimate');
+  if(svcSection&&('IntersectionObserver' in window)){
+    var ticker=null;
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ if(!ticker){ ticker=setInterval(updatePaint,30); } }
+        else if(ticker){ clearInterval(ticker); ticker=null; }
+      });
+    },{threshold:0}).observe(svcSection);
+  } else {
+    setInterval(updatePaint,30);
+  }
   updatePaint();
 })();
