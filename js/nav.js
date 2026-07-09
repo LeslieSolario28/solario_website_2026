@@ -4,7 +4,7 @@
   var toggle=document.querySelector('.nav-toggle');
   var navlinks=document.querySelector('.navlinks');
 
-  var darkSections=document.querySelectorAll('.section-navy,.hero');
+  var darkSections=document.querySelectorAll('.section-navy,.hero,.break-band,.results-hero');
   function updateNavShade(){
     var sy=window.scrollY;
     topbar.classList.toggle('scrolled',sy>8);
