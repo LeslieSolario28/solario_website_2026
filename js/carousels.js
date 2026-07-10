@@ -23,8 +23,8 @@
     }
     casesTrack.addEventListener('scroll',updateCasesCounter,{passive:true});
     updateCasesCounter();
-    if(casesNext)casesNext.addEventListener('click',function(){casesTrack.scrollBy({left:320,behavior:'smooth'});});
-    if(casesPrev)casesPrev.addEventListener('click',function(){casesTrack.scrollBy({left:-320,behavior:'smooth'});});
+    if(casesNext)casesNext.addEventListener('click',function(){casesTrack.scrollBy({left:440,behavior:'smooth'});});
+    if(casesPrev)casesPrev.addEventListener('click',function(){casesTrack.scrollBy({left:-440,behavior:'smooth'});});
   }
 
   /* tarifas carousel */
