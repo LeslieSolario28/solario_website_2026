@@ -1,0 +1,196 @@
+/* ============================================
+   SOLARIO — Premium polish layer
+   Loaded after site.css. Refinement only:
+   depth, light, micro-interactions, finish.
+   ============================================ */
+
+/* ---------- P0. GLOBAL FINISH ---------- */
+
+/* film grain — an almost invisible texture that kills "flat digital" look */
+body::after {
+  content: ""; position: fixed; inset: -50%; z-index: 2147483647;
+  pointer-events: none; opacity: .028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+}
+
+/* refined focus ring — accessibility that looks designed */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px }
+
+/* discreet branded scrollbar */
+::-webkit-scrollbar { width: 11px }
+::-webkit-scrollbar-track { background: var(--c-offwhite) }
+::-webkit-scrollbar-thumb { background: rgba(0, 41, 107, .28); border-radius: 8px; border: 3px solid var(--c-offwhite) }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 41, 107, .45) }
+
+/* scroll progress hairline under the nav */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 120;
+  background: linear-gradient(90deg, var(--c-blue), var(--c-celeste));
+  transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+}
+
+/* ---------- P1. TYPE DETAILS ---------- */
+
+/* accent tick before every section label — a small, expensive-looking signature */
+.sec-label::before {
+  content: ""; display: inline-block; width: 26px; height: 1px;
+  background: linear-gradient(90deg, var(--accent), rgba(8, 158, 223, .25));
+  vertical-align: middle; margin-right: 12px; transform: translateY(-1px);
+}
+/* centered labels get the closing tick too, for symmetry */
+.text-center .sec-label::after,
+.abx-head .sec-label::after,
+.svc-header .sec-label::after {
+  content: ""; display: inline-block; width: 26px; height: 1px;
+  background: linear-gradient(270deg, var(--accent), rgba(8, 158, 223, .25));
+  vertical-align: middle; margin-left: 12px; transform: translateY(-1px);
+}
+
+/* hero eyebrow — flanked by hairlines, wider tracking */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 16px; letter-spacing: .26em;
+}
+.eyebrow::before, .eyebrow::after {
+  content: ""; width: 44px; height: 1px; flex: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65));
+}
+.eyebrow::after { background: linear-gradient(270deg, transparent, rgba(255, 255, 255, .65)) }
+
+/* hero headline gets a whisper of depth against the video */
+.hero h1 { text-shadow: 0 2px 40px rgba(0, 26, 66, .45) }
+
+/* ---------- P2. BUTTONS — light sweep + weight ---------- */
+.btn { position: relative; overflow: hidden; isolation: isolate }
+.btn::after {
+  content: ""; position: absolute; top: 0; bottom: 0; left: -80%; width: 50%; z-index: -1;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, .35), transparent);
+  transform: skewX(-20deg); transition: left .6s var(--ease-out); pointer-events: none;
+}
+.btn:hover::after { left: 130% }
+.btn-primary { box-shadow: 0 1px 2px rgba(0, 26, 66, .12), 0 6px 20px -6px rgba(8, 158, 223, .45) }
+.hero-ctas .btn-primary { box-shadow: 0 1px 2px rgba(0, 26, 66, .18), 0 10px 30px -10px rgba(0, 26, 66, .5) }
+.btn-ghost { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px) }
+
+/* ---------- P3. NAV — sliding underline + settled shadow ---------- */
+.navlinks-center a { position: relative; padding-bottom: 2px }
+.navlinks-center a::after {
+  content: ""; position: absolute; left: 0; bottom: -4px; height: 1.5px; width: 100%;
+  background: currentColor; opacity: .8;
+  transform: scaleX(0); transform-origin: 100% 50%;
+  transition: transform .35s var(--ease-out);
+}
+.navlinks-center a:hover::after { transform: scaleX(1); transform-origin: 0 50% }
+nav.topbar.nav-light { box-shadow: 0 1px 0 rgba(0, 41, 107, .04), 0 12px 32px -18px rgba(0, 26, 66, .18) }
+nav.topbar.nav-dark { box-shadow: 0 12px 32px -18px rgba(0, 0, 0, .35) }
+
+/* ---------- P4. CARDS — layered depth + cursor spotlight ---------- */
+
+/* flip cards: real elevation, deeper on hover */
+.flip-card {
+  box-shadow: 0 1px 2px rgba(0, 26, 66, .07), 0 14px 34px -16px rgba(0, 26, 66, .28);
+  transition: transform var(--duration-md) var(--ease-out), box-shadow var(--duration-md) var(--ease-out);
+}
+@media (hover: hover) {
+  .flip-card:hover { box-shadow: 0 2px 4px rgba(0, 26, 66, .08), 0 34px 70px -22px rgba(0, 26, 66, .42) }
+}
+/* cursor-following sheen (coords set by js/premium.js) */
+.flip-card::after, .case-card::after {
+  content: ""; position: absolute; inset: 0; z-index: 5; pointer-events: none;
+  opacity: 0; transition: opacity .45s ease;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, .13), transparent 65%);
+}
+@media (hover: hover) {
+  .flip-card:hover::after, .case-card:hover::after { opacity: 1 }
+}
+
+/* case cards: hairline ring + heavier resting shadow, lift on hover */
+.case-card {
+  box-shadow: 0 1px 2px rgba(0, 26, 66, .06), 0 18px 44px -20px rgba(0, 26, 66, .35);
+  transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
+}
+@media (hover: hover) {
+  .case-card:hover { transform: translateY(-6px); box-shadow: 0 2px 4px rgba(0, 26, 66, .07), 0 34px 72px -24px rgba(0, 26, 66, .5) }
+}
+.case-date { text-transform: uppercase; letter-spacing: .14em; font-size: 11px }
+.case-overlay { background: linear-gradient(180deg, rgba(0, 26, 66, 0) 0%, rgba(0, 26, 66, .35) 46%, rgba(0, 21, 54, .94) 100%) }
+
+/* carousel arrows: fill on hover instead of just recoloring */
+.cases-arrow { transition: border-color var(--duration-fast), color var(--duration-fast), background var(--duration-fast), transform var(--duration-fast) }
+.cases-arrow:hover { background: var(--c-navy); border-color: var(--c-navy); color: var(--c-white); transform: scale(1.06) }
+.cases-bar-fill { background: linear-gradient(90deg, var(--c-blue), var(--c-celeste)) }
+
+/* ---------- P5. SERVICES / ULTIMATE ---------- */
+.svc-img-wrap {
+  box-shadow: 0 1px 2px rgba(0, 26, 66, .08), 0 40px 80px -32px rgba(0, 41, 107, .45);
+  outline: 1px solid rgba(0, 41, 107, .06); outline-offset: -1px;
+}
+.svc-tab { -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); background: rgba(255, 255, 255, .5) }
+.svc-tab.active {
+  background: linear-gradient(120deg, var(--c-blue), #0257c9);
+  box-shadow: 0 8px 22px -8px rgba(0, 61, 166, .55);
+}
+.svc-tag { transition: transform var(--duration-fast), box-shadow var(--duration-fast) }
+.svc-tag:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -8px rgba(0, 41, 107, .3) }
+
+/* about media card matches the elevated language */
+.abx-media { outline: 1px solid rgba(0, 41, 107, .06); outline-offset: -1px }
+
+/* certs row: gentle grayscale→color reveal reads as restraint */
+.cert-logo, .cert-pill { opacity: .55; transition: opacity .35s ease, transform .35s ease }
+.cert-item:hover .cert-logo, .cert-item:hover .cert-pill { opacity: 1; transform: translateY(-2px) }
+
+/* ---------- P6. RESULTS BAND — jewel details on the glass ---------- */
+.results-glass-band { position: relative }
+.results-glass-band::before {
+  content: ""; position: absolute; top: -1px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 5%, rgba(8, 158, 223, .9) 50%, transparent 95%);
+}
+.results-figure { position: relative; transition: transform .45s var(--ease-out) }
+@media (hover: hover) { .results-figure:hover { transform: translateY(-4px) } }
+.results-figure-label { transition: border-color .45s ease }
+.results-figure:hover .results-figure-label { border-top-color: var(--accent) }
+#resultados .results-figure .stat b { text-shadow: 0 2px 30px rgba(8, 158, 223, .35) }
+
+/* ---------- P7. BREAK BAND ---------- */
+.break-phrase { text-shadow: 0 2px 36px rgba(0, 0, 0, .5) }
+.break-band::after {
+  background:
+    radial-gradient(90% 140% at 50% 120%, rgba(8, 158, 223, .18) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(0, 41, 107, .86) 0%, rgba(0, 26, 66, .92) 100%);
+}
+
+/* ---------- P8. CONTACT — the card floats ---------- */
+.contact-split {
+  border: 1px solid rgba(0, 41, 107, .06);
+  box-shadow: 0 1px 2px rgba(0, 26, 66, .05), 0 30px 80px -30px rgba(0, 26, 66, .3);
+}
+.contact-media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(115deg, rgba(0, 41, 107, .35) 0%, transparent 55%);
+}
+.form-field input, .form-field textarea, .pf-select { transition: border-color var(--duration-fast), box-shadow var(--duration-fast) }
+.form-field input:focus, .form-field textarea:focus { box-shadow: 0 1px 0 0 var(--accent) }
+
+/* ---------- P9. FOOTER ---------- */
+footer { background: linear-gradient(180deg, var(--c-navy) 0%, #001a44 100%) }
+.foot-col a { position: relative; width: fit-content }
+.foot-col a:hover { transform: translateX(3px); transition: transform var(--duration-fast), color var(--duration-fast) }
+
+/* whatsapp button: soft breathing ring invites the tap */
+@keyframes waPulse {
+  0% { box-shadow: 0 6px 24px rgba(107, 203, 119, .4), 0 0 0 0 rgba(107, 203, 119, .45) }
+  70% { box-shadow: 0 6px 24px rgba(107, 203, 119, .4), 0 0 0 14px rgba(107, 203, 119, 0) }
+  100% { box-shadow: 0 6px 24px rgba(107, 203, 119, .4), 0 0 0 0 rgba(107, 203, 119, 0) }
+}
+.whatsapp-float { animation: waPulse 3.2s ease-out infinite }
+
+/* ---------- P10. RESPECT & PRINT ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn::after { display: none }
+  .whatsapp-float { animation: none }
+  .flip-card, .case-card, .results-figure, .cert-logo, .cert-pill { transition: none }
+}
+@media print {
+  body::after, .scroll-progress { display: none !important }
+}
