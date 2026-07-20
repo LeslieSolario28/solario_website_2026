@@ -609,19 +609,17 @@
 <button id="chat-launcher" class="chat-launcher" type="button" aria-label="Abrir chat con Solario" aria-expanded="false">
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16a1 1 0 011 1v11a1 1 0 01-1 1H8l-4 4V5a1 1 0 011-1z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="1.1" fill="#fff"/><circle cx="12" cy="10.5" r="1.1" fill="#fff"/><circle cx="15" cy="10.5" r="1.1" fill="#fff"/></svg>
 </button>
-<div id="chat-panel" class="chat-panel" role="dialog" aria-label="Chat con Solario">
+<div id="chat-panel" class="chat-panel" role="dialog" aria-label="Contacto Solario">
   <div class="chat-header">
     <div>
-      <h3>Asistente Solario</h3>
-      <p>Te conectamos con el área correcta</p>
+      <h3>¿Cómo te ayudamos?</h3>
+      <p>Elige un tema y te damos el contacto correcto</p>
     </div>
-    <button class="chat-close" type="button" aria-label="Cerrar chat">&times;</button>
+    <button class="chat-close" type="button" aria-label="Cerrar">&times;</button>
   </div>
-  <div class="chat-log" aria-live="polite"></div>
-  <form class="chat-form" autocomplete="off">
-    <input type="text" placeholder="Escribe tu mensaje…" aria-label="Mensaje" maxlength="500">
-    <button type="submit" aria-label="Enviar">→</button>
-  </form>
+  <div class="chat-body">
+    <div class="chat-log" aria-live="polite"></div>
+  </div>
 </div>
 
 
