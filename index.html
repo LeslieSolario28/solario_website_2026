@@ -36,6 +36,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="css/premium.css">
+<link rel="stylesheet" href="css/chat.css">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -604,10 +605,24 @@
 
 </main>
 
-<!-- WhatsApp floating button -->
-<a class="whatsapp-float" href="https://wa.me/528112345678?text=Hola%2C%20me%20interesa%20conocer%20más%20sobre%20las%20soluciones%20de%20Solario." target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.29.6 4.44 1.64 6.32L3 29l6.84-1.6A12.93 12.93 0 0016 29c7.18 0 13-5.82 13-13S23.18 3 16 3z" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M21.35 18.35c-.35-.18-2.07-1.02-2.39-1.14-.32-.12-.55-.18-.78.18-.23.35-.9 1.14-1.1 1.37-.2.23-.41.26-.76.09a9.6 9.6 0 01-2.83-1.75 10.62 10.62 0 01-1.96-2.44c-.2-.35-.02-.54.15-.72.16-.16.35-.41.53-.62.18-.2.23-.35.35-.58.12-.23.06-.44-.03-.62-.09-.18-.78-1.88-1.07-2.58-.28-.68-.57-.58-.78-.6h-.67a1.28 1.28 0 00-.93.44A3.9 3.9 0 009 12.87a6.77 6.77 0 001.42 3.6 15.52 15.52 0 005.94 5.25c.83.36 1.48.58 1.99.74.84.27 1.6.23 2.2.14.67-.1 2.07-.85 2.36-1.67.3-.82.3-1.52.21-1.67-.09-.14-.32-.23-.67-.41z" fill="#fff"/></svg>
-</a>
+<!-- Solario chat bot -->
+<button id="chat-launcher" class="chat-launcher" type="button" aria-label="Abrir chat con Solario" aria-expanded="false">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16a1 1 0 011 1v11a1 1 0 01-1 1H8l-4 4V5a1 1 0 011-1z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="1.1" fill="#fff"/><circle cx="12" cy="10.5" r="1.1" fill="#fff"/><circle cx="15" cy="10.5" r="1.1" fill="#fff"/></svg>
+</button>
+<div id="chat-panel" class="chat-panel" role="dialog" aria-label="Chat con Solario">
+  <div class="chat-header">
+    <div>
+      <h3>Asistente Solario</h3>
+      <p>Te conectamos con el área correcta</p>
+    </div>
+    <button class="chat-close" type="button" aria-label="Cerrar chat">&times;</button>
+  </div>
+  <div class="chat-log" aria-live="polite"></div>
+  <form class="chat-form" autocomplete="off">
+    <input type="text" placeholder="Escribe tu mensaje…" aria-label="Mensaje" maxlength="500">
+    <button type="submit" aria-label="Enviar">→</button>
+  </form>
+</div>
 
 
 <!-- ===== FOOTER ===== -->
@@ -652,6 +667,7 @@
 <script src="js/flip.js"></script>
 <script src="js/forms.js"></script>
 <script src="js/premium.js"></script>
+<script src="js/chat.js"></script>
 
 </body>
 </html>
