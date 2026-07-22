@@ -1,0 +1,94 @@
+/* ============================================
+   SOLARIO — Mobile refinement layer
+   Loaded LAST, after site.css / premium.css / chat.css.
+
+   Every rule in this file lives inside a max-width media query, so the
+   desktop presentation is provably untouched. The job here is to undo the
+   over-shrinking in site.css's ≤600px block: body copy at 12px, eyebrows at
+   9.4px and an h1 floor of 21.6px are what make the phone view read like a
+   squeezed desktop page rather than a phone-native one.
+   ============================================ */
+
+
+/* ---------- Large mobile / small tablet ---------- */
+@media (max-width: 900px) {
+  /* Fluid card widths so the carousels breathe at any handset size instead of
+     stepping through three hard-coded widths. */
+  .case-card { width: min(86vw, 360px); height: auto; aspect-ratio: 4 / 5 }
+  .flip-card { width: min(86vw, 337px) }
+}
+
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+
+  /* --- Type + spacing scale ---------------------------------------------
+     Reset the tokens rather than patching every element: --fs-body drives
+     paragraphs, .sec-sub and the form fields. */
+  :root {
+    --fs-base: 16px;
+    --fs-sm: 13px;
+    --fs-body: 15px;
+    --sp-section: 76px;
+    --sp-gutter-content: 20px;
+  }
+
+  /* --- Undo the per-element shrinks ------------------------------------- */
+  .hero h1 { font-size: clamp(32px, 9.5vw, 44px); line-height: 1.1 }
+  .section h2, .cta-divider h2 { font-size: clamp(26px, 7.6vw, 32px); line-height: 1.15 }
+  .svc-panel h3 { font-size: clamp(25px, 8vw, 32px) }
+
+  .sec-sub,
+  .svc-panel p { font-size: var(--fs-body); line-height: 1.6 }
+
+  /* Uppercase tracked labels can stay small, but not sub-10px. */
+  .eyebrow { font-size: 11px; letter-spacing: .18em; margin-bottom: 16px }
+  .sec-label { font-size: 11px; letter-spacing: .18em; margin-bottom: 18px }
+
+  .stat b { font-size: clamp(26px, 9vw, 34px) }
+
+  /* --- Readability: headings centred, running copy left-aligned ----------
+     site.css sets `.container { text-align: center }` at this breakpoint,
+     which centres multi-line paragraphs too. Ragged-both-edges copy is hard
+     to read on a narrow column, so paragraphs go back to left. */
+  .sec-sub,
+  .svc-panel p,
+  .abx-text p,
+  .contact-panel p { text-align: left }
+  .sec-sub.centered { text-align: left }
+
+  /* --- Tap targets (44px minimum) --------------------------------------- */
+  .btn { min-height: 48px; padding: 14px 28px; font-size: 15px }
+  .hero .btn { font-size: 15px; padding: 14px 28px }
+
+  /* Hero CTAs stack full-width so both are comfortably thumb-sized. */
+  .hero-ctas { flex-direction: column; align-items: stretch; width: 100%; gap: 12px }
+  .hero-ctas .btn { width: 100%; justify-content: center }
+
+  .cases-arrow { width: 44px; height: 44px }
+  .navlinks a { padding: 8px 4px; min-height: 44px; display: inline-flex; align-items: center }
+  .svc-tab { min-height: 40px; display: inline-flex; align-items: center }
+
+  /* --- Forms -------------------------------------------------------------
+     iOS auto-zooms the page on focus for any input below 16px. */
+  .form-field input,
+  .form-field textarea,
+  .pf-select { font-size: 16px }
+  .form-field input,
+  .form-field textarea { padding: 12px 0 }
+  .btn-submit { min-height: 48px; width: 100% }
+
+  /* --- Floating launchers clear the home indicator ----------------------- */
+  .chat-launcher,
+  .whatsapp-float { bottom: calc(20px + env(safe-area-inset-bottom, 0px)) }
+}
+
+
+/* ---------- Small mobile ---------- */
+@media (max-width: 400px) {
+  /* site.css hard-codes 21.6px here, below its own ≤600 clamp. Keep the
+     fluid clamp instead so the headline stays legible on an SE. */
+  .hero h1 { font-size: clamp(29px, 9.5vw, 40px) }
+  .hero-content { padding: 0 16px }
+  .case-card { width: min(88vw, 320px) }
+}

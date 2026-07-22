@@ -233,7 +233,7 @@ nav.topbar.nav-light .nav-toggle span { background: var(--c-navy) }
 .hero .btn { font-size: 16px; padding: 14px 32px; font-family: var(--font) }
 .hero-ctas { display: flex; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; margin-top: 20px }
 .eyebrow { font-family: var(--font); font-size: clamp(10px, 1.2vw, 16px); font-weight: var(--fw-regular); letter-spacing: var(--ls-wide); color: var(--c-white); text-transform: uppercase; margin-bottom: 18px }
-.hero h1 { font-family: var(--font); font-size: calc(var(--fs-hero) * .8); line-height: var(--lh-tight); letter-spacing: -.04em; font-weight: var(--fw-medium); color: var(--c-white); clip-path: inset(0 100% 0 0); animation: revealTitle .9s .6s cubic-bezier(.77,0,.175,1) forwards }
+.hero h1 { font-family: var(--font); font-size: calc(var(--fs-hero) * .8); line-height: var(--lh-tight); letter-spacing: -.04em; font-weight: var(--fw-medium); color: var(--c-white); max-width: 100%; text-wrap: balance; clip-path: inset(0 100% 0 0); animation: revealTitle .9s .6s cubic-bezier(.77,0,.175,1) forwards }
 @keyframes revealTitle { to { clip-path: inset(0 0% 0 0) } }
 
 /* ---------- 7b. TRANSITION — normal-flow section (no pinning) ---------- */
@@ -698,19 +698,22 @@ footer .brand-logo { height: 24px }
   .hero .btn { font-size: 15px; padding: 14px 28px }
   .case-card { width: 340px; height: 440px }
   .svc-section-header { margin-bottom: 40px }
-  .hero-content { text-align: left; display: flex; flex-direction: column; align-items: flex-start }
-  .hero-ctas { justify-content: flex-start }
-  .eyebrow { text-align: left }
+  .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center }
+  .hero-ctas { justify-content: center; flex-direction: column; width: 100%; max-width: 320px }
+  .hero-ctas .btn { width: 100%; justify-content: center }
+  .eyebrow { text-align: center }
   .popup-card { padding: 32px 24px; width: 95% }
+  .hide-sm { display: none }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
   :root { --sp-section: 70px; --sp-gutter-content: 20px }
   .hero { min-height: 100svh }
-  .hero h1 { font-size: clamp(28.8px, 10vw, 43.2px) }
-  .eyebrow { font-size: 9.4px }
-  .hero-content { padding: 0 20px }
+  .hero h1 { font-size: clamp(24px, 6.5vw, 28px) !important; letter-spacing: -.02em; clip-path: none !important; animation: none !important; width: 100%; max-width: 100%; overflow-wrap: anywhere; word-break: normal; hyphens: auto }
+  .eyebrow { font-size: 11px; letter-spacing: .14em; gap: 10px; max-width: 100% }
+  .eyebrow::before, .eyebrow::after { width: 18px }
+  .hero-content { padding: 0 22px; box-sizing: border-box }
   .hero .btn { font-size: 15px; padding: 14px 26px }
   .section h2, .cta-divider h2 { font-size: clamp(22.4px, 7.6vw, 29.6px) }
   .sec-sub { font-size: 12px; max-width: 100%; overflow: visible; -webkit-line-clamp: unset }
@@ -747,7 +750,7 @@ footer .brand-logo { height: 24px }
 
 /* Small mobile */
 @media (max-width: 400px) {
-  .hero h1 { font-size: 21.6px }
+  .hero h1 { font-size: 24px }
   .foot-cols { grid-template-columns: 1fr }
   .case-card { width: 280px; height: 380px }
   .hero-content { padding: 0 16px }

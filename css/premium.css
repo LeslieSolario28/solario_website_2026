@@ -50,12 +50,17 @@ body::after {
 /* hero eyebrow — flanked by hairlines, wider tracking */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 16px; letter-spacing: .26em;
+  max-width: 100%; flex-wrap: wrap; justify-content: center;
 }
 .eyebrow::before, .eyebrow::after {
   content: ""; width: 44px; height: 1px; flex: none;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .65));
 }
 .eyebrow::after { background: linear-gradient(270deg, transparent, rgba(255, 255, 255, .65)) }
+@media (max-width: 600px) {
+  .eyebrow { letter-spacing: .14em; gap: 10px }
+  .eyebrow::before, .eyebrow::after { width: 18px }
+}
 
 /* hero headline gets a whisper of depth against the video */
 .hero h1 { text-shadow: 0 2px 40px rgba(0, 26, 66, .45) }
